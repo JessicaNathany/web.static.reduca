@@ -1,0 +1,20 @@
+{
+    "name": "web/dae",
+    "description": "MVC Dae",
+    "authors": [
+        {
+            "name": "Wanclei Felipe",
+            "email": "wanfel81@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.0",
+        "bjeavons/zxcvbn-php": "^0.4"
+    },
+    "autoload":{
+        "psr-4":{
+            "App\\":"../app/",
+            "Src\\":"../src/"           
+        }
+    }
+}

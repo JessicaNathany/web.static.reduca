@@ -10,15 +10,14 @@ session_start();
 use Src\Classes\ClassRender;
 use Src\Classes\ClassValidate;
 use Src\Interfaces\InterfaceView;
+use Src\Classes\ClassPassword;
 
 
 
 
 class ControllerUsers extends ClassRender implements InterfaceView{
-
-    
     /**
-     * metodo construtor da classe de controler da home.
+     * metodo construtor da classe de controler do Usuario.
      */
     public function __construct() {
         
@@ -27,47 +26,57 @@ class ControllerUsers extends ClassRender implements InterfaceView{
             $this->setKeywords("");
             $this->setDir("users");
             $this->renderLayout();
-            $this->post();
-            
-                     
-            
-        }
-
-    public function post(){
-        
-        if(isset($_POST['nome']) and isset($_POST['usuario']) and isset($_POST['email']) and isset($_POST['senha']) and isset($_POST['tipo'])){
-            
-            $nome= filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $usuario= filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $email= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-            $senha= filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $tipo= filter_input(INPUT_POST, 'tipo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            
-            $arrVar=[
-                "nome"=>$nome,
-                "usuario"=>$usuario,
-                "email"=>$email,
-                "senha"=>$senha,
-                "tipo"=>$tipo,
-            ];
-            
-            $user = new \App\Model\ClassUser();
-            $user->insertUser($arrVar);
-            
-            echo "<script language='javascript' type='text/javascript'>alert('Cadastrado com Sucesso!');window.location.href='".DIRPAGE.'/users'."';</script>";           
-            
-            var_dump($arrVar);
-                        
-        }else{
-            
-            
-        }
-        
-    }
-
-        
-        
-        
-    
-    
+            $this->main();  
+   }
+   /**
+    * 
+    */
+   private function main(){
+       /**
+        * 
+        */
+       if(isset($_POST["nome"]) and isset($_POST["usuario"]) and isset($_POST['email']) and isset($_POST['senha']) and isset($_POST['tipo']) and isset($_POST['repSenha'])){
+           $nome= filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+           $usuario= filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+           $email= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+           $senha= filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+           $repSenha= filter_input(INPUT_POST, 'repSenha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+           $tipo= filter_input(INPUT_POST, 'tipo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+           $objPass = new ClassPassword();$hashSenha = $objPass->passwordHash($senha);
+           
+           /**
+            * 
+            * 
+            */
+           $arrVar=["nome"=>$nome, "usuario"=>$usuario, "email"=>$email, "senha"=>$senha, "repSenha=>$repSenha", "hashSenha"=>$hashSenha, "tipo"=>$tipo];
+           
+           /**
+            * 
+            * 
+            */
+           $validate = new ClassValidate();
+           $validate->validateEmail($email);
+           $validate->validateIssetEmail($email); 
+           $validate->validateRepSenha($senha, $repSenha);
+           $validate->validateStrongSenha($senha);
+           
+           var_dump($validate->getErro());
+           /**
+            * 
+            */
+          /* if($validate->validateEmail($email) == true){
+                if($validate->validateIssetEmail($email) == true ){
+                    //$validate->validateFinal($arrVar);
+                    echo "<script language='javascript' type='text/javascript'>alert('Cadastrado com Sucesso!');window.location.href='".DIRPAGE.'/users'."';</script>"; 
+                    die();
+                        }else{
+                            echo "<script language='javascript' type='text/javascript'>alert('Email Já existente no Sistema!');window.location.href='".DIRPAGE.'/users'."';</script>";
+                            die();
+                        }
+           }else{               
+               echo "<script language='javascript' type='text/javascript'>alert('Erro ao Cadastrar, verifique os campos!');window.location.href='".DIRPAGE.'/users'."';</script>";
+                 die();
+            } */                     
+       }
+   }
 }

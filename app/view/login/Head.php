@@ -1,0 +1,1 @@
+<script src="<?= DIRJS.'chart.js/dist/Chart.min.js'?>"></script>
