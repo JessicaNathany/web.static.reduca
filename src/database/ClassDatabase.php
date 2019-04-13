@@ -6,6 +6,7 @@ namespace Src\database;
  * and open the template in the editor.
  */
 use App\Model\ClassConexao;
+use PDO;
 /**
  * Description of ClassDatabase
  *
@@ -13,18 +14,18 @@ use App\Model\ClassConexao;
  */
 class ClassDatabase extends ClassConexao{
     //put your code here
-   
+   private $nameDB = DB;
     /**
      * Cria uma base de dados
      * 
      */    
-    public function createDB($nameDB){
+    public function createDB(){
         try{
             $con=$this->conexaoDB();
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt="CREATE DATABASE IF NOT EXISTS {$nameDB}";
+            $stmt="CREATE DATABASE IF NOT EXISTS {$this->nameDB}";
             $con->exec($stmt);
-            echo "database=> ".$nameDB. ",criada com sucesso!";
+            echo "database=> criada com sucesso!<br>";
         } catch (PDOException $e) {
             echo $stmt . "<br>" .$e->getMessage();
         }
@@ -34,13 +35,12 @@ class ClassDatabase extends ClassConexao{
      * cria a tabela usuario
      * 
      */
-    public function createTableUserDB($nameDB){
+    public function createTableUserDB(){
         try{
             $con=$this->conexaoDB();
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt="use $nameDB";
+            $stmt="use ".$this->nameDB;
             $con->exec($stmt);
-            $stmt="";
             $stmt="CREATE TABLE IF NOT EXISTS tb_users("
                     . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
                     . "nome varchar (100),"
@@ -51,6 +51,7 @@ class ClassDatabase extends ClassConexao{
                     . "data datetime"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
             $con->exec($stmt);
+            echo "tb_users=> criado com sucesso!<br>";
         } catch (PDOException $e) {
            echo $stmt . "<br>" .$e->getMessage(); 
         }
@@ -60,11 +61,11 @@ class ClassDatabase extends ClassConexao{
      * 
      * 
      */
-    public function createTableAttemptDB($nameDB){
+    public function createTableAttemptDB(){
         try{
            $con=$this->conexaoDB();
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt="use $nameDB";
+            $stmt="use ".$this->nameDB;
             $con->exec($stmt);
             $stmt="";
             $stmt="CREATE TABLE IF NOT EXISTS tb_attempt("
@@ -72,9 +73,32 @@ class ClassDatabase extends ClassConexao{
                     . "ip varchar (20),"
                     . "data datetime"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
-            $con->exec($stmt); 
+            $con->exec($stmt);
+            echo "tb_attempt=>,criado com sucesso!<br>";
         } catch (PDOException $e) {
-            
+            echo $stmt . "<br>" .$e->getMessage(); 
+        }
+    }
+    /**
+     * 
+     * 
+     */
+    public function createTableConfirmation(){
+        try{
+            $con=$this->conexaoDB();
+            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt="use ".$this->nameDB;
+            $con->exec($stmt);
+            $stmt="";
+            $stmt="CREATE TABLE IF NOT EXISTS tb_confirmation("
+                    . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
+                    . "email varchar (90),"
+                    . "token text"
+                    . ")AUTO_INCREMENT=1 ENGINE=INNODB";
+            $con->exec($stmt);
+            echo "tb_confirmation=> criada a tabela com sucesso!";
+        } catch (PDOException $e) {
+            echo $stmt . "<br>" .$e->getMessage(); 
         }
     }
 }

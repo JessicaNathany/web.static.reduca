@@ -60,6 +60,7 @@ class ClassRoutes{
             "repicagem"=>"ControllerRepicagem",          
             "descartes"=>"ControllerDescartes",                                                           
             "controllerUsers"=>"ControllerUsers",
+            "database"=>"ControllerDatabase",
             "viveiros"=>"ControllerViveiros"
             
             ];
