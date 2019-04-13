@@ -71,3 +71,14 @@ define('PASS',"");
  * 
  */
 define('PORT',"3307");
+/**
+ * 
+ * KEYS GOOGLE ANALITYCS E RECAPTCHA
+ * @SITEKEY
+ */
+define('SITEKEY',"6LcF-J0UAAAAAEO7HPxzPhO6Kj6XqLUyTSII-q7Y");
+/**
+ * @SECRETKEY
+ * 
+ */
+define('SECRETKEY',"6LcF-J0UAAAAAGaD3MskPMNSFB09PXFvrW1esfqJ");

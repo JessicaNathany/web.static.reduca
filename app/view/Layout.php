@@ -17,8 +17,8 @@
         
         <link rel="stylesheet" href="<?=DIRCSS.'Style.css'?>">
         
-        <!-- Scripts -->
-        <script src="<?= DIRJS.'vendor/modernizr-2.8.3-respond-1.4.2.min.js'?>"></script>
+        
+        
         
         
         <?=$this->addHead();?>
@@ -66,7 +66,11 @@
         <!-- SCRIPTS -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script type="text/javascript" src="<?= DIRJS.'vendor/bootstrap.min.js' ?>"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=<?=SITEKEY?>"></script>
+        <script src="<?= DIRJS.'vendor/bootstrap.min.js' ?>"></script>
+        <script src="<?= DIRJS.'vendor/modernizr-2.8.3-respond-1.4.2.min.js'?>"></script>
+        <script src="<?= DIRJS.'zepto.min.js'?>"></script>
+        <script src="<?= DIRJS.'main.js' ?>"></script>
         
         
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

@@ -70,7 +70,7 @@ class ClassValidate {
         
         if($action == null){
             if($select > 0){
-                $this->setErro("Email já cadastrado no sistema!");
+                $this->setErro("Email ja cadastrado no sistema!");
                 return false;
             }else{
                 return true;
@@ -79,7 +79,7 @@ class ClassValidate {
             if($select > 0){
                 return true;
             }else{
-                $this->setErro("Email não cadastrado!");
+                $this->setErro("Email nao cadastrado!");
                 return false;
             }
         }
@@ -93,7 +93,7 @@ class ClassValidate {
         if($senha === $repSenha){
             return true;
         }else{
-            $this->setErro("Senha diferente de confirmação de senha!");
+            $this->setErro("Senha diferente de confirmacao de senha!");
         }
     }
     /**
@@ -107,7 +107,7 @@ class ClassValidate {
        $strength = $zxcvbn->passwordStrength($senha);
        
        if($par == null){
-           if($strength['score'] >= 8){
+           if($strength['score'] <= 8){
                return true;
            }else{
                $this->setErro("A Senha deve conter 8 caracteres!");
@@ -123,6 +123,21 @@ class ClassValidate {
      */
     public function validateSenha($email,$senha){
         
+    }
+    /**
+     * 
+     * 
+     * verifica se o captcha está correto.
+     */
+    public function validateCaptcha($captcha, $score=0.5){
+        $return = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".SECRETKEY."&response={$captcha}");
+        $response = json_decode($return);
+        
+        if($response->success == TRUE && $response->score >= $score){
+            return true;
+        }else{
+            $this->setErro("Captcha Invalido! => Atualize a página e tente novamente!"); 
+        }
     }
     /**
      * 
@@ -150,6 +165,19 @@ class ClassValidate {
      * Valida se um dado é uma data.
      */
     public function validateFinal($arrVar){
-        $this->User->insertUser($arrVar);
+       
+        if(count($this->getErro())>0){
+           $arrResponse=[
+               "retorno"=>"erro",
+               "erros"=>$this->getErro()
+           ]; 
+        }else{
+            $arrResponse=[
+               "retorno"=>"success",
+               "erros"=>NULL
+           ];
+            // $this->User->insertUser($arrVar);
+        }
+        return json_encode($arrResponse);
     }
 } 

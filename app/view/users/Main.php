@@ -1,5 +1,8 @@
 <!-- Form de cadastro de funcionarios -->      
-       <div class="container">                    
+<div class="retornoUsers">
+                        
+                    </div>       
+<div class="container">                    
            <form action="<?=DIRPAGE.'/users'?>" method="POST" id="formUsers" class="form-horizontal">
                <h1>Cadastrar Usuários</h1>
                 <hr>
@@ -61,6 +64,8 @@
                         </select>
                     </div>
                 </div> 
+                <!-- CAMPO DO CAPTCHA -->
+                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" required>
                            
                 
                 <div class="form-group form-inline">

@@ -128,8 +128,7 @@ $token= bin2hex(random_bytes(64));
  * 
  * 
  */
-date_default_timezone_set('America/Sao_Paulo');
-$date = date('Y-m-d H:i');
+if(isset($_POST['g-recaptcha-response'])){$gRecaptchaResponse=$_POST['g-recaptcha-response'];}else{$gRecaptchaResponse=null;}
 /**
  * 
  * 
