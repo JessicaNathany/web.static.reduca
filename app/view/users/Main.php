@@ -1,7 +1,4 @@
-<!-- Form de cadastro de funcionarios -->      
-<div class="retornoUsers">
-                        
-                    </div>       
+<!-- Form de cadastro de funcionarios -->            
 <div class="container">                    
            <form action="<?=DIRPAGE.'/users'?>" method="POST" id="formUsers" class="form-horizontal">
                <h1>Cadastrar Usuários</h1>
@@ -55,7 +52,7 @@
                 </div>-->
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="tipo">Estados:</label>
+                    <label class="control-label col-sm-2" for="tipo">Tipo de usuario:</label>
                     <div class="col-sm-3">
                         <select id="inputEstado" class="form-control" name="tipo" required>
                           <option  selected>Escolha...</option>
@@ -66,7 +63,8 @@
                 </div> 
                 <!-- CAMPO DO CAPTCHA -->
                 <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" required>
-                           
+                <input type="text" name="retornoUsers" id="retornoUsers" style="color: red;">
+                                          
                 
                 <div class="form-group form-inline">
                     <label class="control-label col-sm-2" for="btn_enviar"></label>

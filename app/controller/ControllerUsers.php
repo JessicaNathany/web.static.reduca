@@ -10,8 +10,7 @@ session_start();
 use Src\Classes\ClassRender;
 use Src\Classes\ClassValidate;
 use Src\Interfaces\InterfaceView;
-use Src\Classes\ClassPassword;
-
+use Src\Classes\ClassHelperUser;
 
 
 
@@ -26,64 +25,62 @@ class ControllerUsers extends ClassRender implements InterfaceView{
             $this->setKeywords("");
             $this->setDir("users");
             $this->renderLayout();
-            $this->main();  
+            $this->Main();  
    }
    /**
     * 
+    * 
     */
-   private function main(){
-       /**
-        * 
-        */
-       if(isset($_POST['g-recaptcha-response'])){$gRecaptchaResponse=$_POST['g-recaptcha-response'];}else{$gRecaptchaResponse=null;}
-       /**
-        * 
-        */
-       if(isset($_POST["nome"]) and isset($_POST["usuario"]) and isset($_POST['email']) and isset($_POST['senha']) and isset($_POST['tipo']) and isset($_POST['repSenha'])){
-           $nome= filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-           $usuario= filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-           $email= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-           $senha= filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-           $repSenha= filter_input(INPUT_POST, 'repSenha', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-           $tipo= filter_input(INPUT_POST, 'tipo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-           $objPass = new ClassPassword();$hashSenha = $objPass->passwordHash($senha);
+   private function Main(){ 
+       $post = new ClassHelperUser();
+       $validate = new ClassValidate();
+       
+       if(isset($_POST['g-recaptcha-response'])){
+                $gRecaptchaResponse = $post::getGRecaptchaResponse();
+                $validate->validateCaptcha($gRecaptchaResponse); 
+            } else {
+                $gRecaptchaResponse = null;
+            }
+       if(isset($nome) && isset($usuario) && isset($senha) && isset($email) && isset($repSenha) && isset($tipo) && isset($hashSenha)){          
            
-           
-           
-           /**
-            * 
-            * 
-            */
-           $arrVar=["nome"=>$nome, "usuario"=>$usuario, "email"=>$email, "senha"=>$senha, "repSenha=>$repSenha", "hashSenha"=>$hashSenha, "tipo"=>$tipo];
-           
-           /**
-            * 
-            * 
-            */
-           $validate = new ClassValidate();
-           $validate->validateEmail($email);
-           $validate->validateIssetEmail($email); 
-           $validate->validateRepSenha($senha, $repSenha);
-           $validate->validateStrongSenha($senha);
-           $validate->validateCaptcha($gRecaptchaResponse);
-          echo $validate->validateFinal($arrVar);
-           
-           /**
-            * 
-            */
-          /* if($validate->validateEmail($email) == true){
-                if($validate->validateIssetEmail($email) == true ){
-                    //$validate->validateFinal($arrVar);
-                    echo "<script language='javascript' type='text/javascript'>alert('Cadastrado com Sucesso!');window.location.href='".DIRPAGE.'/users'."';</script>"; 
-                    die();
-                        }else{
-                            echo "<script language='javascript' type='text/javascript'>alert('Email Já existente no Sistema!');window.location.href='".DIRPAGE.'/users'."';</script>";
-                            die();
-                        }
-           }else{               
-               echo "<script language='javascript' type='text/javascript'>alert('Erro ao Cadastrar, verifique os campos!');window.location.href='".DIRPAGE.'/users'."';</script>";
-                 die();
-            } */                     
+            $nome = $post::getNome();
+            $usuario = $post::getUsuario();
+            $senha = $post::getSenha();
+            $email = $post::getEmail();
+            $repSenha = $post::getRepSenha();
+            $tipo = $post::getTipo();
+            $hashSenha = $post::getHashSenha();           
+                
+            
+            $arrVar=[
+           "nome"=>$nome,
+           "usuario"=>$usuario,
+           "email"=>$email,
+           "senha"=>$senha,
+           "repSenha=>$repSenha",
+           "hashSenha"=>$hashSenha,
+           "tipo"=>$tipo
+        ];
+       
+       
+       
+       
+       $validate->validateEmail($email);
+       $validate->validateFields($_POST);
+       $validate->validateIssetEmail($email); 
+       $validate->validateRepSenha($senha, $repSenha);
+       $validate->validateStrongSenha($senha);
+        
+       $validate->validateFinal($arrVar);
+       var_dump($arrVar);
+     
+       echo"<br>";
+       echo $validate->validateFinal($arrVar);
+       
+            
        }
+       
+            
+       
    }
 }

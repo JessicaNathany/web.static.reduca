@@ -8,6 +8,8 @@ namespace App\Controller;
 
 use Src\Classes\ClassRender;
 use Src\Interfaces\InterfaceView;
+use Src\Classes\ClassValidate;
+
 
 class ControllerLogin extends ClassRender implements InterfaceView{
     
@@ -21,7 +23,12 @@ class ControllerLogin extends ClassRender implements InterfaceView{
         $this->setDir("login");
         $this->renderLayout();
     }
-
+    
+    
+    /**
+     * 
+     */
+    
     
 
 }

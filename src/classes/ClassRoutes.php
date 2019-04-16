@@ -61,6 +61,7 @@ class ClassRoutes{
             "descartes"=>"ControllerDescartes",                                                           
             "controllerUsers"=>"ControllerUsers",
             "database"=>"ControllerDatabase",
+            "teste"=>"ControllerTeste",
             "viveiros"=>"ControllerViveiros"
             
             ];

@@ -128,7 +128,6 @@ $token= bin2hex(random_bytes(64));
  * 
  * 
  */
-if(isset($_POST['g-recaptcha-response'])){$gRecaptchaResponse=$_POST['g-recaptcha-response'];}else{$gRecaptchaResponse=null;}
 /**
  * 
  * 
