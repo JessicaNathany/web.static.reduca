@@ -10,7 +10,7 @@ use Src\Classes\ClassRender;
 use Src\Classes\ClassValidate;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassHelperUser;
-use App\Model\ClassLogin;
+
 
 
 class ControllerLogin extends ClassRender implements InterfaceView{
@@ -32,7 +32,7 @@ class ControllerLogin extends ClassRender implements InterfaceView{
      * 
      */
     private function Main(){
-        $login = new ClassLogin();
+        $login = new \Src\Classes\ClassPassword();
         $post = new ClassHelperUser();
         $validate = new ClassValidate();
         $arrVar = "";
@@ -48,14 +48,12 @@ class ControllerLogin extends ClassRender implements InterfaceView{
             
             $validate->validateFields($_POST);
             $validate->validateUsuario($usuario,"login");
-            $validate->validateSenha($usuario, $senha);
-            
+            $validate->validateSenha($usuario, $senha);            
             var_dump($validate->getErro());
             var_dump($arrVar);
-            var_dump($login->getDataUser($usuario));
             
-        }else{
-            var_dump($login->getDataUser($usuario));
+            
+        }else{            
            var_dump($validate->getErro());
            var_dump($arrVar);
         }

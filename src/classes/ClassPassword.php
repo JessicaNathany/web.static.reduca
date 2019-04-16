@@ -25,6 +25,8 @@ class ClassPassword {
      */
     public function verifyHash($usuario,$senha){
        $hashDB=$this->db->getDataUser($usuario);
-       return password_verify($senha,$hashDB["data"]["senha"]);
+       $hash = $hashDB["data"]["hashSenha"];
+       return password_verify($senha, $hash);       
+       var_dump($hash); 
     }
 }

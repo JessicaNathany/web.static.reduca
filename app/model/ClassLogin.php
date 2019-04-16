@@ -30,12 +30,13 @@ class ClassLogin extends ClassCrud{
                    $usuario 
                 )
             );
-     
+    $fetch = $select->fetch(\PDO::FETCH_ASSOC);                          
+    $row = $select->rowCount();
     return $arrData=[
-        "data"=>$this->fetch(\PDO::FETCH_ASSOC),
-        "rows"=>$this->rowCount(),
+        "data"=>$fetch,
+        "rows"=>$row
         ];
-    \var_dump($arrData); 
+    
     }
        
     
