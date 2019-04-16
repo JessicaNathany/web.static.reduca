@@ -39,4 +39,19 @@ class ClassUser extends ClassCrud{
             );
         return $res=$select->rowCount();
     }
+    /**
+     * verifica diretamente se o imail existe no banco
+     * 
+     */
+    public function getIssetUser($user){
+        $select=$this->selectDB(
+             "*",
+                "tb_users",
+                "where usuario=?",
+                array(
+                   $user 
+                )
+            );
+        return $res=$select->rowCount();
+    }
 }

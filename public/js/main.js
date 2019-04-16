@@ -1,7 +1,7 @@
 /**
  * 
  * @returns {String}
- */
+ *
 function getRoot(){
     var root="http://"+document.location.hostname+"/MVC_php/";
     return root;
@@ -10,7 +10,7 @@ function getRoot(){
 
 /**
  * 
- */
+ *
 function getCaptcha(){
    grecaptcha.ready(function() {
       grecaptcha.execute('6LcF-J0UAAAAAEO7HPxzPhO6Kj6XqLUyTSII-q7Y', {action: 'homepage'}).then(function(token) {
@@ -26,7 +26,7 @@ getCaptcha();
 /**
  * AJAX formulario de usuarios
  * 
- */
+ *
 $("#formUsers").on("submit",function(event){
     //event.preventDefault();
     var dados=$(this).serialize();
@@ -50,4 +50,4 @@ $("#formUsers").on("submit",function(event){
             }
         }
     });
-});
+});*/

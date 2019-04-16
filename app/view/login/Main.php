@@ -1,28 +1,25 @@
 <div class="container">
-            <form action="control/ctrlUsuario.php" method="POST" class="col-md-6 offset-md-3" id="formLogin">
-                <h1>Login</h1>
-                <hr>
-                <div class="form-group">                    
-                    <div class="col-md-7">
-                        <label for="usuario" class="control-label">Usuario:</label>
-                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="" required maxlength="10">
-                    </div>
-                    
-                <div class="form-group">                    
-                    <div class="col-md-7 ">
-                        <label for="senha" class="control-label">Senha:</label>
-                        <input type="password" class="form-control" id="senha" name="senha" placeholder="" required maxlength="10">
-                        <a href="#">Recuperar senha <span class="glyphicon glyphicon-envelope"></span></a>   
-                    </div>
-                </div>
-                                                                                  
-                 <div class="form-group">                    
-                    <div class="col-md-7">
-                        <label for="" class="control-label"></label>
-                        <input type="submit" class="btn btn-success " id="entrar" name="entrar" value="Entrar">
-                    </div>
-                </div>                                          
-            </form>    
-        </div>
-    </div>
-        
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+      <div id="logo-container"></div>
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <form action="<?=DIRPAGE.'/login'?>" method="POST" id="loginForm"  id="formLogin">
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input class="form-control" type="text" name='usuario' placeholder="Nome de Usuário"/>          
+          </div>
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input class="form-control" type="password" name='senha' placeholder="Senha"/>     
+          </div>
+          <div class="form-group">
+              <input type="submit" class="btn btn-def btn-block" id="btn_login" name="btn_login" value="Login">
+          </div>
+          <div class="form-group text-center">
+            &nbsp;<a href="#">Support</a>
+          </div>
+        </form>        
+      </div>  
+    </div>    
+  </div>
+</div>

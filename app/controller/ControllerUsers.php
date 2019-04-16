@@ -34,6 +34,7 @@ class ControllerUsers extends ClassRender implements InterfaceView{
    private function Main(){ 
        $post = new ClassHelperUser();
        $validate = new ClassValidate();
+       $arrVar =null;
        
        if(isset($_POST['g-recaptcha-response'])){
                 $gRecaptchaResponse = $post::getGRecaptchaResponse();
@@ -41,7 +42,7 @@ class ControllerUsers extends ClassRender implements InterfaceView{
             } else {
                 $gRecaptchaResponse = null;
             }
-       if(isset($nome) && isset($usuario) && isset($senha) && isset($email) && isset($repSenha) && isset($tipo) && isset($hashSenha)){          
+       if(!empty($_POST)){          
            
             $nome = $post::getNome();
             $usuario = $post::getUsuario();
@@ -57,7 +58,7 @@ class ControllerUsers extends ClassRender implements InterfaceView{
            "usuario"=>$usuario,
            "email"=>$email,
            "senha"=>$senha,
-           "repSenha=>$repSenha",
+           "repSenha"=>$repSenha,
            "hashSenha"=>$hashSenha,
            "tipo"=>$tipo
         ];
@@ -69,15 +70,15 @@ class ControllerUsers extends ClassRender implements InterfaceView{
        $validate->validateFields($_POST);
        $validate->validateIssetEmail($email); 
        $validate->validateRepSenha($senha, $repSenha);
-       $validate->validateStrongSenha($senha);
-        
-       $validate->validateFinal($arrVar);
+       $validate->validateStrongSenha($senha);               
        var_dump($arrVar);
      
        echo"<br>";
        echo $validate->validateFinal($arrVar);
        
             
+       }else{
+           var_dump($validate->getErro());
        }
        
             

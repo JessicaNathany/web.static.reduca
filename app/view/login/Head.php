@@ -1,1 +1,1 @@
-<script src="<?= DIRJS.'chart.js/dist/Chart.min.js'?>"></script>
+<link rel="stylesheet" href="<?=DIRCSS.'login_view.css'?>">

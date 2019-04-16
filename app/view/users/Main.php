@@ -61,9 +61,9 @@
                         </select>
                     </div>
                 </div> 
-                <!-- CAMPO DO CAPTCHA -->
+                <!-- CAMPO DO CAPTCHA 
                 <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" required>
-                <input type="text" name="retornoUsers" id="retornoUsers" style="color: red;">
+                <input type="text" name="retornoUsers" id="retornoUsers" style="color: red;"> -->
                                           
                 
                 <div class="form-group form-inline">

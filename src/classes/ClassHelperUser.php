@@ -113,8 +113,8 @@ class ClassHelperUser {
      * @return type
      */
     static function getRepSenha() {
-        if(isset($_POST['senha'])){
-            self::$senha = filter_input(INPUT_POST, 'senha', FILTER_DEFAULT);
+        if(isset($_POST['repSenha'])){
+            self::$repSenha = filter_input(INPUT_POST, 'repSenha', FILTER_DEFAULT);
             return self::$repSenha;
         }
         

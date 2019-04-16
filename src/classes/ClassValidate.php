@@ -7,6 +7,7 @@
  */
 use App\Model\ClassUser;
 use ZxcvbnPhp\Zxcvbn;
+use Src\Classes\ClassPassword;
 
 class ClassValidate {
     /**
@@ -17,9 +18,14 @@ class ClassValidate {
      * 
      */
     private $User;
+    /**
+     * 
+     */
+    private $password;
     
     public function __construct() {
         $this->User= new ClassUser();
+        $this->password= new ClassPassword();
     }
     
     function getErro() {
@@ -121,14 +127,19 @@ class ClassValidate {
      * Valida a senha com a senha criptografada no banco de dados.
      * 
      */
-    public function validateSenha($email,$senha){
-        
+    public function validateSenha($usuario,$senha){
+        if($this->password->verifyHash($usuario, $senha)){
+            return true;
+        }else{
+            $this->setErro("Usuário ou Senha Inválidos!");
+            
+        }
     }
     /**
      * 
      * 
      * verifica se o captcha está correto.
-     */
+     *
     public function validateCaptcha($captcha, $score=0.5){
         $return = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".SECRETKEY."&response={$captcha}");
         $response = json_decode($return);
@@ -143,8 +154,24 @@ class ClassValidate {
      * 
      * Valida se um dado é um usuario
      */
-    public function validateUsuario($par){
+    public function validateUsuario($user,$action=null){
+       $select=$this->User->getIssetUser($user);
         
+        if($action == null){
+            if($select > 0){
+                $this->setErro("Usuario ja cadastrado no sistema!");
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            if($select > 0){
+                return true;
+            }else{
+                $this->setErro("Usuario nao cadastrado!");
+                return false;
+            }
+        } 
     }
     /**
      * 
@@ -176,7 +203,7 @@ class ClassValidate {
                "retorno"=>"success",
                "erros"=>NULL
            ];
-            // $this->User->insertUser($arrVar);
+             $this->User->insertUser($arrVar);
         }
         return json_encode($arrResponse);
     }
