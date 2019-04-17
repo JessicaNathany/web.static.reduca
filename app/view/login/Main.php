@@ -6,12 +6,13 @@
         <form action="<?=DIRPAGE.'/login'?>" method="POST" id="loginForm"  id="formLogin">
           <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input class="form-control" type="text" name='usuario' placeholder="Nome de Usuário"/>          
+            <input class="form-control" type="text" name='usuario' placeholder="Nome de Usuário" required/>          
           </div>
           <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-            <input class="form-control" type="password" name='senha' placeholder="Senha"/>     
+            <input class="form-control" type="password" name='senha' placeholder="Senha" required/>     
           </div>
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" required>
           <div class="form-group">
               <input type="submit" class="btn btn-def btn-block" id="btn_login" name="btn_login" value="Login">
           </div>

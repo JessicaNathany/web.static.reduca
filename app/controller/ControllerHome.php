@@ -1,6 +1,5 @@
 <?php
 namespace App\Controller;
-session_start();
 /**
  * @author John Doe <john.doe@example.com>
  * @license http://URL name
@@ -9,6 +8,7 @@ session_start();
 
 use Src\Classes\ClassRender;
 use Src\Interfaces\InterfaceView;
+use Src\Classes\ClassSessions;
 
 class ControllerHome extends ClassRender implements InterfaceView{
     
@@ -24,7 +24,8 @@ class ControllerHome extends ClassRender implements InterfaceView{
             $this->setKeywords("Dae teste, robustez para fazer deploy");
             $this->setDir("home");
             $this->renderLayout();
-            
+            $session= new ClassSessions();
+            $session->verifyInsideSession();
         
         
     }

@@ -37,6 +37,18 @@ class ControllerLogin extends ClassRender implements InterfaceView{
         $validate = new ClassValidate();
         $arrVar = "";
         
+        /**
+         * 
+         *
+        if(isset($_POST['g-recaptcha-response'])){
+                $gRecaptchaResponse = $post::getGRecaptchaResponse();
+                $validate->validateCaptcha($gRecaptchaResponse); 
+            } else {
+                $gRecaptchaResponse = null;
+            }
+        /**
+         * 
+         */
         if(!empty($_POST)){ 
             
             $usuario = $post::getUsuario();
@@ -49,13 +61,19 @@ class ControllerLogin extends ClassRender implements InterfaceView{
             $validate->validateFields($_POST);
             $validate->validateUsuario($usuario,"login");
             $validate->validateSenha($usuario, $senha);            
-            var_dump($validate->getErro());
-            var_dump($arrVar);
+            $validate->validateAttemptLogin();
+            $validate->validateFinalLogin($usuario);
+            
+            //var_dump($validate->getErro());
+            var_dump($_SESSION);
+            echo "<script>window.location.href='".DIRPAGE.'/home'."';</script>";
             
             
         }else{            
-           var_dump($validate->getErro());
-           var_dump($arrVar);
+           //echo "<script language='javascript' type='text/javascript'>alert('Erro ao fazer login!');window.location.href='".$DIRREQ."';</script>";              
+            
+           
+           
         }
     }
     

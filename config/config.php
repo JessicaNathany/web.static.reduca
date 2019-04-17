@@ -82,3 +82,8 @@ define('SITEKEY',"6LcF-J0UAAAAAEO7HPxzPhO6Kj6XqLUyTSII-q7Y");
  * 
  */
 define('SECRETKEY',"6LcF-J0UAAAAAGaD3MskPMNSFB09PXFvrW1esfqJ");
+/**
+ * 
+ * 
+ */
+define('DOMAIN',$_SERVER["HTTP_HOST"]);

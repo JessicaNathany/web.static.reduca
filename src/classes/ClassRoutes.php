@@ -62,6 +62,7 @@ class ClassRoutes{
             "controllerUsers"=>"ControllerUsers",
             "database"=>"ControllerDatabase",
             "teste"=>"ControllerTeste",
+            "ErroSession"=>"ControllerErroSession",
             "viveiros"=>"ControllerViveiros"
             
             ];

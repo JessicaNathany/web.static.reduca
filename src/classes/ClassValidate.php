@@ -6,8 +6,10 @@
  * and open the template in the editor.
  */
 use App\Model\ClassUser;
+use App\Model\ClassLogin;
 use ZxcvbnPhp\Zxcvbn;
 use Src\Classes\ClassPassword;
+use Src\Classes\ClassSessions;
 
 class ClassValidate {
     /**
@@ -22,10 +24,24 @@ class ClassValidate {
      * 
      */
     private $password;
+    /**
+     * 
+     */
+    private $login;
+    /**
+     * 
+     */
+    private $tentativas;
+    /**
+     * 
+     */
+    private $session;
     
     public function __construct() {
         $this->User= new ClassUser();
         $this->password= new ClassPassword();
+        $this->login= new ClassLogin();
+        $this->session= new ClassSessions();
     }
     
     function getErro() {
@@ -139,7 +155,7 @@ class ClassValidate {
      * 
      * 
      * verifica se o captcha está correto.
-     *
+     */
     public function validateCaptcha($captcha, $score=0.5){
         $return = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".SECRETKEY."&response={$captcha}");
         $response = json_decode($return);
@@ -206,5 +222,31 @@ class ClassValidate {
              $this->User->insertUser($arrVar);
         }
         return json_encode($arrResponse);
+    }
+    /**
+     * 
+     * 
+     */
+    public function validateAttemptLogin(){
+        if($this->login->countAttempt()>=5){
+            $this->setErro("Você realizou mais de 5 tentativas!");
+            $this->tentativas=true;
+            return false;
+        }else{
+            $this->tentativas=false;
+            return true;
+        }
+    }
+    /**
+     * 
+     * 
+     */
+    public function validateFinalLogin($usuario){
+        if(count($this->getErro())> 0){
+            $this->login->insertAttempt();
+        }else{
+            $this->login->deleteAttempt();
+            $this->session->setSessions($usuario);
+        }
     }
 } 
