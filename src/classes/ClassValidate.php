@@ -15,7 +15,7 @@ class ClassValidate {
     /**
      * 
      */
-    private $erro=[];
+    private $erro;
     /**
      * 
      */
@@ -45,13 +45,59 @@ class ClassValidate {
     }
     
     function getErro() {
-        return $this->erro;
+        $msg = "";
+        if($this->erro == 1){
+            $msg = "Preencha todos os dados!";
+           
+        }
+        if($this->erro == 2){
+             $msg = "Email invalido!";
+            
+        }
+        if($this->erro == 3){
+             $msg = "Email ja cadastrado no sistema!";
+            
+        }
+        if($this->erro == 4){
+             $msg = "Email nao cadastrado!";
+            
+        }
+        if($this->erro == 5){
+             $msg = "Senha diferente da confirmacao de senha!";
+            
+        }
+        if($this->erro == 6){
+             $msg = "A Senha deve conter 8 caracteres!";
+            
+        }
+        if($this->erro == 7){
+             $msg = "Usuário ou Senha Inválidos!";
+            
+        }
+        if($this->erro == 8){            
+             $msg = "Captcha Invalido! => Atualize a pagina e tente novamente!";
+            
+        }
+        if($this->erro == 9){
+             $msg = "Usuario ja cadastrado no sistema!";
+            
+        }
+        if($this->erro == 10){
+             $msg = "Usuario nao cadastrado!";
+            
+        }
+        if($this->erro == 11){
+             $msg = "Você realizou mais de 5 tentativas!";
+        }
+        return $msg;
+        
     }
 
     function setErro($erro) {
-        array_push($this->erro, $erro);
+        $this->erro = $erro;
     }
 
+    
      /**
      * Validar se todos os campos foram preenchidos
      */
@@ -67,7 +113,8 @@ class ClassValidate {
             return true;
         }
         else{
-            $this->setErro("Preencha todos os dados!");
+            //Preencha todos os dados!
+            $this->setErro(1);
             return false;
         }
     }
@@ -79,7 +126,8 @@ class ClassValidate {
         if(filter_var($par, FILTER_VALIDATE_EMAIL)){
             return true;
         }else{
-            $this->setErro("Email invalido!");
+            //Email invalido!
+            $this->setErro(2);
             return false;
         }
     }
@@ -92,7 +140,8 @@ class ClassValidate {
         
         if($action == null){
             if($select > 0){
-                $this->setErro("Email ja cadastrado no sistema!");
+                //"Email ja cadastrado no sistema!"
+                $this->setErro(3);
                 return false;
             }else{
                 return true;
@@ -101,7 +150,8 @@ class ClassValidate {
             if($select > 0){
                 return true;
             }else{
-                $this->setErro("Email nao cadastrado!");
+                //"Email nao cadastrado!"
+                $this->setErro(4);
                 return false;
             }
         }
@@ -115,7 +165,8 @@ class ClassValidate {
         if($senha === $repSenha){
             return true;
         }else{
-            $this->setErro("Senha diferente de confirmacao de senha!");
+            //"Senha diferente de confirmacao de senha!"
+            $this->setErro(5);
         }
     }
     /**
@@ -132,7 +183,8 @@ class ClassValidate {
            if($strength['score'] <= 8){
                return true;
            }else{
-               $this->setErro("A Senha deve conter 8 caracteres!");
+               //"A Senha deve conter 8 caracteres!"
+               $this->setErro(6);
            }
        }else{
            /* login */
@@ -147,7 +199,8 @@ class ClassValidate {
         if($this->password->verifyHash($usuario, $senha)){
             return true;
         }else{
-            $this->setErro("Usuário ou Senha Inválidos!");
+            //"Usuário ou Senha Inválidos!"
+            $this->setErro(7);
             
         }
     }
@@ -163,7 +216,8 @@ class ClassValidate {
         if($response->success == TRUE && $response->score >= $score){
             return true;
         }else{
-            $this->setErro("Captcha Invalido! => Atualize a pagina e tente novamente!"); 
+            //"Captcha Invalido! => Atualize a pagina e tente novamente!"
+            $this->setErro(8); 
         }
     }
     /**
@@ -175,7 +229,8 @@ class ClassValidate {
         
         if($action == null){
             if($select > 0){
-                $this->setErro("Usuario ja cadastrado no sistema!");
+                //"Usuario ja cadastrado no sistema!"
+                $this->setErro(9);
                 return false;
             }else{
                 return true;
@@ -184,7 +239,8 @@ class ClassValidate {
             if($select > 0){
                 return true;
             }else{
-                $this->setErro("Usuario nao cadastrado!");
+                //"Usuario nao cadastrado!"
+                $this->setErro(10);
                 return false;
             }
         } 
@@ -229,7 +285,8 @@ class ClassValidate {
      */
     public function validateAttemptLogin(){
         if($this->login->countAttempt()>=5){
-            $this->setErro("Você realizou mais de 5 tentativas!");
+            //"Você realizou mais de 5 tentativas!"
+            $this->setErro(11);
             $this->tentativas=true;
             return false;
         }else{
@@ -242,7 +299,7 @@ class ClassValidate {
      * 
      */
     public function validateFinalLogin($usuario){
-        if(count($this->getErro())> 0){
+        if(!empty($this->getErro())){
             $this->login->insertAttempt();
             return false;
         }else{
@@ -251,4 +308,5 @@ class ClassValidate {
             return true;
         }
     }
+    
 } 

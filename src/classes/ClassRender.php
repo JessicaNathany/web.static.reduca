@@ -54,6 +54,7 @@ class ClassRender{
      */    
     public function renderLayout(){
         include_once(DIRREQ."/app/view/Layout.php");
+        
     }
     /**
      * Adiciona caracteriticas no head
@@ -87,13 +88,5 @@ class ClassRender{
             include (DIRREQ."/app/view/{$this->getDir()}/Footer.php"); 
         }
     }
-    /**
-     * 
-     */
-    public function showError(){
-        if(file_exists(DIRREQ."/app/view/acesso_bloq/main.php")){
-            include (DIRREQ."/app/view/acesso_bloq/main.php"); 
-        }
-        
-    }
+    
 }

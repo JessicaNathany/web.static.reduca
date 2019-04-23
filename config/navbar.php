@@ -1,6 +1,6 @@
  <body style="background-color: #f8f8f8;">
         <nav class="navbar navbar-default">
-        <div class="container" >
+        <div class="container">
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" data-toggle="tooltip" data-placement="bottom" title="Opções de Cadastramentros">
@@ -84,7 +84,7 @@
                   </li>
                 </ul>                                                               
                   <ul class="nav navbar-nav navbar-right">
-                <li><a href="<?= DIRPAGE ?>"><span class="glyphicon glyphicon-off"></span></a></li>
+                <li><a href="<?= DIRPAGE."/logout" ?>"><span class="glyphicon glyphicon-off"></span></a></li>
               </ul>
                   
               </div><!-- /.navbar-collapse -->

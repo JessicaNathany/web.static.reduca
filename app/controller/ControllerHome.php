@@ -16,8 +16,7 @@ class ControllerHome extends ClassRender implements InterfaceView{
     /**
      * metodo construtor da classe de controler da home.
      */
-    public function __construct() {
-        
+    public function __construct() {    
         
             
             $this->setTitle("Pagina Inicial");
@@ -26,7 +25,7 @@ class ControllerHome extends ClassRender implements InterfaceView{
             $this->setDir("home");
             $this->renderLayout();
             $session= new ClassSessions();
-            $session->verifyInsideSession();
+            $session->verifyInsideSession("padrao");
         
         
     }

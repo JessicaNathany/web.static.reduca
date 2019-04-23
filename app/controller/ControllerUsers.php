@@ -11,6 +11,7 @@ use Src\Classes\ClassRender;
 use Src\Classes\ClassValidate;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassHelperUser;
+use Src\Classes\ClassSessions as session;
 
 
 
@@ -34,14 +35,19 @@ class ControllerUsers extends ClassRender implements InterfaceView{
    private function Main(){ 
        $post = new ClassHelperUser();
        $validate = new ClassValidate();
+       $session = new session();
        $arrVar =null;
+       $permition = "administrador";
        
+       /**
        if(isset($_POST['g-recaptcha-response'])){
                 $gRecaptchaResponse = $post::getGRecaptchaResponse();
                 $validate->validateCaptcha($gRecaptchaResponse); 
             } else {
                 $gRecaptchaResponse = null;
             }
+        * 
+        */
        if(!empty($_POST)){          
            
             $nome = $post::getNome();
@@ -65,15 +71,18 @@ class ControllerUsers extends ClassRender implements InterfaceView{
        
        
        
-       
+       /**
+        * 
+        */
        $validate->validateEmail($email);
        $validate->validateFields($_POST);
        $validate->validateIssetEmail($email); 
        $validate->validateRepSenha($senha, $repSenha);
-       $validate->validateStrongSenha($senha);               
+       $validate->validateStrongSenha($senha); 
+       $session->verifyInsideSession($permition);
      
-       echo"<br>";
-       echo $validate->validateFinal($arrVar);
+       echo '<div class="" style="color:red; font-weight:bold;">'.$validate->getErro().'</div>';
+       $validate->validateFinal($arrVar);
        
             
        }else{

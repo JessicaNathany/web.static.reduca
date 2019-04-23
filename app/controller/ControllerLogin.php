@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Controller;
-
+session_start();
 /**
  * @author John Doe <john.doe@example.com>
  * @license http://URL name
@@ -12,6 +11,7 @@ use Src\Classes\ClassRender;
 use Src\Classes\ClassValidate;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassHelperUser;
+
 
 
 
@@ -39,6 +39,7 @@ class ControllerLogin extends ClassRender implements InterfaceView{
         $validate = new ClassValidate();
         $arrVar = "";
         
+        
         /**
          * 
          *
@@ -62,15 +63,17 @@ class ControllerLogin extends ClassRender implements InterfaceView{
             
             $validate->validateFields($_POST);
             $validate->validateUsuario($usuario,"login");
-            $validate->validateSenha($usuario, $senha);            
-            $validate->validateAttemptLogin();
+            $verify = $validate->validateSenha($usuario, $senha);            
+            $validate->validateAttemptLogin();           
             $validate->validateFinalLogin($usuario);
             
-            //var_dump($validate->getErro());
-            var_dump($_SESSION);
-            if($_SESSION['login'] == true){
-                echo "<script>window.location.href='".DIRPAGE.'/home'."';</script>";
+            echo '<div class="" style="color:red; font-weight:bold;">'.$validate->getErro().'</div>';
+            
+            if($_SESSION == true && $verify ==true){
+               echo "<script>window.location.href='".DIRPAGE.'/home'."';</script>"; 
             }
+                
+            
             
             
             

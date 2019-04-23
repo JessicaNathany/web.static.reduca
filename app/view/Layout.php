@@ -17,12 +17,13 @@
               
         <?=$this->addHead();?>
     </head>
+    <body>
         <?php 
             $url = $_GET['url'];
           if($url != ''){
-              if($url != 'login'){
+              if($url != 'login' ){
                 require(DIRREQ.'/config/navbar.php');
-              }
+              }            
           } 
                  
         ?>

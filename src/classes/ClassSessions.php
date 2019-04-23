@@ -87,7 +87,7 @@ class ClassSessions {
     /**
      * valida as paginas internas do app
      */
-    public function verifyInsideSession(){
+    public function verifyInsideSession($permition){
        $this->verifyIdSessions();
        if(!isset($_SESSION['login']) || !isset($_SESSION['permition']) || !isset($_SESSION['canary'])){
            $this->destructSessions();           
@@ -97,6 +97,11 @@ class ClassSessions {
        }else{
            if($_SESSION['time'] >=time() - $this->timeSession){
                $_SESSION['time']=time();
+               if($_SESSION['permition']!= "administrador" && $permition != $_SESSION['permition']){
+                   echo "<script>alert('Você não tem permissão!');window.location.href='".DIRPAGE."/home'</script>";                   
+               }else{
+                   
+               }
            }else{
                $this->destructSessions();               
                echo "<script>window.location.href='".DIRPAGE."/Acesso_negado'</script>";
@@ -110,6 +115,7 @@ class ClassSessions {
     public function destructSessions(){
         foreach (array_keys($_SESSION) as $key){
             unset($_SESSION[$key]);
+            session_destroy();
         }
     }
 }
