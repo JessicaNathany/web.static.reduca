@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+session_start();
 /**
  * @author John Doe <john.doe@example.com>
  * @license http://URL name

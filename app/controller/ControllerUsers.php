@@ -71,14 +71,13 @@ class ControllerUsers extends ClassRender implements InterfaceView{
        $validate->validateIssetEmail($email); 
        $validate->validateRepSenha($senha, $repSenha);
        $validate->validateStrongSenha($senha);               
-       var_dump($arrVar);
      
        echo"<br>";
        echo $validate->validateFinal($arrVar);
        
             
        }else{
-           var_dump($validate->getErro());
+           
        }
        
             

@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controller;
+
 /**
  * @author John Doe <john.doe@example.com>
  * @license http://URL name
@@ -66,7 +68,10 @@ class ControllerLogin extends ClassRender implements InterfaceView{
             
             //var_dump($validate->getErro());
             var_dump($_SESSION);
-            echo "<script>window.location.href='".DIRPAGE.'/home'."';</script>";
+            if($_SESSION['login'] == true){
+                echo "<script>window.location.href='".DIRPAGE.'/home'."';</script>";
+            }
+            
             
             
         }else{            

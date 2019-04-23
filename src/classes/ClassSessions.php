@@ -26,19 +26,19 @@ class ClassSessions {
         if(session_id() == ''){
             ini_set("session.save_handler", "files");
             ini_set("session.use_cookies", 1);
-            ini_set("sessio.use_only_cookies", 1);
-            ini_set("sessio.cookie_domain", DOMAIN);
-            ini_set("sessio.cookie_httponly", 1);
+            ini_set("session.use_only_cookies", 1);
+            ini_set("session.cookie_domain", DOMAIN);
+            ini_set("session.cookie_httponly", 1);
             if(DOMAIN != "localhost"){
-                ini_set("sessio.cookie_secure", 1);
+                ini_set("session.cookie_secure", 1);
             }
             /**
              * criptografia das nossas sessions
              */
-            ini_set("sessio.entropy_length", 512);
-            ini_set("sessio.entropy_file", '/dev/urandom');
-            ini_set("sessio.hash_function", 'sha256');
-            ini_set("sessio.hash_bits_per_character", 5);
+            ini_set("session.entropy_length", 512);
+            ini_set("session.entropy_file", '/dev/urandom');
+            ini_set("session.hash_function", 'sha256');
+            ini_set("session.hash_bits_per_character", 5);
             session_start();
         }
         $this->login=new ClassLogin();
@@ -91,7 +91,7 @@ class ClassSessions {
        $this->verifyIdSessions();
        if(!isset($_SESSION['login']) || !isset($_SESSION['permition']) || !isset($_SESSION['canary'])){
            $this->destructSessions();           
-           echo "<script>window.location.href='".DIRPAGE."/ErroSession'</script>";
+           echo "<script>window.location.href='".DIRPAGE."/Acesso_negado'</script>";
            die();
            
        }else{
@@ -99,7 +99,7 @@ class ClassSessions {
                $_SESSION['time']=time();
            }else{
                $this->destructSessions();               
-               echo "<script>window.location.href='".DIRPAGE."/ErroSession'</script>";
+               echo "<script>window.location.href='".DIRPAGE."/Acesso_negado'</script>";
                die();
            }
        }

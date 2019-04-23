@@ -244,9 +244,11 @@ class ClassValidate {
     public function validateFinalLogin($usuario){
         if(count($this->getErro())> 0){
             $this->login->insertAttempt();
+            return false;
         }else{
             $this->login->deleteAttempt();
             $this->session->setSessions($usuario);
+            return true;
         }
     }
 } 
