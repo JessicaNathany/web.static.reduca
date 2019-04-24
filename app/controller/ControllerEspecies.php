@@ -8,6 +8,8 @@ namespace App\Controller;
 
 use Src\Classes\ClassRender;
 use Src\Interfaces\InterfaceView;
+use Src\Classes\ClassDatabasePaginator as DatabasePaginator;
+use Src\Classes\ClassPdoDatabasePaginatorAdapter as PdoDatabasePaginatorAdapter;
 
 class ControllerEspecies extends ClassRender implements InterfaceView{
     
@@ -19,7 +21,19 @@ class ControllerEspecies extends ClassRender implements InterfaceView{
         $this->setDescription("");
         $this->setKeywords("");
         $this->setDir("especies");
+        $this->Main();
         $this->renderLayout();
+        
+        
+    }
+    /**
+     * 
+     * 
+     */
+    public function Main(){
+        
+        
+        
     }
 
     

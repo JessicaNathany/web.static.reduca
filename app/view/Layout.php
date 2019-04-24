@@ -13,7 +13,7 @@
         <!-- Estilos em cascata @CSS--> 
         <link rel="stylesheet" href="<?= DIRCSS.'bootstrap-3.3.7/dist/css/bootstrap.min.css' ?>">
         <link rel="stylesheet" href="<?= DIRCSS.'bootstrap-3.3.7/dist/css/bootstrap-theme.min.css' ?>">        
-        <link rel="stylesheet" href="<?=DIRCSS.'Style.css'?>">
+        <link rel="stylesheet" href="<?=DIRCSS.'main.css'?>">
               
         <?=$this->addHead();?>
     </head>
@@ -31,17 +31,24 @@
             <div class="Header">
                 <?=$this->addHeader();?>
                 
-                <?php 
+                
+                <nav>
+                    <div class="nav-wrapper">
+                        <div class="col s12">
+                            <?php 
                     $url = $_GET['url'];
                     if($url != ''){
                         if($url != 'login'){
-                            $BC = new Src\Classes\ClassBreadcrumb();
+                            $BC = new Src\Classes\ClassBreadcrumb();                            
                             $BC->addBreadcrumb();   
                         }
                        
-                    }                    
+                    }                   
                     
                 ?> 
+                        </div>
+                    </div>
+                </nav>
                 <hr>
             </div>
         

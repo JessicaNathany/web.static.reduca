@@ -99,9 +99,8 @@ class ClassSessions {
                $_SESSION['time']=time();
                if($_SESSION['permition']!= "administrador" && $permition != $_SESSION['permition']){
                    echo "<script>alert('Você não tem permissão!');window.location.href='".DIRPAGE."/home'</script>";                   
-               }else{
-                   
                }
+               
            }else{
                $this->destructSessions();               
                echo "<script>window.location.href='".DIRPAGE."/Acesso_negado'</script>";

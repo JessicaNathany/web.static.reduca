@@ -26,7 +26,10 @@ class ControllerUsers extends ClassRender implements InterfaceView{
             $this->setKeywords("");
             $this->setDir("users");
             $this->renderLayout();
-            $this->Main();  
+            $this->Main(); 
+            if($_SESSION['permition']!="administrador"){
+                echo "<script>alert('Você não tem permissão!');window.location.href='".DIRPAGE."/home'</script>";    
+            }
    }
    /**
     * 
@@ -37,7 +40,7 @@ class ControllerUsers extends ClassRender implements InterfaceView{
        $validate = new ClassValidate();
        $session = new session();
        $arrVar =null;
-       $permition = "administrador";
+       
        
        /**
        if(isset($_POST['g-recaptcha-response'])){
@@ -79,17 +82,14 @@ class ControllerUsers extends ClassRender implements InterfaceView{
        $validate->validateIssetEmail($email); 
        $validate->validateRepSenha($senha, $repSenha);
        $validate->validateStrongSenha($senha); 
-       $session->verifyInsideSession($permition);
+       $session->verifyInsideSession("administrador");
+       
+       
      
        echo '<div class="" style="color:red; font-weight:bold;">'.$validate->getErro().'</div>';
        $validate->validateFinal($arrVar);
        
             
-       }else{
-           
-       }
-       
-            
-       
+       }      
    }
 }
