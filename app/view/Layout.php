@@ -33,8 +33,8 @@
                 
                 
                 <nav>
-                    <div class="nav-wrapper">
-                        <div class="col s12">
+                    <div class="nav-wrapper red lighten-3">
+                        
                             <?php 
                     $url = $_GET['url'];
                     if($url != ''){
@@ -46,7 +46,7 @@
                     }                   
                     
                 ?> 
-                        </div>
+                        
                     </div>
                 </nav>
                 <hr>
