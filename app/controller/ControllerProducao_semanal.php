@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+session_start();
 /**
  * @author John Doe <john.doe@example.com>
  * @license http://URL name
@@ -8,6 +9,7 @@ namespace App\Controller;
 
 use Src\Classes\ClassRender;
 use Src\Interfaces\InterfaceView;
+use Src\Classes\ClassSessions;
 
 class ControllerProducao_semanal extends ClassRender implements InterfaceView{
     
@@ -20,6 +22,8 @@ class ControllerProducao_semanal extends ClassRender implements InterfaceView{
         $this->setKeywords("");
         $this->setDir("Producao_semanal");
         $this->renderLayout();
+        $session= new ClassSessions();
+            $session->verifyInsideSession("padrao");
     }
 
     

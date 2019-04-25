@@ -1,5 +1,21 @@
 /**
  * 
+ * @returns {undefined}
+ */
+function showForm(){
+        document.getElementById("formEspecie").style.display="block";
+        document.getElementById("tableEspecie").style.display="none";
+    }
+/**
+ * 
+ * @returns {undefined}
+ */       
+function hideForm(){
+        document.getElementById("cadastrarfunc").style.display="none";
+        document.getElementById("tabelafunc").style.display="block";
+   }
+/**
+ * 
  * @returns {String}
  */
 function getRoot(){

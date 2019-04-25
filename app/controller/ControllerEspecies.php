@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+session_start();
 /**
  * @author John Doe <john.doe@example.com>
  * @license http://URL name
@@ -8,8 +9,7 @@ namespace App\Controller;
 
 use Src\Classes\ClassRender;
 use Src\Interfaces\InterfaceView;
-use Src\Classes\ClassDatabasePaginator as DatabasePaginator;
-use Src\Classes\ClassPdoDatabasePaginatorAdapter as PdoDatabasePaginatorAdapter;
+use Src\Classes\ClassSessions;
 
 class ControllerEspecies extends ClassRender implements InterfaceView{
     
@@ -23,6 +23,8 @@ class ControllerEspecies extends ClassRender implements InterfaceView{
         $this->setDir("especies");
         $this->Main();
         $this->renderLayout();
+        $session= new ClassSessions();
+            $session->verifyInsideSession("padrao");
         
         
     }

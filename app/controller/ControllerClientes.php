@@ -9,6 +9,7 @@ session_start();
 
 use Src\Classes\ClassRender;
 use Src\Interfaces\InterfaceView;
+use Src\Classes\ClassSessions;
 
 class ControllerClientes extends ClassRender implements InterfaceView{
     
@@ -16,17 +17,15 @@ class ControllerClientes extends ClassRender implements InterfaceView{
      * metodo construtor da classe de controler da home.
      */
     public function __construct() {
-        if(isset($_SESSION['login'])){
+        
             $this->setTitle("Clientes");
             $this->setDescription("");
             $this->setKeywords("");
             $this->setDir("clientes");
             $this->renderLayout();
-        }else{
-            header("location:".DIRPAGE.'/login');
+            $session= new ClassSessions();
+            $session->verifyInsideSession("padrao");
         }
-        
-    }
 
     
 

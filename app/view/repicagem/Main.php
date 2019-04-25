@@ -13,7 +13,7 @@
          </form>                 
     </div>      
     <hr>
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover table-responsive">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -41,6 +41,25 @@
                       <button class='btn btn-info ' type='button'  data-toggle='modal' data-target=''> <span class='glyphicon glyphicon-info-sign'></button>
                     </td>
                 </tr>
+                <!-- JANELA MODAL DE INFORMAÇÕES-->
+                <div class="modal fade" id="info<?=$data["id"]?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
+                    <div class="modal-dialog" role="document">
+                       <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" style="color: black;"><?=$data["especies"]?></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="color: black;">
+                                Descrição:  <?=$data["descricao"]?> <br>                                                                     
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                                   
+                           </div>
+                        </div>
+                    </div>
+                </div>
                 <?php 
                     }
                 }                

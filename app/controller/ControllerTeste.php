@@ -18,17 +18,7 @@ class ControllerTeste {
              
    }
    private function main(){
-       $nome = help::getNome();
-       $usuario = help::getUsuario();
-       $senha = help::getSenha();
-       $email = help::getEmail();
-       $repSenha = help::getRepSenha();
-       $tipo = help::getTipo();
-       $hashSenha = help::getHashSenha();
-       
-       $arrVar=["nome"=>$nome, "usuario"=>$usuario, "email"=>$email, "senha"=>$senha, "repSenha=>$repSenha", "hashSenha"=>$hashSenha, "tipo"=>$tipo];
-       
-       var_dump($arrVar);
+       echo "Voce testou!";
    }
    
 }

@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+session_start();
 /**
  * @author John Doe <john.doe@example.com>
  * @license http://URL name
@@ -8,6 +9,7 @@ namespace App\Controller;
 
 use Src\Classes\ClassRender;
 use Src\Interfaces\InterfaceView;
+use Src\Classes\ClassSessions;
 
 class ControllerRepicagem extends ClassRender implements InterfaceView{
     
@@ -20,6 +22,8 @@ class ControllerRepicagem extends ClassRender implements InterfaceView{
         $this->setKeywords("");
         $this->setDir("repicagem");
         $this->renderLayout();
+        $session= new ClassSessions();
+            $session->verifyInsideSession("padrao");
     }
 
     
