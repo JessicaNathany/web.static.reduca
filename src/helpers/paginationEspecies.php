@@ -1,10 +1,9 @@
 <?php
 
-/** $query=$PDO->query("SELECT * FROM tb_users LIMIT 10");
-    $MaxResult=$PDO->query("SELECT * FROM tb_users");
-    $Reg = $MaxResult->rowCount(); **/
-
-$busca = "SELECT * FROM tb_users";
+/**
+ * 
+ */
+$busca = "SELECT * FROM tb_especies";
 $total_reg = "10";
 
 $pagina = $_GET['pagina'];

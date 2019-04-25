@@ -265,7 +265,7 @@ class ClassValidate {
      */
     public function validateFinal($arrVar){
        
-        if(count($this->getErro())>0){
+        if($this->getErro()!= ""){
            $arrResponse=[
                "retorno"=>"erro",
                "erros"=>$this->getErro()
