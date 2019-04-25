@@ -14,6 +14,7 @@ namespace App\Model;
  * @author wsantos
  */
 use App\Model\ClassCrud;
+use PDO;
 
 
 class ClassEspecies extends ClassCrud{
@@ -22,13 +23,13 @@ class ClassEspecies extends ClassCrud{
     public function __construct() {
         
     }
-    /**
-     * 
-     * 
-     */
-    public function getDataEspecies(){
+    
+   
         
-    }
+        
+        
+        
+    
     
    
     

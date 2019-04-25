@@ -30,26 +30,6 @@
         <!-- Menu, Navbars etc..-->
             <div class="Header">
                 <?=$this->addHeader();?>
-                
-                
-                <nav>
-                    <div class="nav-wrapper red lighten-3">
-                        
-                            <?php 
-                    $url = $_GET['url'];
-                    if($url != ''){
-                        if($url != 'login'){
-                            $BC = new Src\Classes\ClassBreadcrumb();                            
-                            $BC->addBreadcrumb();   
-                        }
-                       
-                    }                   
-                    
-                ?> 
-                        
-                    </div>
-                </nav>
-                <hr>
             </div>
         
         

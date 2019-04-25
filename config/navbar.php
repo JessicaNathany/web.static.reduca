@@ -1,4 +1,4 @@
- <body style="background-color: #f8f8f8;">
+
         <nav class="navbar navbar-default">
         <div class="container">
               <!-- Brand and toggle get grouped for better mobile display -->
@@ -20,7 +20,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class=""></span></a>
                     <ul class="dropdown-menu">
                         <!--<li><a href="funcionarios.php?pagina=1">Funcionários</a></li>-->
-                        <li><a href="<?= DIRPAGE.'/especies' ?>">Espécies e Variedades</a></li>
+                        <li><a href="<?= DIRPAGE.'/especies?pagina=1' ?>">Espécies e Variedades</a></li>
                       <li><a href="<?= DIRPAGE.'/viveiros' ?>">Viveiros</a></li>
                       <li role="separator" class="divider"></li>
                       <li><a href="<?= DIRPAGE.'/clientes' ?>">Clientes</a></li>
