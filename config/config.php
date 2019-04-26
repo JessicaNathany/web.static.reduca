@@ -3,7 +3,7 @@
  * @author John Doe <john.doe@example.com>
  * Nome da pasta da sua aplicação
  */
-$PastaInterna="MVC_php";
+$PastaInterna="sgvm";
 
 /* 
  * Diretorio responsavel pela virtualização da aplicação, 
