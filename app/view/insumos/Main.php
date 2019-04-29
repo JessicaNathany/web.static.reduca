@@ -1,47 +1,66 @@
-<!-- VIEW @INSUMOS -->
+<!--VIEW @Insumos -->
 <?php 
     include DIRREQ.'/src/helpers/data.php';
     include DIRREQ.'/src/helpers/paginationInsumos.php';
-?>
-<div class="container">
+?>      
+<div class="container" id="tableEspecie" style="display:block;">    
     <h1 style='font-weight:bold;'>Insumos</h1>
     <hr>
-    <div class='navbar-form pull-righ'>
-       <form action='buscar.php' method='post'>
-            <button class="btn btn-inverse">Buscar</button>
-            <input type="text" class="form-control">
-         </form>                 
-    </div>      
-    <hr>
-    <table class="table table-striped table-hover table-responsive">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>Categoria</th>
-                    <th>Tipo</th>
-                    <th>Quantidade</th>                   
-                    <th>Opções</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                    if($limite->rowCount() > 0){
-                        while($data=$limite->fetch(PDO::FETCH_ASSOC)){
-                ?>
-                <tr>
-                    <td><?=$data['id']?></td>
-                    <td><?=$data['nome']?></td>
-                    <td><?=$data['categoria']?></td>
-                    <td><?=$data['tipo']?></td>
-                    <td><?=$data['quantidade']?></td>                                 
-                    <td>
-                      <button class='btn btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
-                      <button class='btn btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
-                      <button class='btn btn-info ' type='button'  data-toggle='modal' data-target=''> <span class='glyphicon glyphicon-info-sign'></button>
-                    </td>
-                </tr>
-                <!-- JANELA MODAL DE INFORMAÇÕES-->
+<div class="wrapper">
+    <div class='form-group input-group'>
+        <form action='buscar.php' method='post'>
+            <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
+            <input name='consulta' placeholder='Consultar' type='text' class='form-control'>
+        </form>
+    </div>
+    <div class="table">    
+    <div class="row header green">
+      <div class="cell">
+        ID
+      </div>
+      <div class="cell">
+        Nome
+      </div>
+      <div class="cell">
+        Categoria
+      </div>
+      <div class="cell">
+        Tipo
+      </div>
+      <div class="cell">
+        Quantidade
+      </div>
+      <div class="cell">
+        Ações
+      </div>
+    </div>
+    <?php 
+      if($limite->rowCount() > 0){
+        while($data=$limite->fetch(PDO::FETCH_ASSOC)){
+    ?>
+    <div class="row">
+      <div class="cell" data-title="ID">
+        <?=$data['id']?>
+      </div>
+      <div class="cell" data-title="Popular">
+        <?=$data['nome']?>
+      </div>
+      <div class="cell" data-title="Familia">
+        <?=$data['categoria']?>
+      </div>
+      <div class="cell" data-title="Dispersão">
+        <?=$data['tipo']?>
+      </div>
+      <div class="cell" data-title="Habito">
+        <?=$data['qtde']?>
+      </div>
+      <div class="cell" data-title="Ações">
+        <button class='btn btn-sm btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
+        <button class='btn btn-sm btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
+        <button class='btn btn-sm btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
+      </div>
+    </div>
+<!-- JANELA MODAL DE INFORMAÇÕES-->
                 <div class="modal fade" id="info<?=$data["id"]?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
                     <div class="modal-dialog" role="document">
                        <div class="modal-content">
@@ -52,30 +71,87 @@
                                 </button>
                             </div>
                             <div class="modal-body" style="color: black;">
-                                Descrição:  <?=$data["descricao"]?> <br>                                                                     
+                                Descrição: <?=$data["descricao"]?> <br>                                                                     
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                                   
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                                   
                            </div>
                         </div>
                     </div>
                 </div>
-                <?php 
-                    }
-                }                
-                ?>
-                <?php if($pc>1){ ?>
-                <a href="?pagina=<?=$anterior?>"><button  class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-backward'></button></a>
-                <?php } ?>
+        <?php 
+        }
+      }
+        ?>
+        <?php 
+        if($pc>1){ ?>
+            <a href="?pagina=<?=$anterior?>"><button  class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-backward'></button></a>
+          <?php } ?>
                 
-                <?php if($pc<$tp){ ?>
-                <a href="?pagina=<?=$proximo?>"><button class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-forward'></button></a>
-                <?php }else{
+       <?php 
+       if($pc<$tp){ ?>
+           <a href="?pagina=<?=$proximo?>"><button class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-forward'></button></a>
+          <?php }else{
                     
-                }
-                ?>
-                
-                
-            </tbody>        
-        </table>   
+         }
+       ?>
+    </div>
+    <a href="#" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
+     <button class='btn btn-success btn-lg' type='button' onclick="showForm()" name="novo"><span class="glyphicon glyphicon-plus"></span></button>    
 </div>
+    
+</div>
+    
+<!--=========================================================================-->
+<div class="container">                    
+           <form action="#" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
+               <h1 style='font-weight:bold;'>Insumos</h1>
+                <hr>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nome">Nome:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="nome" id="nome" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="categoria">Categoria:</label>
+                    <div class="col-sm-3">
+                        <select id="inputEstado" class="form-control" required>
+                          <option id="opcao" selected>Escolha...</option>
+                          <option id="opcao">Natural</option>                         
+                          <option id="opcao">Organico</option>                         
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="tipo">Tipo:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="tipo" id="tipo" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="qtde">Quantidade:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="" id="qtde" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="descricao">Descrição:</label>
+                    <div class="col-sm-5">
+                        <textarea  name="descricao" id="descricao" class="form-control" rows="5"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-group form-inline">
+                    <label class="control-label col-sm-2" for="nome"></label>
+                    <div class="col-sm-3">
+                        <input type="submit" name="btn_enviar" id="nome" value="Enviar" class="btn btn-success" >
+                        <input type="submit" name="btn_voltar" id="nome" value="Voltar" class="btn btn-primary" onclick="hideForm()">
+                    </div>
+                </div>
+            </form>
+        </div>

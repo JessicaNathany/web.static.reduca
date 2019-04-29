@@ -7,9 +7,11 @@
  */
 use App\Model\ClassUser;
 use App\Model\ClassLogin;
+use App\Model\ClassEspecies;
 use ZxcvbnPhp\Zxcvbn;
 use Src\Classes\ClassPassword;
 use Src\Classes\ClassSessions;
+
 
 class ClassValidate {
     /**
@@ -36,12 +38,17 @@ class ClassValidate {
      * 
      */
     private $session;
+    /**
+     * 
+     */
+   
     
     public function __construct() {
         $this->User= new ClassUser();
         $this->password= new ClassPassword();
         $this->login= new ClassLogin();
         $this->session= new ClassSessions();
+        
     }
     
     function getErro() {
@@ -247,13 +254,6 @@ class ClassValidate {
     }
     /**
      * 
-     * Valida se um dado é um nome.
-     */
-    public function validateNome($par){
-        
-    }
-    /**
-     * 
      * Valida se um dado é uma data.
      */
     public function validateData($par){
@@ -308,5 +308,6 @@ class ClassValidate {
             return true;
         }
     }
+    
     
 } 

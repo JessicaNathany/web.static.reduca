@@ -1,10 +1,10 @@
-<!--VIEW @Repicagem -->
+<!--VIEW @ESPECIES -->
 <?php 
     include DIRREQ.'/src/helpers/data.php';
-    include DIRREQ.'/src/helpers/paginationRepicagem.php';
-?>
-<div class="container" id="tableEspecie" style="display:block;">
-    <h1 style='font-weight:bold;'>Repicagem</h1>
+    include DIRREQ.'/src/helpers/paginationEspecies.php';
+?>      
+<div class="container" id="tableEspecie" style="display:block;">    
+    <h1 style='font-weight:bold;'>Espécies & Variedades</h1>
     <hr>
 <div class="wrapper">
     <div class='form-group input-group'>
@@ -19,19 +19,28 @@
         ID
       </div>
       <div class="cell">
-        Especie
+        Popular
       </div>
       <div class="cell">
-        Data
+        Familia
       </div>
       <div class="cell">
-        Quantidade
+        Dispersão
       </div>
       <div class="cell">
-        Material
+        Habito
       </div>
       <div class="cell">
-        Ações
+        Bioma
+      </div>
+      <div class="cell">
+        Editar
+      </div>
+      <div class="cell">
+        Excluir
+      </div>
+      <div class="cell">
+        Detalhes
       </div>
     </div>
     <?php 
@@ -42,30 +51,39 @@
       <div class="cell" data-title="ID">
         <?=$data['id']?>
       </div>
-      <div class="cell" data-title="Especies">
-        <?=$data['especies']?>
+      <div class="cell" data-title="Popular">
+        <?=$data['nPopular']?>
       </div>
-      <div class="cell" data-title="Data">
-        <?=$data['dt']?>
+      <div class="cell" data-title="Familia">
+        <?=$data['familia']?>
       </div>
-      <div class="cell" data-title="Quantidade">
-        <?=$data['qtde']?>
+      <div class="cell" data-title="Dispersão">
+        <?=$data['dispersao']?>
       </div>
-      <div class="cell" data-title="Material">
-        <?=$data['embalagem']?>
+      <div class="cell" data-title="Habito">
+        <?=$data['habito']?>
       </div>
-      <div class="cell" data-title="Ações">
-        <button class='btn btn-sm btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
-        <button class='btn btn-sm btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
-        <button class='btn btn-sm btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
+      <div class="cell" data-title="Bioma">
+       <?=$data['bioma']?>
       </div>
+      <div class="cell" data-title="Ações" >
+        <button class='btn btn-sm btn-warning' type='button'  ><span class='glyphicon glyphicon-pencil'></span></button>
+        
+        
+      </div>
+        <div class="cell" data-title="1">
+            <button class='btn btn-sm btn-danger ' type='button'  id='excluir' onclick='testeBT()'><span class='glyphicon glyphicon-trash'></button>
+        </div>
+        <div class="cell" data-title="2">
+            <button class='btn btn-sm btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
+        </div>
     </div>
 <!-- JANELA MODAL DE INFORMAÇÕES-->
                 <div class="modal fade" id="info<?=$data["id"]?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
                     <div class="modal-dialog" role="document">
                        <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel" style="color: black;"><?=$data["especie"]?></h5>
+                                <h5 class="modal-title" id="exampleModalLabel" style="color: black;"><?=$data["nPopular"]?></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -104,34 +122,69 @@
     
 <!--=========================================================================-->
 <div class="container">                    
-           <form action="#" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
-               <h1 style='font-weight:bold;'>Repicagem</h1>
+           <form action="<?=DIRPAGE.'/especies?pagina=1'?>" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
+               <h1 style='font-weight:bold;'>Espécies e Variedades</h1>
                 <hr>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="especies">Nome Popular da especie:</label>
+                    <label class="control-label col-sm-2" for="nPopular">Nome Popular:</label>
                     <div class="col-sm-5">
-                        <input type="text" name="especies" id="especies" class="form-control">
+                        <input type="text" name="nPopular" id="nPopular" class="form-control">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="data">Data:</label>
+                    <label class="control-label col-sm-2" for="nCientifico">Nome Cientifico:</label>
                     <div class="col-sm-5">
-                        <input type="date" name="data" id="data" class="form-control">
+                        <input type="text" name="nCientifico" id="nCientifico" class="form-control">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="qtde">Quantidade:</label>
+                    <label class="control-label col-sm-2" for="familia">Familia:</label>
                     <div class="col-sm-5">
-                        <input type="text" name="qtde" id="qtde" class="form-control">
+                        <input type="text" name="familia" id="familia" class="form-control">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="embalagem">Material:</label>
+                    <label class="control-label col-sm-2" for="classeSucessional">Classe Sucessional:</label>
                     <div class="col-sm-5">
-                        <input type="text" name="embalagem" id="embalagem" class="form-control">
+                        <input type="text" name="classeSucessional" id="classeSucessional" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="gFuncional">Grupo Funcional:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="gFuncional" id="gFuncional" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="extincao">Extinção:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="extincao" id="extincao" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="dispersao">Dispersão:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="dispersao" id="dispersao" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="habito">Habito:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="habito" id="habito" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="bioma">Bioma:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="bioma" id="bioma" class="form-control">
                     </div>
                 </div>
                 

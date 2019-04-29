@@ -16,10 +16,9 @@ body {
 }
 
 .wrapper {
-    /**
   margin: 0 auto;
   padding: 40px;
-  max-width: 800px;**/
+  max-width: 800px;
 }
 
 .table {

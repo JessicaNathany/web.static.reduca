@@ -27,7 +27,7 @@ class ControllerUsers extends ClassRender implements InterfaceView{
             $this->setDir("users");
             $this->renderLayout();
             $this->Main(); 
-            if($_SESSION['permition']!="administrador"){
+            if($_SESSION['permition']!="administrador" || $_SESSION['permition']!="super-admin"){
                 echo "<script>alert('Você não tem permissão!');window.location.href='".DIRPAGE."/home'</script>";    
             }
    }
@@ -39,7 +39,7 @@ class ControllerUsers extends ClassRender implements InterfaceView{
        $post = new ClassHelperUser();
        $validate = new ClassValidate();
        $session = new session();
-       $arrVar =null;
+       $arrVar = null;
        
        
        /**

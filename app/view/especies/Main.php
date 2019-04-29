@@ -2,9 +2,17 @@
 <?php 
     include DIRREQ.'/src/helpers/data.php';
     include DIRREQ.'/src/helpers/paginationEspecies.php';
-?>
-<div class="container" id="tableEspecie" style="display:block;">
+?>      
+<div class="container" id="tableEspecie" style="display:block;">    
+    <h1 style='font-weight:bold;'>Espécies & Variedades</h1>
+    <hr>
 <div class="wrapper">
+    <div class='form-group input-group'>
+        <form action='buscar.php' method='post'>
+            <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
+            <input name='consulta' placeholder='Consultar' type='text' class='form-control'>
+        </form>
+    </div>
     <div class="table">    
     <div class="row header green">
       <div class="cell">
@@ -52,10 +60,12 @@
       <div class="cell" data-title="Bioma">
        <?=$data['bioma']?>
       </div>
-      <div class="cell" data-title="Ações">
-        <button class='btn btn-sm btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
-        <button class='btn btn-sm btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
-        <button class='btn btn-sm btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
+      <div class="cell" data-title="Ações" >
+          <form action="<?=DIRPAGE.'/especies?pagina=1'?>" method="POST">
+            <button class='btn btn-sm btn-warning' type='submit'  ><span class='glyphicon glyphicon-pencil'></span></button>
+            <button class='btn btn-sm btn-info ' type='submit'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
+            <button class='btn btn-sm btn-danger ' type='submit' name="btn_excluir" id='btn_excluir' ><span class='glyphicon glyphicon-trash'></button>
+          </form>
       </div>
     </div>
 <!-- JANELA MODAL DE INFORMAÇÕES-->
@@ -88,7 +98,7 @@
                 
        <?php 
        if($pc<$tp){ ?>
-           <a href="?pagina=<?=$proximo?>"><button class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-forward'></button></a>
+           <a href="?pagina=<?=$proximo?>"><button  class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-forward'></button></a>
           <?php }else{
                     
          }
@@ -102,7 +112,7 @@
     
 <!--=========================================================================-->
 <div class="container">                    
-           <form action="#" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
+           <form action="<?=DIRPAGE.'/especies?pagina=1'?>" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
                <h1 style='font-weight:bold;'>Espécies e Variedades</h1>
                 <hr>
                 <div class="form-group">
@@ -148,7 +158,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="dispersao">Disperção:</label>
+                    <label class="control-label col-sm-2" for="dispersao">Dispersão:</label>
                     <div class="col-sm-5">
                         <input type="text" name="dispersao" id="dispersao" class="form-control">
                     </div>
