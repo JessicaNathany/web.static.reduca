@@ -4,52 +4,61 @@
     include DIRREQ.'/src/helpers/paginationEspecies.php';
 ?>
 <div class="container" id="tableEspecie" style="display:block;">
-    <h1 style='font-weight:bold;'>Espécies e Variedades</h1>
-    <hr>
-    <div class='navbar-form pull-righ'>
-       <form action='buscar.php' method='post'>
-            <button class="btn btn-inverse">Buscar</button>
-            <input type="text" class="form-control">
-         </form>                 
-    </div>      
-    <hr>
-    <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nome Popular</th>
-                    <th>Nome Cientifico</th>
-                    <th>Familia</th>
-                    <th>Classe Sucessional</th>
-                    <th>Grupo Funcional</th>
-                    <th>Dispersão</th>
-                    <th>Habito</th>
-                    <th>Bioma</th>
-                    <th>Opções</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                    if($limite->rowCount() > 0){
-                        while($data=$limite->fetch(PDO::FETCH_ASSOC)){
-                ?>
-                <tr>
-                    <td><?=$data['id']?></td>
-                    <td><?=$data['nPopular']?></td>
-                    <td><?=$data['nCientifico']?></td>
-                    <td><?=$data['familia']?></td>
-                    <td><?=$data['classeSucessional']?></td>
-                    <td><?=$data['gFuncional']?></td>
-                    <td><?=$data['dispersao']?></td>
-                    <td><?=$data['habito']?></td>
-                    <td><?=$data['bioma']?></td>
-                    <td>
-                      <button class='btn btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
-                      <button class='btn btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
-                      <button class='btn btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
-                    </td>
-                </tr>
-       <!-- JANELA MODAL DE INFORMAÇÕES-->
+<div class="wrapper">
+    <div class="table">    
+    <div class="row header green">
+      <div class="cell">
+        ID
+      </div>
+      <div class="cell">
+        Popular
+      </div>
+      <div class="cell">
+        Familia
+      </div>
+      <div class="cell">
+        Dispersão
+      </div>
+      <div class="cell">
+        Habito
+      </div>
+      <div class="cell">
+        Bioma
+      </div>
+      <div class="cell">
+        Ações
+      </div>
+    </div>
+    <?php 
+      if($limite->rowCount() > 0){
+        while($data=$limite->fetch(PDO::FETCH_ASSOC)){
+    ?>
+    <div class="row">
+      <div class="cell" data-title="ID">
+        <?=$data['id']?>
+      </div>
+      <div class="cell" data-title="Popular">
+        <?=$data['nPopular']?>
+      </div>
+      <div class="cell" data-title="Familia">
+        <?=$data['familia']?>
+      </div>
+      <div class="cell" data-title="Dispersão">
+        <?=$data['dispersao']?>
+      </div>
+      <div class="cell" data-title="Habito">
+        <?=$data['habito']?>
+      </div>
+      <div class="cell" data-title="Bioma">
+       <?=$data['bioma']?>
+      </div>
+      <div class="cell" data-title="Ações">
+        <button class='btn btn-sm btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
+        <button class='btn btn-sm btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
+        <button class='btn btn-sm btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
+      </div>
+    </div>
+<!-- JANELA MODAL DE INFORMAÇÕES-->
                 <div class="modal fade" id="info<?=$data["id"]?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
                     <div class="modal-dialog" role="document">
                        <div class="modal-content">
@@ -67,29 +76,32 @@
                            </div>
                         </div>
                     </div>
-                </div> 
-                <?php 
-                    }
-                }                
-                ?>
-                <?php if($pc>1){ ?>
-                <a href="?pagina=<?=$anterior?>"><button  class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-backward'></button></a>
-                <?php } ?>
+                </div>
+        <?php 
+        }
+      }
+        ?>
+        <?php 
+        if($pc>1){ ?>
+            <a href="?pagina=<?=$anterior?>"><button  class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-backward'></button></a>
+          <?php } ?>
                 
-                <?php if($pc<$tp){ ?>
-                <a href="?pagina=<?=$proximo?>"><button class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-forward'></button></a>
-                <?php }else{
+       <?php 
+       if($pc<$tp){ ?>
+           <a href="?pagina=<?=$proximo?>"><button class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-forward'></button></a>
+          <?php }else{
                     
-                }
-                ?>                             
-            </tbody>        
-        </table>
-        <a href="../config/gerar_excel.php" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
-        <button class='btn btn-success btn-lg' type='button' onclick="showForm()" name="novo"><span class="glyphicon glyphicon-plus"></span></button>
+         }
+       ?>
+    </div>
+    <a href="../config/gerar_excel.php" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
+     <button class='btn btn-success btn-lg' type='button' onclick="showForm()" name="novo"><span class="glyphicon glyphicon-plus"></span></button>    
 </div>
-
-<!-- Form de cadastro de funcionarios -->      
-       <div class="container">                    
+    
+</div>
+    
+<!--=========================================================================-->
+<div class="container">                    
            <form action="#" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
                <h1 style='font-weight:bold;'>Espécies e Variedades</h1>
                 <hr>

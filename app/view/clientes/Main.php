@@ -44,7 +44,7 @@
                     <td><?=$data['estado']?></td>
                     <td><?=$data['cep']?></td>                    
                     <td>
-                      <button class='btn btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
+                      <button class='btn btn-warning btn-sm' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
                       <button class='btn btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
                       <button class='btn btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
                     </td>

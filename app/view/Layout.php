@@ -10,7 +10,8 @@
         <meta name="keywords" content="<?=$this->getKeywords();?>">
         <title><?=$this->getTitle();?></title>
         
-        <!-- Estilos em cascata @CSS--> 
+        <!-- Estilos em cascata @CSS-->
+        <link rel="icon" type="image/png" href="<?=DIRPAGE.'/public/template/Login_v17/images/icons/favicon.ico'?>"/>
         <link rel="stylesheet" href="<?= DIRCSS.'bootstrap-3.3.7/dist/css/bootstrap.min.css' ?>">
         <link rel="stylesheet" href="<?= DIRCSS.'bootstrap-3.3.7/dist/css/bootstrap-theme.min.css' ?>">        
         <link rel="stylesheet" href="<?=DIRCSS.'main.css'?>">
@@ -51,7 +52,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="https://www.google.com/recaptcha/api.js?render=<?=SITEKEY?>"></script>
         <script src="<?= DIRCSS.'bootstrap-3.3.7/dist/js/bootstrap.min.js'?>"></script>
-        <script src="<?= DIRJS.'vendor/modernizr-2.8.3-respond-1.4.2.min.js'?>"></script>
+        <script src="<?= DIRJS.'modernizr-2.8.3-respond-1.4.2.min.js'?>"></script>
         <script src="<?= DIRJS.'zepto.min.js'?>"></script>
         <script src="<?= DIRJS.'main.js' ?>"></script>
         
