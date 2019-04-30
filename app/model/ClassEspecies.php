@@ -25,7 +25,7 @@ class ClassEspecies extends ClassCrud{
      */
      static $nomePopular;
      static $nomeCientifico;
-    // static $familia;
+     static $familia;
      static $classeSucessional;
      static $grupoFuncional;
      static $extincao;
@@ -38,15 +38,16 @@ class ClassEspecies extends ClassCrud{
     
 
     public function __construct() {
+        /*
         self::$nomePopular = self::getNomePopular();
         self::$nomeCientifico = self::getNomeCientifico();
-        //self::$Familia = self::getFamilia();
+        self::$Familia = self::getFamilia();
         self::$classeSucessional = self::getClasseSucessional();
         self::$extincao = self::getExtincao();
         self::$dispercao = self::getDispercao();
         self::$habito = self::getHabito();
         self::$bioma = self::getBioma();
-        self::$descricao = self::getDescricao();
+        self::$descricao = self::getDescricao();*/
         $this->dateNow = date("Y-m-d H:i:s");
         $this->trait = TraitGetIp::getUserIp();
     }

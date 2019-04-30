@@ -98,7 +98,7 @@
     
 <!--=========================================================================-->
 <div class="container">                    
-           <form action="#" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
+           <form action="<?=DIRPAGE.'/geminacao?pagina=1'?>" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
                <h1 style='font-weight:bold;'>Geminação</h1>
                 <hr>
                 <div class="form-group">
@@ -132,7 +132,7 @@
                 <div class="form-group form-inline">
                     <label class="control-label col-sm-2" for=""></label>
                     <div class="col-sm-3">
-                        <input type="submit" name="btn_enviar" id="btn_enviar" value="Enviar" class="btn btn-success" >
+                        <input type="submit" name="btn_enviar" id="btn_enviar" value="Enviar" class="btn btn-success">
                         <input type="submit" name="btn_voltar" id="btn_voltar" value="Voltar" class="btn btn-primary" onclick="hideForm()">
                     </div>
                 </div>

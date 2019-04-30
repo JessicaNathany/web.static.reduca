@@ -8,8 +8,11 @@ session_start();
  */
 
 use Src\Classes\ClassRender;
+use Src\Classes\ClassValidate as validate;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassSessions;
+use App\Model\ClassCliente as clientes;
+
 
 class ControllerClientes extends ClassRender implements InterfaceView{
     
@@ -23,9 +26,46 @@ class ControllerClientes extends ClassRender implements InterfaceView{
             $this->setKeywords("");
             $this->setDir("clientes");
             $this->renderLayout();
+            $this->Main();
             $session= new ClassSessions();
             $session->verifyInsideSession("padrao");
         }
+    /**
+     * 
+     */
+    private function Main(){
+        $arrVar = null;
+        $clientes = new clientes();
+        $validate = new validate();                       
+            /**
+             * 
+             */
+            $arrVar =[
+                "razaosocial"=>$clientes::getRazaoSocial(),
+                "cnpj"=>$clientes::getCNPJ(),
+                "rg"=>"null",
+                "contato"=>$clientes::getContato(),
+                "email"=>$clientes::getEmail(),
+                "endereco"=>$clientes::getEndereco(),
+                "cidade"=>$clientes::getCidade(),
+                "estado"=>$clientes::getEstado(),
+                "cep"=>$clientes::getCep(),
+                "descricao"=>$clientes::getDescricao()
+            ];
+            /**
+             * 
+             */
+            $validate->validateFields($_POST);
+            $validate->validateEmail($clientes::getEmail());
+            
+            if($validate->getErro()== ""){
+                $clientes->insertCliente($arrVar,$razaosocial,$cnpj);
+                echo '<div class="" style="color:red; font-weight:bold;">'.$validate->getErro().'</div>';
+            }else{
+                
+            }
+        
+    }
 
     
 

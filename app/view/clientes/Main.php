@@ -110,7 +110,7 @@
     
 <!--=========================================================================-->
 <div class="container">                    
-           <form action="#" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
+           <form action="<?=DIRPAGE.'/clientes?pagina=1'?>" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
                <h1 style='font-weight:bold;'>Clientes</h1>
                 <hr>
                 <div class="form-group">
@@ -150,42 +150,42 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="cidade">Cidade:</label>
                     <div class="col-sm-5">
-                        <input type="text" name="gFuncional" id="gFuncional" class="form-control">
+                        <input type="text" name="cidade" id="cidade" class="form-control">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="estados">Estados:</label>
                     <div class="col-sm-3">
-                        <select id="inputEstado" class="form-control" required>
-                          <option id="opcao" selected>Escolha...</option>
-                          <option id="opcao">Acre</option>
-                          <option id="opcao">Alagoas</option>
-                          <option id="opcao">Amapá</option>
-                          <option id="opcao" >Amazonas</option>
-                          <option id="opcao">Bahia</option>
-                          <option id="opcao">Ceará</option>
-                          <option id="opcao">Distrito Federal</option>
-                          <option id="opcao">Espírito Santo</option>
-                          <option id="opcao">Goiás</option>
-                          <option id="opcao">Maranhão</option>
-                          <option id="opcao">Mato Grosso</option>
-                          <option id="opcao">Mato Grosso do Sul</option>
-                          <option id="opcao">Minas Gerais</option>
-                          <option id="opcao">Pará</option>
-                          <option id="opcao">Paraíba</option>
-                          <option id="opcao">Paraná</option>
-                          <option id="opcao">Pernambuco</option>
-                          <option id="opcao">Piauí</option>
-                          <option id="opcao">Rio de Janeiro</option>
-                          <option id="opcao">Rio Grande do Norte</option>
-                          <option id="opcao">Rio Grande do Sul</option>
-                          <option id="opcao">Rondônia</option>
-                          <option id="opcao">Roraima</option>
-                          <option id="opcao">Santa Catarina</option>
-                          <option id="opcao">São Paulo</option>
-                          <option id="opcao">Sergipe</option>
-                          <option id="opcao">Tocantins</option>
+                        <select id="inputEstado" class="form-control" name="estados" required>
+                          <option  selected>Escolha...</option>
+                          <option value="Ac">Acre</option>
+                          <option value="Al">Alagoas</option>
+                          <option value="Ap">Amapá</option>
+                          <option value="Am" >Amazonas</option>
+                          <option value="Ba">Bahia</option>
+                          <option value="Ce">Ceará</option>
+                          <option value="Df">Distrito Federal</option>
+                          <option value="Es">Espírito Santo</option>
+                          <option value="Go">Goiás</option>
+                          <option value="Ma">Maranhão</option>
+                          <option value="Mt">Mato Grosso</option>
+                          <option value="Ms">Mato Grosso do Sul</option>
+                          <option value="Mg">Minas Gerais</option>
+                          <option value="Pa">Pará</option>
+                          <option value="Pb">Paraíba</option>
+                          <option value="Pr">Paraná</option>
+                          <option value="Pe">Pernambuco</option>
+                          <option value="Pi">Piauí</option>
+                          <option value="Rj">Rio de Janeiro</option>
+                          <option value="Rn">Rio Grande do Norte</option>
+                          <option value="Rs">Rio Grande do Sul</option>
+                          <option value="Ro">Rondônia</option>
+                          <option value="Rr">Roraima</option>
+                          <option value="Sc">Santa Catarina</option>
+                          <option value="Sp">São Paulo</option>
+                          <option value="Se">Sergipe</option>
+                          <option value="To">Tocantins</option>
                         </select>
                     </div>
                 </div>

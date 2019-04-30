@@ -48,7 +48,7 @@ class ControllerEspecies extends ClassRender implements InterfaceView{
              */
             $nomePopular = $especies::getNomePopular();
             $nomeCientifico = $especies::getNomeCientifico();
-            //$familia = $especies::getFamilia();
+            $familia = $especies::getFamilia();
             $classeSucessional = $especies::getClasseSucessional();
             $gFuncional = $especies::getGrupoFuncional();
             $extincao = $especies::getExtincao();
@@ -63,7 +63,7 @@ class ControllerEspecies extends ClassRender implements InterfaceView{
             $arrVar =[
                 "nPopular"=>$nomePopular,
                 "nCientifico"=>$nomeCientifico,
-                "familia"=>"Lauraceae",
+                "familia"=>$familia,
                 "classeSucessional"=>$classeSucessional,
                 "gFuncional"=>$gFuncional,
                 "extincao"=>$extincao,

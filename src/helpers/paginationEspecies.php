@@ -8,6 +8,7 @@ $total_reg = "10";
 
 $pagina = $_GET['pagina'];
 
+
 if(!$pagina){
     $pc = "1";
 }else{

@@ -47,7 +47,7 @@ class ClassSessions {
      * protege contra roubo de sessão
      */
     public function setSessionCanary($par=null){
-        \session_regenerate_id(true);
+        session_regenerate_id(true);
         if($par == null){
             $_SESSION['canary']=[
                 "birth"=> time(),

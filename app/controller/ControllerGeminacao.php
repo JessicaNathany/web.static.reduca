@@ -8,6 +8,8 @@ session_start();
  */
 
 use Src\Classes\ClassRender;
+use Src\Classes\ClassValidate as validate;
+use App\Model\ClassGeminacao as geminacao;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassSessions;
 
@@ -22,8 +24,46 @@ class ControllerGeminacao extends ClassRender implements InterfaceView{
         $this->setKeywords("");
         $this->setDir("geminacao");
         $this->renderLayout();
+        $this->Main();
         $session= new ClassSessions();
-            $session->verifyInsideSession("padrao");
+        $session->verifyInsideSession("padrao");
+    }
+    /**
+     * 
+     */
+    private function Main(){
+        $arrVar = null;
+        $geminacao = new geminacao();
+        $validate = new validate();
+        
+        /**
+         * 
+         */
+        if(!empty($_POST)){                     
+            /**
+             * 
+             */
+            $arrVar =[
+                "especie"=>$geminacao::getEspecie(),
+                "data"=>$geminacao::getData(),
+                "qtde"=>$geminacao::getQtde(),
+                "descricao"=>$geminacao::getDescricao()
+            ];
+            /**
+             * 
+             */
+            $validate->validateFields($_POST);           
+            
+            if($validate->getErro()== ""){
+                $geminacao->insertGeminacao($arrVar,$geminacao::getEspecie(),$geminacao::getData());
+                echo '<div class="" style="color:red; font-weight:bold;">'.$validate->getErro().'</div>';
+            }else{
+                
+            }
+        }else{
+            
+        }
+            
     }
 
     
