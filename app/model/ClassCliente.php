@@ -43,18 +43,22 @@ class ClassCliente extends ClassCrud{
     }
     
     #Realizará a inserção no banco de dados
-    public function insertCliente($arrVar,$razaosocial,$cnpj)
+    public function insertCliente($arrVar)
     {
         /*date_default_timezone_set('America/Sao_Paulo');
         $date = date('Y-m-d H:i');*/
+
         $verify = $this->getDataCliente($razaosocial)['data']['cnpj'];
         $verifyN = $this->getDataCliente($razaosocial)['data']['razaosocial'];
         
+
+        $verify = $this->getDataCliente($arrVar["cnpj"]);        
         
-        if($cnpj == $verify && $razaosocial == $verifyN){           
-            echo "<script>alert('{$arrVar['razaosocial']} já Existente');window.location.href='".DIRPAGE."/clientes?pagina=1'</script>";          
-        }else{    
-            $this->insertDB(
+        if($arrVar["cnpj"] === $verify["data"]["cnpj"] && $arrVar === $verify["data"]["razaosocial"]){            
+                echo "<script>alert('Cliente já Existente!');window.location.href='".DIRPAGE."/clientes?pagina=1'</script>";
+        }else{
+                
+                $this->insertDB(
               "tb_clientes",
               "?,?,?,?,?,?,?,?,?,?,?",
                     array(
@@ -72,7 +76,9 @@ class ClassCliente extends ClassCrud{
                     )
             );
             echo "<script>alert('{$arrVar['razaosocial']} cadastrado com Sucesso!');window.location.href='".DIRPAGE."/clientes?pagina=1'</script>";
+            
         }
+        
     }
     static function getRazaoSocial() {
         if(isset($_POST['razaosocial'])){
@@ -139,13 +145,13 @@ class ClassCliente extends ClassCrud{
     /**
      * retorna os dados do usuario
      */
-    public function getDataCliente($razaosocial){
+    public function getDataCliente($cnpj){
         $select=$this->selectDB(
              "*",
                 "tb_clientes",
-                "where razaosocial=?",
+                "where cnpj=?",
                 array(
-                   $razaosocial
+                   $cnpj
                 )
             );
     $fetch = $select->fetch(\PDO::FETCH_ASSOC);                          

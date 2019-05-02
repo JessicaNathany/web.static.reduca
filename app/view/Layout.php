@@ -51,6 +51,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="https://www.google.com/recaptcha/api.js?render=<?=SITEKEY?>"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js"></script>
         <script src="<?= DIRCSS.'bootstrap-3.3.7/dist/js/bootstrap.min.js'?>"></script>
         <script src="<?= DIRJS.'modernizr-2.8.3-respond-1.4.2.min.js'?>"></script>
         <script src="<?= DIRJS.'zepto.min.js'?>"></script>

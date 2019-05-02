@@ -6,14 +6,18 @@
 <div class="container" id="tableEspecie" style="display:block;">    
     <h1 style='font-weight:bold;'>Espécies & Variedades</h1>
     <hr>
+<<<<<<< HEAD
 <div class="wrapper">
+=======
+>>>>>>> origin/master
     <div class="form-group form-inline">
         <form method="post" action="<?=DIRPAGE.'/especies?pagina=1'?>">
             <button class="btn btn-sm btn-primary" type="submit" id="btn_consulta" name="btn_consultar"><span class='glyphicon glyphicon-search'></span></button>
             <input id="consultar" name='consultar' placeholder='Consultar' type='text' class='form-control'>           
         </form>
     </div>
-    <div class="table">    
+<div class="wrapper">    
+    <div class="table" id="tabela" name="tabela">    
     <div class="row header green">
       <div class="cell">
         ID
@@ -62,9 +66,9 @@
       </div>
       <div class="cell" data-title="Ações" >
           <form action="<?=DIRPAGE.'/especies?pagina=1'?>" method="POST">
-            <button class='btn btn-sm btn-warning' type='submit'  ><span class='glyphicon glyphicon-pencil'></span></button>
-            <button class='btn btn-sm btn-info ' type='submit'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
-            <button class='btn btn-sm btn-danger ' type='submit' name="btn_excluir" id='btn_excluir' ><span class='glyphicon glyphicon-trash'></button>
+            <button class='btn btn-sm btn-warning' type='submit'><span class='glyphicon glyphicon-pencil'></span></button>
+            <button class='btn btn-sm btn-info' type="button"  data-toggle='modal' data-target='#info<?=$data["id"]?>'><span class='glyphicon glyphicon-info-sign'></span></button>
+            <button class='btn btn-sm btn-danger' type='submit' name="btn_excluir" id='btn_excluir' ><span class='glyphicon glyphicon-trash'></span></button>
           </form>
       </div>
     </div>
@@ -118,7 +122,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="nPopular">Nome Popular:</label>
                     <div class="col-sm-5">
-                        <input type="text" name="nPopular" id="nPopular" class="form-control">
+                        <input type="text" name="nPopular" id="nPopular" class="form-control" required>
                     </div>
                 </div>
                 
@@ -132,7 +136,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="familia">Familia:</label>
                     <div class="col-sm-5">
-                        <input type="text" name="familia" id="familia" class="form-control">
+                        <input type="text" name="familia" id="familia" class="form-control" required>
                     </div>
                 </div>
                 
@@ -146,13 +150,27 @@
                           <option value="Magn">Magnoliopsida</option>                          
                           <option value="NC">Não Classificado</option>                          
                         </select>
+<<<<<<< HEAD
+=======
                     </div>
                 </div>
+                <!--
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="gFuncional">Grupo Funcional:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="gFuncional" id="gFuncional" class="form-control">
+>>>>>>> origin/master
+                    </div>
+                </div> -->
                 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="extincao">Extinção:</label>
                     <div class="col-sm-3">
+<<<<<<< HEAD
                         <select id="extincao" class="form-control" name="extincao" required>
+=======
+                        <select id="inputClasseSucessional" class="form-control" name="extincao" required>
+>>>>>>> origin/master
                           <option  selected>Escolha...</option>
                           <option value="CR">Corre Risco</option>
                           <option value="SR">Sem Risco</option>                                                                           
@@ -173,7 +191,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="habito">Habito:</label>
+                    <label class="control-label col-sm-2" for="habito">Habito de Crescimento:</label>
                     <div class="col-sm-5">
                         <input type="text" name="habito" id="habito" class="form-control">
                     </div>
@@ -194,7 +212,11 @@
                 </div>
                 
                 <div class="form-group form-inline">
+<<<<<<< HEAD
                     <label class="control-label col-sm-2"></label>
+=======
+                    <label class="control-label col-sm-2" for="btn"></label>
+>>>>>>> origin/master
                     <div class="col-sm-3">
                         <input type="submit" name="btn_enviar" id="nome" value="Enviar" class="btn btn-success" >
                         <input type="submit" name="btn_voltar" id="nome" value="Voltar" class="btn btn-primary" onclick="hideForm()">

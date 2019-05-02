@@ -33,6 +33,14 @@ class ClassCrud extends ClassConexao{
      * 
      * 
      */
+    public function likeDB($fields, $table, $where,$like, $exec){
+        $this->prepareExecute("select {$fields} from {$table} {$where} like %{$like}%", $exec);
+        return $this->crud;
+    }
+    /**
+     * 
+     * 
+     */
     public function insertDB($table, $values, $exec){
         $this->prepareExecute("insert into {$table} values ({$values})", $exec);
         return $this->crud;

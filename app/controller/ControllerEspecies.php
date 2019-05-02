@@ -24,6 +24,8 @@ class ControllerEspecies extends ClassRender implements InterfaceView{
         $this->setKeywords("");
         $this->setDir("especies");
         $this->Main();
+        $this->btn_excluir_event();
+        $this->consultar();
         $this->renderLayout();
         $session= new ClassSessions();
         $session->verifyInsideSession("padrao");
@@ -34,23 +36,37 @@ class ControllerEspecies extends ClassRender implements InterfaceView{
      * 
      * 
      */
-    public function Main(){
-        $arrVar = null;
-        $especies = new especies();
-        $validate = new validate();
-        
+    public function Main(){              
         /**
          * 
          */
+
         if(!empty($_POST)){           
             /**
              * 
              */
+
+        $arrVar = null;
+        $especies = new especies();
+        $validate = new validate();
+        if(!empty($_POST)){
+            /**
+             * 
+             */
+            
+
             $arrVar =[
+
                 "nPopular"=>$especies::getNomePopular(),
                 "nCientifico"=>$especies::getNomeCientifico(),
                 "familia"=>$especies::getFamilia(),
                 "classeSucessional"=>$especies::getClasseSucessional(),
+
+                "nPopular"=> $especies::getNomePopular(),
+                "nCientifico"=>$especies::getNomeCientifico(),
+                "familia"=>$especies::getFamilia(),
+                "classeSucessional"=>$especies::getClasseSucessional(),              
+
                 "extincao"=>$especies::getExtincao(),
                 "dispersao"=>$especies::getDispercao(),
                 "habito"=>$especies::getHabito(),
@@ -64,24 +80,32 @@ class ControllerEspecies extends ClassRender implements InterfaceView{
             $validate->validateFields($_POST);            
             if($validate->getErro()== ""){
                 $especies->insertEspecie($arrVar,$especies::getNomePopular());
-            }else{
-                
             }
             
-            
+        }   
             
         }
         
         
+    }
+    /**
+     * 
+     */
+    public function consultar(){
+        $especie = new especies();
+        if(isset($_POST['btn_consultar'])){
+            echo "<script>alert('Voce esta procurando!');window.location.href='".DIRPAGE."/especies?pagina=1'</script>";
+            
+        }
     }
     /*
      * 
      */
     public function btn_excluir_event(){
         if(isset($_POST['btn_excluir'])){
-            
+            echo "<script>alert('voce esta excluindo');window.location.href='".DIRPAGE."/especies?pagina=1'</script>";
         }
         }
-    
+    }
 
-}
+

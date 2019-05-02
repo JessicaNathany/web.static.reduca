@@ -83,6 +83,14 @@ class ClassRender{
     /**
      * 
      */    
+    public function addBusca(){
+        if(file_exists(DIRREQ."/app/view/{$this->getDir()}/Busca.php")){
+            include (DIRREQ."/app/view/{$this->getDir()}/Busca.php"); 
+        }
+    }
+    /**
+     * 
+     */    
     public function addFooter(){
         if(file_exists(DIRREQ."/app/view/{$this->getDir()}/Footer.php")){
             include (DIRREQ."/app/view/{$this->getDir()}/Footer.php"); 

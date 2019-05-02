@@ -8,7 +8,11 @@
     <hr>
 <div class="wrapper">
     <div class="form-group form-inline">
+<<<<<<< HEAD
         <form method="post" action="<?=DIRPAGE.'/especies?pagina=1'?>">
+=======
+        <form method="post" action="<?=DIRPAGE.'/clientes?pagina=0'?>">
+>>>>>>> origin/master
             <button class="btn btn-sm btn-primary" type="submit" id="btn_consulta" name="btn_consultar"><span class='glyphicon glyphicon-search'></span></button>
             <input id="consultar" name='consultar' placeholder='Consultar' type='text' class='form-control'>           
         </form>
@@ -31,7 +35,7 @@
         Email
       </div>
       <div class="cell">
-        Endereço
+        Cidade
       </div>
       <div class="cell">
         Ações
@@ -56,18 +60,18 @@
       </div>
       <div class="cell" data-title="Email">
         <?=$data['email']?>
-      </div>
-      <div class="cell" data-title="Endereço">
-       <?=$data['endereco']?>
+      </div>       
+      <div class="cell" data-title="Cidade">
+       <?=$data['cidade']?>
       </div>
       <div class="cell" data-title="Ações">
-        <button class='btn btn-sm btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
-        <button class='btn btn-sm btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
-        <button class='btn btn-sm btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
+        <button class="btn btn-sm btn-warning" type="submit">Editar <span class='glyphicon glyphicon-pencil'></span></button>
+        <button class="btn btn-sm btn-danger" type="submit">Excluir<span class='glyphicon glyphicon-trash'></span></button>
+        <button class="btn btn-sm btn-info" type="button" data-toggle="modal" data-target='#info<?=$data["id"]?>'><span class='glyphicon glyphicon-info-sign'></span></button>
       </div>
-    </div>
+</div>
 <!-- JANELA MODAL DE INFORMAÇÕES-->
-                <div class="modal fade" id="info<?=$data["id"]?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
+<div class="modal fade" id="info<?=$data["id"]?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                        <div class="modal-content">
                             <div class="modal-header">
@@ -205,7 +209,7 @@
                 </div>
                 
                 <div class="form-group form-inline">
-                    <label class="control-label col-sm-2" for=""></label>
+                    <label class="control-label col-sm-2"></label>
                     <div class="col-sm-3">
                         <input type="submit" name="btn_enviar" id="btn_enviar" value="Enviar" class="btn btn-success" >
                         <input type="submit" name="btn_voltar" id="btn_voltar" value="Voltar" class="btn btn-primary" onclick="hideForm()">

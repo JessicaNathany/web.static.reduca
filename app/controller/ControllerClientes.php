@@ -34,24 +34,23 @@ class ControllerClientes extends ClassRender implements InterfaceView{
      * 
      */
     private function Main(){
-        $arrVar = null;
-        $clientes = new clientes();
-        $validate = new validate();                       
-            /**
-             * 
-             */
+        $arrVar=null;
+        $cliente=new clientes();
+        $validate=new validate();
+        if(isset($_POST)){
             $arrVar =[
-                "razaosocial"=>$clientes::getRazaoSocial(),
-                "cnpj"=>$clientes::getCNPJ(),
-                "rg"=>"null",
-                "contato"=>$clientes::getContato(),
-                "email"=>$clientes::getEmail(),
-                "endereco"=>$clientes::getEndereco(),
-                "cidade"=>$clientes::getCidade(),
-                "estado"=>$clientes::getEstado(),
-                "cep"=>$clientes::getCep(),
-                "descricao"=>$clientes::getDescricao()
+                "razaosocial"=> $cliente::getRazaoSocial(),
+                "cnpj"=>$cliente::getCNPJ(),
+                "rg"=>null,
+                "contato"=>$cliente::getContato(),
+                "email"=>$cliente::getEmail(),              
+                "endereco"=>$cliente::getEndereco(),
+                "cidade"=>$cliente::getCidade(),
+                "estado"=>$cliente::getEstado(),
+                "cep"=>$cliente::getCep(),
+                "descricao"=>$cliente::getDescricao()
             ];
+
             /**
              * 
              */
@@ -60,12 +59,17 @@ class ControllerClientes extends ClassRender implements InterfaceView{
             
             if($validate->getErro()== ""){
                 $clientes->insertCliente($arrVar,$clientes::getRazaoSocial(),$clientes::$CNPJ);
+
+            $validate->validateEmail($arrVar["email"]);
+            $erro = $validate->getErro();            
+            if($erro === ""){
+                $cliente->insertCliente($arrVar);
+
             }else{
                 
+                
             }
-        
+            }  
+        }
     }
-
-    
-
 }

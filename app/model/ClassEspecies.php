@@ -23,7 +23,7 @@ class ClassEspecies extends ClassCrud{
      *
      * @var type 
      */
-     static $nomePopular;
+     static $especie;
      static $nomeCientifico;
      static $familia;
      static $classeSucessional;
@@ -41,11 +41,12 @@ class ClassEspecies extends ClassCrud{
         $this->trait = TraitGetIp::getUserIp();
     }
     
-    #Realizará a inserção no banco de dados
-    public function insertEspecie($arrVar,$especie)
+    #Realizará a inserção no banco de dados 
+    public function insertEspecie($arrVar,$nomePopular)
     {
         /*date_default_timezone_set('America/Sao_Paulo');
         $date = date('Y-m-d H:i');*/
+
         $data = $this->getDataEspecie($especie)["data"]["nPopular"];
         if($data === $especie){           
             echo "<script>alert('{$arrVar['especie']} Já existe!');window.location.href='".DIRPAGE."/especies?pagina=1'</script>";
@@ -67,8 +68,33 @@ class ClassEspecies extends ClassCrud{
                 )
         );
         echo "<script>alert('{$arrVar['especie']}Cadastrado com Sucesso!');window.location.href='".DIRPAGE."/especies?pagina=1'</script>";
+
+        $verify=$this->getDataEspecie($nomePopular)["data"]["nPopular"];
+        if($nomePopular === $verify){
+            echo "<script>alert('Especie Existente!');window.location.href='".DIRPAGE."/especies?pagina=1'</script>";
+        }else{
+            $this->insertDB(
+              "tb_especies",
+              "?,?,?,?,?,?,?,?,?,?",
+                    array(
+                        0,
+                        $arrVar['nPopular'],
+                        $arrVar['nCientifico'],
+                        $arrVar['familia'],
+                        $arrVar['classeSucessional'],                    
+                        $arrVar['extincao'],
+                        $arrVar['dispersao'],
+                        $arrVar['habito'],
+                        $arrVar['bioma'],
+                        $arrVar['descricao']                  
+                    )
+            );
+            echo "<script>alert('{$nomePopular} Cadastrado com Sucesso!');window.location.href='".DIRPAGE."/especies?pagina=1'</script>";
+
         }
     }
+    
+  }
     static function getNomePopular() {
         if(isset($_POST['nPopular'])){
             self::$nomePopular = filter_input(INPUT_POST, 'nPopular', FILTER_DEFAULT);
@@ -96,7 +122,6 @@ class ClassEspecies extends ClassCrud{
             return self::$classeSucessional;
         }
     }
-
     static function getExtincao() {
         if(isset($_POST['extincao'])){
             self::$extincao = filter_input(INPUT_POST, 'extincao', FILTER_DEFAULT);
@@ -151,9 +176,29 @@ class ClassEspecies extends ClassCrud{
         ];
     
     }
+    /**
+     * 
+     */
+    public function getDataLikeEspecie($nomePopular,$like){
+        $select->$this->likeDB(
+                "*",
+                "tb_especies",
+                "where nPopular=?",
+                array(
+                      $nomePopular
+                ),
+                "{$like}"                         
+        );
+        $fetch = $select->fetch(\PDO::FETCH_ASSOC);                          
+         $row = $select->rowCount();
+         return $arrData=[
+            "data"=>$fetch,
+            "rows"=>$row
+        ];        
+    }
 
 
-    
+    } 
    
         
         
@@ -163,4 +208,4 @@ class ClassEspecies extends ClassCrud{
     
    
     
-}
+
