@@ -7,10 +7,10 @@
     <h1 style='font-weight:bold;'>Espécies & Variedades</h1>
     <hr>
 <div class="wrapper">
-    <div class='form-group input-group'>
-        <form action='buscar.php' method='post'>
-            <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
-            <input name='consulta' placeholder='Consultar' type='text' class='form-control'>
+    <div class="form-group form-inline">
+        <form method="post" action="<?=DIRPAGE.'/especies?pagina=1'?>">
+            <button class="btn btn-sm btn-primary" type="submit" id="btn_consulta" name="btn_consultar"><span class='glyphicon glyphicon-search'></span></button>
+            <input id="consultar" name='consultar' placeholder='Consultar' type='text' class='form-control'>           
         </form>
     </div>
     <div class="table">    
@@ -138,29 +138,37 @@
                 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="classeSucessional">Classe Sucessional:</label>
-                    <div class="col-sm-5">
-                        <input type="text" name="classeSucessional" id="classeSucessional" class="form-control">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="gFuncional">Grupo Funcional:</label>
-                    <div class="col-sm-5">
-                        <input type="text" name="gFuncional" id="gFuncional" class="form-control">
+                    <div class="col-sm-3">
+                        <select id="inputClasseSucessional" class="form-control" name="classeSucessional" required>
+                          <option  selected>Escolha...</option>
+                          <option value="P">Pioneira</option>
+                          <option value="NP">Não Pioneira</option>                          
+                          <option value="Magn">Magnoliopsida</option>                          
+                          <option value="NC">Não Classificado</option>                          
+                        </select>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="extincao">Extinção:</label>
-                    <div class="col-sm-5">
-                        <input type="text" name="extincao" id="extincao" class="form-control">
+                    <div class="col-sm-3">
+                        <select id="extincao" class="form-control" name="extincao" required>
+                          <option  selected>Escolha...</option>
+                          <option value="CR">Corre Risco</option>
+                          <option value="SR">Sem Risco</option>                                                                           
+                        </select>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="dispersao">Dispersão:</label>
-                    <div class="col-sm-5">
-                        <input type="text" name="dispersao" id="dispersao" class="form-control">
+                    <div class="col-sm-3">
+                        <select id="dispersao" class="form-control" name="dispersao" required>
+                          <option  selected>Escolha...</option>
+                          <option value="Aut">Autocórica</option>
+                          <option value="Ane">Anemocórica</option>                                                                           
+                          <option value="Zoo">Zoocórica</option>                                                                           
+                        </select>
                     </div>
                 </div>
                 
@@ -186,7 +194,7 @@
                 </div>
                 
                 <div class="form-group form-inline">
-                    <label class="control-label col-sm-2" for="nome"></label>
+                    <label class="control-label col-sm-2"></label>
                     <div class="col-sm-3">
                         <input type="submit" name="btn_enviar" id="nome" value="Enviar" class="btn btn-success" >
                         <input type="submit" name="btn_voltar" id="nome" value="Voltar" class="btn btn-primary" onclick="hideForm()">

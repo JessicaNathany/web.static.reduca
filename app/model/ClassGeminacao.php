@@ -42,27 +42,28 @@ class ClassGeminacao extends ClassCrud{
     }
     
     #Realizará a inserção no banco de dados
-    public function insertGeminacao($arrVar,$especie,$data)
+    public function insertGeminacao($arrVar,$especie)
     {   
         /*date_default_timezone_set('America/Sao_Paulo');
         $date = date('Y-m-d H:i');*/
-        $verifyEspecie = $this->getDataEspecie($especie)["data"]["nPopular"];
-        $verifyData = $this->getDataGeminacao($especie)["data"]["dt"];
+        $verifyEspecie = $this->getDataEspecie($especie);
+        $verifyData = $this->getDataGeminacao($especie);
         $getDataQtde = $this->getDataGeminacao($especie)["data"]["qtde"];
         $qtde = $getDataQtde + $arrVar['qtde'];
         
-        if($especie === $verifyEspecie){
+        if($verifyEspecie["rows"] > 0){
             //encontrou algo na tabela especie
-            if($data !== $verifyData){
+            /* @var $verifyData type */
+            if($verifyData["rows"] > 0){
                 //encontrou algo na tabela geminacao, faça o update.
-               $sql = "update tb_geminacao set qtde = :qtde where especie = :especie and dt= :data";
+               $sql = "update tb_geminacao set qtde = :qtde where especie= :especie and dt= :data";
                $pdo=$this->conexaoDB();
                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                $stmt = $pdo->prepare($sql);
                $stmt->execute(array(
                    ':especie' => $especie,
-                   ':qtde' => $qtde,
-                   ':data' => $data
+                   ':data' => $arrVar["data"],
+                   ':qtde' => $qtde                  
                ));
                if($stmt->rowCount()>0){
                    echo "<script>alert('Campo {$especie} alterado!');window.location.href='".DIRPAGE."/geminacao?pagina=1'</script>";

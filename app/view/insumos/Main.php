@@ -7,10 +7,10 @@
     <h1 style='font-weight:bold;'>Insumos</h1>
     <hr>
 <div class="wrapper">
-    <div class='form-group input-group'>
-        <form action='buscar.php' method='post'>
-            <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
-            <input name='consulta' placeholder='Consultar' type='text' class='form-control'>
+    <div class="form-group form-inline">
+        <form method="post" action="<?=DIRPAGE.'/insumos?pagina=1'?>">
+            <button class="btn btn-sm btn-primary" type="submit" id="btn_consulta" name="btn_consultar"><span class='glyphicon glyphicon-search'></span></button>
+            <input id="consultar" name='consultar' placeholder='Consultar' type='text' class='form-control'>           
         </form>
     </div>
     <div class="table">    
@@ -55,9 +55,9 @@
         <?=$data['qtde']?>
       </div>
       <div class="cell" data-title="Ações">
-        <button class='btn btn-sm btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
-        <button class='btn btn-sm btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
-        <button class='btn btn-sm btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
+        <button class='btn btn-sm btn-warning' type='button'>Editar <span class='glyphicon glyphicon-pencil'></span></button>
+        <button class='btn btn-sm btn-danger ' type='submit' id='excluir'>Excluir <span class='glyphicon glyphicon-trash'></span></button>
+        <button class='btn btn-sm btn-info' type='button' data-toggle='modal' data-target='#info<?=$data["id"]?>'><span class='glyphicon glyphicon-info-sign'></span></button>
       </div>
     </div>
 <!-- JANELA MODAL DE INFORMAÇÕES-->
@@ -104,7 +104,7 @@
     
 <!--=========================================================================-->
 <div class="container">                    
-           <form action="#" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
+           <form action="<?=DIRPAGE.'/insumos?pagina=1'?>" method="post" id="formEspecie" class="form-horizontal" style="display:none;">
                <h1 style='font-weight:bold;'>Insumos</h1>
                 <hr>
                 <div class="form-group">
@@ -117,10 +117,10 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="categoria">Categoria:</label>
                     <div class="col-sm-3">
-                        <select id="inputEstado" class="form-control" required>
-                          <option id="opcao" selected>Escolha...</option>
-                          <option id="opcao">Natural</option>                         
-                          <option id="opcao">Organico</option>                         
+                        <select id="categoria" name="categoria" class="form-control" required>
+                          <option  selected>Escolha...</option>
+                          <option value="Natural">Natural</option>                         
+                          <option value="Organico">Organico</option>                         
                         </select>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="qtde">Quantidade:</label>
                     <div class="col-sm-5">
-                        <input type="text" name="" id="qtde" class="form-control">
+                        <input type="text" name="qtde" id="qtde" class="form-control">
                     </div>
                 </div>
                 
@@ -147,7 +147,7 @@
                 </div>
                 
                 <div class="form-group form-inline">
-                    <label class="control-label col-sm-2" for="nome"></label>
+                    <label class="control-label col-sm-2"></label>
                     <div class="col-sm-3">
                         <input type="submit" name="btn_enviar" id="nome" value="Enviar" class="btn btn-success" >
                         <input type="submit" name="btn_voltar" id="nome" value="Voltar" class="btn btn-primary" onclick="hideForm()">

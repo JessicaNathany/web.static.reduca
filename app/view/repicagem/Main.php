@@ -7,10 +7,10 @@
     <h1 style='font-weight:bold;'>Repicagem</h1>
     <hr>
 <div class="wrapper">
-    <div class='form-group input-group'>
-        <form action='buscar.php' method='post'>
-            <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
-            <input name='consulta' placeholder='Consultar' type='text' class='form-control'>
+    <div class="form-group form-inline">
+        <form method="post" action="<?=DIRPAGE.'/repicagem?pagina=1'?>">
+            <button class="btn btn-sm btn-primary" type="submit" id="btn_consulta" name="btn_consultar"><span class='glyphicon glyphicon-search'></span></button>
+            <input id="consultar" name='consultar' placeholder='Consultar' type='text' class='form-control'>           
         </form>
     </div>
     <div class="table">    
@@ -55,9 +55,9 @@
         <?=$data['embalagem']?>
       </div>
       <div class="cell" data-title="Ações">
-        <button class='btn btn-sm btn-warning' type='button'  >Editar <span class='glyphicon glyphicon-pencil'></span></button>
-        <button class='btn btn-sm btn-danger ' type='button'  id='excluir' onclick='testeBT()'>Excluir <span class='glyphicon glyphicon-trash'></button>
-        <button class='btn btn-sm btn-info ' type='button'  data-toggle='modal' data-target='#info<?=$data["id"]?>'> <span class='glyphicon glyphicon-info-sign'></button>
+        <button class='btn btn-sm btn-warning' type='button'>Editar<span class='glyphicon glyphicon-pencil'></span></button>
+        <button class='btn btn-sm btn-danger' type='button' id='excluir'>Excluir<span class='glyphicon glyphicon-trash'></span></button>
+        <button class='btn btn-sm btn-info' type='button' data-toggle='modal' data-target='#info<?=$data["id"]?>'><span class='glyphicon glyphicon-info-sign'></span></button>
       </div>
     </div>
 <!-- JANELA MODAL DE INFORMAÇÕES-->
@@ -96,7 +96,7 @@
          }
        ?>
     </div>
-    <a href="../config/gerar_excel.php" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
+    <a href="" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
      <button class='btn btn-success btn-lg' type='button' onclick="showForm()" name="novo"><span class="glyphicon glyphicon-plus"></span></button>    
 </div>
     

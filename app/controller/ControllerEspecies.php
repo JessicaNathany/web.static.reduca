@@ -42,35 +42,20 @@ class ControllerEspecies extends ClassRender implements InterfaceView{
         /**
          * 
          */
-        if(!empty($_POST)){
-            /**
-             * 
-             */
-            $nomePopular = $especies::getNomePopular();
-            $nomeCientifico = $especies::getNomeCientifico();
-            $familia = $especies::getFamilia();
-            $classeSucessional = $especies::getClasseSucessional();
-            $gFuncional = $especies::getGrupoFuncional();
-            $extincao = $especies::getExtincao();
-            $dispersao = $especies::getDispercao();
-            $habito = $especies::getHabito();
-            $bioma = $especies::getBioma();
-            $descricao = $especies::getDescricao();
-            
+        if(!empty($_POST)){           
             /**
              * 
              */
             $arrVar =[
-                "nPopular"=>$nomePopular,
-                "nCientifico"=>$nomeCientifico,
-                "familia"=>$familia,
-                "classeSucessional"=>$classeSucessional,
-                "gFuncional"=>$gFuncional,
-                "extincao"=>$extincao,
-                "dispersao"=>$dispersao,
-                "habito"=>$habito,
-                "bioma"=>$bioma,
-                "descricao"=>$descricao
+                "nPopular"=>$especies::getNomePopular(),
+                "nCientifico"=>$especies::getNomeCientifico(),
+                "familia"=>$especies::getFamilia(),
+                "classeSucessional"=>$especies::getClasseSucessional(),
+                "extincao"=>$especies::getExtincao(),
+                "dispersao"=>$especies::getDispercao(),
+                "habito"=>$especies::getHabito(),
+                "bioma"=>$especies::getBioma(),
+                "descricao"=>$especies::getDescricao()
             ];
             
             /**
@@ -78,7 +63,7 @@ class ControllerEspecies extends ClassRender implements InterfaceView{
              */
             $validate->validateFields($_POST);            
             if($validate->getErro()== ""){
-                $especies->insertEspecie($arrVar);
+                $especies->insertEspecie($arrVar,$especies::getNomePopular());
             }else{
                 
             }

@@ -8,17 +8,19 @@ namespace App\Controller;
  */
 
 use Src\Classes\ClassHelperUser as help;
+use App\Model\ClassEspecies;
 
 class ControllerTeste {
     /**
      * metodo construtor da classe de controler do Usuario.
      */
     public function __construct() {
-        $this->main();
+        $especie = new ClassEspecies();
+        $oi=$especie->getDataEspecie("wanclei");
+        
+        print_r($oi["data"]["habito"]);
              
    }
-   private function main(){
-       echo "Voce testou!";
-   }
+   
    
 }

@@ -49,7 +49,7 @@ class ClassCliente extends ClassCrud{
         $date = date('Y-m-d H:i');*/
         $verify = $this->getDataCliente($razaosocial)['data']['cnpj'];
         $verifyN = $this->getDataCliente($razaosocial)['data']['razaosocial'];
-        var_dump($verify);
+        
         
         if($cnpj == $verify && $razaosocial == $verifyN){           
             echo "<script>alert('{$arrVar['razaosocial']} já Existente');window.location.href='".DIRPAGE."/clientes?pagina=1'</script>";          

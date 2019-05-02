@@ -55,7 +55,7 @@ class ControllerGeminacao extends ClassRender implements InterfaceView{
             $validate->validateFields($_POST);           
             
             if($validate->getErro()== ""){
-                $geminacao->insertGeminacao($arrVar,$geminacao::getEspecie(),$geminacao::getData());
+                $geminacao->insertGeminacao($arrVar,$geminacao::getEspecie());
                 echo '<div class="" style="color:red; font-weight:bold;">'.$validate->getErro().'</div>';
             }else{
                 

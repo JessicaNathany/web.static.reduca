@@ -59,8 +59,7 @@ class ControllerClientes extends ClassRender implements InterfaceView{
             $validate->validateEmail($clientes::getEmail());
             
             if($validate->getErro()== ""){
-                $clientes->insertCliente($arrVar,$razaosocial,$cnpj);
-                echo '<div class="" style="color:red; font-weight:bold;">'.$validate->getErro().'</div>';
+                $clientes->insertCliente($arrVar,$clientes::getRazaoSocial(),$clientes::$CNPJ);
             }else{
                 
             }

@@ -27,7 +27,6 @@ class ClassEspecies extends ClassCrud{
      static $nomeCientifico;
      static $familia;
      static $classeSucessional;
-     static $grupoFuncional;
      static $extincao;
      static $dispercao;
      static $habito;
@@ -38,36 +37,28 @@ class ClassEspecies extends ClassCrud{
     
 
     public function __construct() {
-        /*
-        self::$nomePopular = self::getNomePopular();
-        self::$nomeCientifico = self::getNomeCientifico();
-        self::$Familia = self::getFamilia();
-        self::$classeSucessional = self::getClasseSucessional();
-        self::$extincao = self::getExtincao();
-        self::$dispercao = self::getDispercao();
-        self::$habito = self::getHabito();
-        self::$bioma = self::getBioma();
-        self::$descricao = self::getDescricao();*/
         $this->dateNow = date("Y-m-d H:i:s");
         $this->trait = TraitGetIp::getUserIp();
     }
     
     #Realizará a inserção no banco de dados
-    public function insertEspecie($arrVar)
+    public function insertEspecie($arrVar,$especie)
     {
         /*date_default_timezone_set('America/Sao_Paulo');
         $date = date('Y-m-d H:i');*/
-    
+        $data = $this->getDataEspecie($especie)["data"]["nPopular"];
+        if($data === $especie){           
+            echo "<script>alert('{$arrVar['especie']} Já existe!');window.location.href='".DIRPAGE."/especies?pagina=1'</script>";
+        }else{
         $this->insertDB(
           "tb_especies",
-          "?,?,?,?,?,?,?,?,?,?,?",
+          "?,?,?,?,?,?,?,?,?,?",
                 array(
                     0,
                     $arrVar['nPopular'],
                     $arrVar['nCientifico'],
                     $arrVar['familia'],
                     $arrVar['classeSucessional'],
-                    $arrVar['gFuncional'],
                     $arrVar['extincao'],
                     $arrVar['dispersao'],
                     $arrVar['habito'],
@@ -75,7 +66,8 @@ class ClassEspecies extends ClassCrud{
                     $arrVar['descricao']                  
                 )
         );
-
+        echo "<script>alert('{$arrVar['especie']}Cadastrado com Sucesso!');window.location.href='".DIRPAGE."/especies?pagina=1'</script>";
+        }
     }
     static function getNomePopular() {
         if(isset($_POST['nPopular'])){
@@ -102,13 +94,6 @@ class ClassEspecies extends ClassCrud{
         if(isset($_POST['classeSucessional'])){
             self::$classeSucessional = filter_input(INPUT_POST, 'classeSucessional', FILTER_DEFAULT);
             return self::$classeSucessional;
-        }
-    }
-
-    static function getGrupoFuncional() {
-        if(isset($_POST['gFuncional'])){
-            self::$grupoFuncional = filter_input(INPUT_POST, 'gFuncional', FILTER_DEFAULT);
-            return self::$grupoFuncional;
         }
     }
 
@@ -149,13 +134,13 @@ class ClassEspecies extends ClassCrud{
     /**
      * retorna os dados do usuario
      */
-    public function getDataEspecie($nomePopular){
+    public function getDataEspecie($especie){
         $select=$this->selectDB(
              "*",
-                "tb_especie",
+                "tb_especies",
                 "where nPopular=?",
                 array(
-                   $nomePopular
+                   $especie
                 )
             );
     $fetch = $select->fetch(\PDO::FETCH_ASSOC);                          

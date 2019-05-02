@@ -164,7 +164,6 @@ class ClassDatabase extends ClassConexao{
                     . "nCientifico varchar(30),"
                     . "familia varchar (30),"
                     . "classeSucessional varchar(30),"
-                    . "gFuncional varchar(30),"
                     . "extincao varchar(30),"
                     . "dispersao varchar(30),"
                     . "habito varchar(30),"

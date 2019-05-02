@@ -7,10 +7,10 @@
     <h1 style='font-weight:bold;'>Geminação</h1>
     <hr>
 <div class="wrapper">
-    <div class='form-group input-group'>
-        <form action='#' method='post'>
-            <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
-            <input name='consulta' placeholder='Consultar' type='text' class='form-control'>
+    <div class="form-group form-inline">
+        <form method="post" action="<?=DIRPAGE.'/especies?pagina=1'?>">
+            <button class="btn btn-sm btn-primary" type="submit" id="btn_consulta" name="btn_consultar"><span class='glyphicon glyphicon-search'></span></button>
+            <input id="consultar" name='consultar' placeholder='Consultar' type='text' class='form-control'>           
         </form>
     </div>
     <div class="table">    
