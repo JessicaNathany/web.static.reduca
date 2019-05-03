@@ -1,3 +1,3 @@
-<<<<<<< HEAD
+
 # sgvm
->>>>>>> origin/master
+# sgvm
