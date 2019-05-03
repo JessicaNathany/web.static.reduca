@@ -6,10 +6,8 @@
 <div class="container" id="tableEspecie" style="display:block;">    
     <h1 style='font-weight:bold;'>Espécies & Variedades</h1>
     <hr>
-<<<<<<< HEAD
+
 <div class="wrapper">
-=======
->>>>>>> origin/master
     <div class="form-group form-inline">
         <form method="post" action="<?=DIRPAGE.'/especies?pagina=1'?>">
             <button class="btn btn-sm btn-primary" type="submit" id="btn_consulta" name="btn_consultar"><span class='glyphicon glyphicon-search'></span></button>
@@ -150,8 +148,6 @@
                           <option value="Magn">Magnoliopsida</option>                          
                           <option value="NC">Não Classificado</option>                          
                         </select>
-<<<<<<< HEAD
-=======
                     </div>
                 </div>
                 <!--
@@ -159,18 +155,13 @@
                     <label class="control-label col-sm-2" for="gFuncional">Grupo Funcional:</label>
                     <div class="col-sm-5">
                         <input type="text" name="gFuncional" id="gFuncional" class="form-control">
->>>>>>> origin/master
                     </div>
                 </div> -->
                 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="extincao">Extinção:</label>
                     <div class="col-sm-3">
-<<<<<<< HEAD
-                        <select id="extincao" class="form-control" name="extincao" required>
-=======
                         <select id="inputClasseSucessional" class="form-control" name="extincao" required>
->>>>>>> origin/master
                           <option  selected>Escolha...</option>
                           <option value="CR">Corre Risco</option>
                           <option value="SR">Sem Risco</option>                                                                           
@@ -212,11 +203,7 @@
                 </div>
                 
                 <div class="form-group form-inline">
-<<<<<<< HEAD
-                    <label class="control-label col-sm-2"></label>
-=======
                     <label class="control-label col-sm-2" for="btn"></label>
->>>>>>> origin/master
                     <div class="col-sm-3">
                         <input type="submit" name="btn_enviar" id="nome" value="Enviar" class="btn btn-success" >
                         <input type="submit" name="btn_voltar" id="nome" value="Voltar" class="btn btn-primary" onclick="hideForm()">

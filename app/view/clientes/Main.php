@@ -8,11 +8,7 @@
     <hr>
 <div class="wrapper">
     <div class="form-group form-inline">
-<<<<<<< HEAD
-        <form method="post" action="<?=DIRPAGE.'/especies?pagina=1'?>">
-=======
-        <form method="post" action="<?=DIRPAGE.'/clientes?pagina=0'?>">
->>>>>>> origin/master
+        <form method="post" action="<?=DIRPAGE.'/clientes?pagina=1'?>">
             <button class="btn btn-sm btn-primary" type="submit" id="btn_consulta" name="btn_consultar"><span class='glyphicon glyphicon-search'></span></button>
             <input id="consultar" name='consultar' placeholder='Consultar' type='text' class='form-control'>           
         </form>
