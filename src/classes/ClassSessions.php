@@ -97,7 +97,7 @@ class ClassSessions {
        }else{
            if($_SESSION['time'] >=time() - $this->timeSession){
                $_SESSION['time']=time();
-               if($_SESSION['permition']!= "administrador" && $permition != $_SESSION['permition'] && $_SESSION['permition'] != "super-admin"){
+               if($_SESSION['permition']!= "admin" && $permition != $_SESSION['permition']){
                    echo "<script>alert('Você não tem permissão!');window.location.href='".DIRPAGE."/home'</script>";                   
                }
                

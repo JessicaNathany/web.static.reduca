@@ -15,12 +15,15 @@ namespace App\Model;
  */
 use PDO;
 use Src\Traits\TraitGetIp;
+use App\Model\ClassUser;
 
-class ClassLogin extends ClassCrud{
+class ClassLogin extends ClassCrud {
+
     //put your code here
+    static $usuario;
     private $trait;
     private $dateNow;
-    
+
     /**
      * 
      */
@@ -32,71 +35,82 @@ class ClassLogin extends ClassCrud{
     /**
      * retorna os dados do usuario
      */
-    public function getDataUser($usuario){
-        $select=$this->selectDB(
-             "*",
-                "tb_users",
-                "where usuario=?",
-                array(
-                   $usuario 
+    public function getDataUser($usuario) {
+        $select = $this->selectDB(
+                "*", "tb_users", "where usuario=?", array(
+            $usuario
                 )
-            );
-    $fetch = $select->fetch(\PDO::FETCH_ASSOC);                          
-    $row = $select->rowCount();
-    return $arrData=[
-        "data"=>$fetch,
-        "rows"=>$row
+        );
+        $fetch = $select->fetch(\PDO::FETCH_ASSOC);
+        $row = $select->rowCount();
+        return $arrData = [
+            "data" => $fetch,
+            "rows" => $row
         ];
-    
     }
+
     /**
      * 
      */
-    public function countAttempt(){
-        $select=$this->selectDB(
-            "*",
-                "tb_attempt",
-                "where ip=?",
-                array(
-                   $this->trait 
+    public function countAttempt() {
+        $select = $this->selectDB(
+                "*", "tb_attempt", "where ip=?", array(
+            $this->trait
                 )
-            );
-        $row=0;
-        while($fetch=$select->fetch(\PDO::FETCH_ASSOC)){
-            if(strtotime($fetch["date"]) > strtotime($this->dateNow)-1200){
+        );
+        $row = 0;
+        while ($fetch = $select->fetch(\PDO::FETCH_ASSOC)) {
+            if (strtotime(isset($fetch["date"])) > strtotime($this->dateNow) - 1200) {
                 $row++;
             }
         }
         return $row;
     }
+
     /**
      * 
      */
-    public function insertAttempt(){
-        if($this->countAttempt() < 5){
-           $this->insertDB(
-                   "tb_attempt",
-                   "?,?,?",
-                   array(
-                       0,
-                       $this->trait,
-                       $this->dateNow
-                   )
-            ); 
+    public function insertAttempt() {
+        if ($this->countAttempt() < 5) {
+            $this->insertDB(
+                    "tb_attempt", "?,?,?", array(
+                0,
+                $this->trait,
+                $this->dateNow
+                    )
+            );
         }
     }
+
     /**
      * 
      */
-    public function deleteAttempt(){
+    public function deleteAttempt() {
         $this->deleteDB(
-                "tb_attempt",
-                "ip=?",
-                array(
-                    $this->trait
+                "tb_attempt", "ip=?", array(
+            $this->trait
                 )
         );
     }
-       
-    
+
+    /**
+     * 
+     */
+    public function contBloq() {
+        $select = $this->selectDB(
+                "*", "tb_attempt", "where ip=?", array(
+            $this->trait
+                )
+        );
+        $result = $select->fetchAll();
+        return count($result);
+    }
+
+    static function getUser() {
+        if (isset($_POST['usuario'])) {
+            self::$usuario = filter_input(INPUT_POST, 'usuario', FILTER_DEFAULT);
+            return strtolower(self::$usuario);
+        }
+    }
+
 }

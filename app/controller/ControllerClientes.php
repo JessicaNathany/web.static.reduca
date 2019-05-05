@@ -26,6 +26,7 @@ class ControllerClientes extends ClassRender implements InterfaceView{
             $this->setKeywords("");
             $this->setDir("clientes");
             $this->renderLayout();
+            $this->btn_excluir_event();
             $this->Main();
             $session= new ClassSessions();
             $session->verifyInsideSession("padrao");
@@ -40,8 +41,7 @@ class ControllerClientes extends ClassRender implements InterfaceView{
         if(isset($_POST)){
             $arrVar =[
                 "razaosocial"=> $cliente::getRazaoSocial(),
-                "cnpj"=>$cliente::getCNPJ(),
-                "rg"=>null,
+                "documento"=>$cliente::getDocumento(),               
                 "contato"=>$cliente::getContato(),
                 "email"=>$cliente::getEmail(),              
                 "endereco"=>$cliente::getEndereco(),
@@ -51,25 +51,21 @@ class ControllerClientes extends ClassRender implements InterfaceView{
                 "descricao"=>$cliente::getDescricao()
             ];
 
-            /**
-             * 
-             */
             $validate->validateFields($_POST);
-            $validate->validateEmail($clientes::getEmail());
+            $validate->validateEmail($cliente::getEmail());
             
             if($validate->getErro()== ""){
-                $clientes->insertCliente($arrVar,$clientes::getRazaoSocial(),$clientes::$CNPJ);
-
-            $validate->validateEmail($arrVar["email"]);
-            $erro = $validate->getErro();            
-            if($erro === ""){
-                $cliente->insertCliente($arrVar);
-
-            }else{
-                
-                
-            }
+                $cliente->insertCliente($arrVar);           
             }  
         }
     }
+    # evento do botão excluir
+    private function btn_excluir_event(){
+        if(isset($_REQUEST["id"])){
+            $id=$_REQUEST["id"];
+            $cliente = new clientes();
+            $cliente->deleteDataCliente($id);
+        }
+    }
+
 }

@@ -16,162 +16,151 @@ namespace App\Model;
 use App\Model\ClassCrud;
 use Src\Traits\TraitGetIp;
 
+class ClassCliente extends ClassCrud {
 
-
-class ClassCliente extends ClassCrud{
     /**
      *
      * @var type 
      */
-    
-     static $razaoSocial;
-     static $CNPJ;
-     static $contato;
-     static $email;
-     static $endereco;
-     static $cidade;
-     static $estado;
-     static $cep;
-     static $descricao;
+    static $razaoSocial;
+    static $documento;
+    static $contato;
+    static $email;
+    static $endereco;
+    static $cidade;
+    static $estado;
+    static $cep;
+    static $descricao;
     private $trait;
     private $dateNow;
-    
 
     public function __construct() {
         $this->dateNow = date("Y-m-d H:i:s");
         $this->trait = TraitGetIp::getUserIp();
     }
-    
+
     #Realizará a inserção no banco de dados
-    public function insertCliente($arrVar)
-    {
-        /*date_default_timezone_set('America/Sao_Paulo');
-        $date = date('Y-m-d H:i');*/
 
-        $verify = $this->getDataCliente($razaosocial)['data']['cnpj'];
-        $verifyN = $this->getDataCliente($razaosocial)['data']['razaosocial'];
-        
-
-        $verify = $this->getDataCliente($arrVar["cnpj"]);        
-        
-        if($arrVar["cnpj"] === $verify["data"]["cnpj"] && $arrVar === $verify["data"]["razaosocial"]){            
-                echo "<script>alert('Cliente já Existente!');window.location.href='".DIRPAGE."/clientes?pagina=1'</script>";
-        }else{
-                
-                $this->insertDB(
-              "tb_clientes",
-              "?,?,?,?,?,?,?,?,?,?,?",
-                    array(
-                        0,
-                        $arrVar['razaosocial'],
-                        $arrVar['cnpj'],
-                        $arrVar['rg'],
-                        $arrVar['contato'],
-                        $arrVar['email'],
-                        $arrVar['endereco'],
-                        $arrVar['cidade'],
-                        $arrVar['estado'],
-                        $arrVar['cep'],                    
-                        $arrVar['descricao']                  
+    public function insertCliente($arrVar) {
+        $verify_exist = $this->getDataCliente($arrVar["documento"]);
+        if ($verify_exist["rows"] > 0) {
+            //verifica se existe um cpf ou cnpj.
+            if ($verify_exist["data"]["razaosocial"] === $arrVar["razaosocial"]) {
+                //verifica se a razao é igual, diga pro usuario que já existe!
+                echo "<script>alert('ERRO: Cliente já existe!');window.location.href='" . DIRPAGE . "/clientes?pagina=1'</script>";
+            } else {
+                echo "<script>alert('ERRO: Cnpj ou Cpf já existe!');window.location.href='" . DIRPAGE . "/clientes?pagina=1'</script>";
+            }
+        } else {
+            //faz o cadastro
+            $this->insertDB(
+                    "tb_clientes", "?,?,?,?,?,?,?,?,?,?", array(
+                0,
+                $arrVar['razaosocial'],
+                $arrVar['documento'],
+                $arrVar['contato'],
+                $arrVar['email'],
+                $arrVar['endereco'],
+                $arrVar['cidade'],
+                $arrVar['estado'],
+                $arrVar['cep'],
+                $arrVar['descricao']
                     )
             );
-            echo "<script>alert('{$arrVar['razaosocial']} cadastrado com Sucesso!');window.location.href='".DIRPAGE."/clientes?pagina=1'</script>";
-            
-        }
-        
-    }
-    static function getRazaoSocial() {
-        if(isset($_POST['razaosocial'])){
-            self::$razaoSocial = filter_input(INPUT_POST, 'razaosocial', FILTER_DEFAULT);
-            return self::$razaoSocial;
+
+            echo "<script>alert('Cadastrado com sucesso!');window.location.href='" . DIRPAGE . "/clientes?pagina=1'</script>";
         }
     }
 
-    static function getCNPJ() {
-        if(isset($_POST['cnpj'])){
-            self::$CNPJ = filter_input(INPUT_POST, 'cnpj', FILTER_DEFAULT);
-            return self::$CNPJ;
+    static function getRazaoSocial() {
+        if (isset($_POST['razaosocial'])) {
+            self::$razaoSocial = filter_input(INPUT_POST, 'razaosocial', FILTER_DEFAULT);
+            return ucwords(self::$razaoSocial);
+        }
+    }
+
+    static function getDocumento() {
+        if (isset($_POST['documento'])) {
+            self::$documento = filter_input(INPUT_POST, 'documento', FILTER_DEFAULT);
+            return self::$documento;
         }
     }
 
     static function getContato() {
-        if(isset($_POST['contato'])){
+        if (isset($_POST['contato'])) {
             self::$contato = filter_input(INPUT_POST, 'contato', FILTER_DEFAULT);
             return self::$contato;
         }
     }
 
     static function getEmail() {
-        if(isset($_POST['email'])){
+        if (isset($_POST['email'])) {
             self::$email = filter_input(INPUT_POST, 'email', FILTER_DEFAULT);
             return self::$email;
         }
     }
 
     static function getEndereco() {
-        if(isset($_POST['endereco'])){
+        if (isset($_POST['endereco'])) {
             self::$endereco = filter_input(INPUT_POST, 'endereco', FILTER_DEFAULT);
-            return self::$endereco;
+            return ucfirst(self::$endereco);
         }
     }
 
     static function getCidade() {
-        if(isset($_POST['cidade'])){
+        if (isset($_POST['cidade'])) {
             self::$cidade = filter_input(INPUT_POST, 'cidade', FILTER_DEFAULT);
-            return self::$cidade;
+            return ucwords(self::$cidade);
         }
     }
 
     static function getEstado() {
-        if(isset($_POST['estados'])){
+        if (isset($_POST['estados'])) {
             self::$estado = filter_input(INPUT_POST, 'estados', FILTER_DEFAULT);
-            return self::$estado;
+            return ucwords(self::$estado);
         }
     }
 
     static function getCep() {
-        if(isset($_POST['cep'])){
+        if (isset($_POST['cep'])) {
             self::$cep = filter_input(INPUT_POST, 'cep', FILTER_DEFAULT);
             return self::$cep;
         }
     }
 
     static function getDescricao() {
-        if(isset($_POST['descricao'])){
+        if (isset($_POST['descricao'])) {
             self::$descricao = filter_input(INPUT_POST, 'descricao', FILTER_DEFAULT);
-            return self::$descricao;
+            return ucfirst(self::$descricao);
         }
     }
+
     /**
      * retorna os dados do usuario
      */
-    public function getDataCliente($cnpj){
-        $select=$this->selectDB(
-             "*",
-                "tb_clientes",
-                "where cnpj=?",
-                array(
-                   $cnpj
+    public function getDataCliente($documento) {
+        $select = $this->selectDB(
+                "*", "tb_clientes", "where documento=?", array(
+            $documento
                 )
-            );
-    $fetch = $select->fetch(\PDO::FETCH_ASSOC);                          
-    $row = $select->rowCount();
-    return $arrData=[
-        "data"=>$fetch,
-        "rows"=>$row
+        );
+        $fetch = $select->fetch(\PDO::FETCH_ASSOC);
+        $row = $select->rowCount();
+        return $arrData = [
+            "data" => $fetch,
+            "rows" => $row
         ];
-    
     }
 
+    /**
+     * deleta a geminação do database
+     */
+    public function deleteDataCliente($id) {
+        $this->deleteDB(
+                "tb_clientes", "id=?", array(
+            $id
+                )
+        );
+    }
 
-    
-   
-        
-        
-        
-        
-    
-    
-   
-    
 }

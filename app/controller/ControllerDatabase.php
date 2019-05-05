@@ -8,6 +8,8 @@ namespace App\Controller;
  */
 use Src\database\ClassDatabase;
 use Src\Classes\ClassSessions;
+use Src\Classes\ClassValidate;
+
 
 class ControllerDatabase extends ClassDatabase{
     /**
@@ -15,8 +17,7 @@ class ControllerDatabase extends ClassDatabase{
      */
     public function __construct() {
               
-            $this->createDB();
-            $this->createTableUserDB();
+            $this->createDB();            
             $this->createTableAttemptDB();
             $this->createTableConfirmation();
             $this->createTableEspecies();
@@ -26,7 +27,10 @@ class ControllerDatabase extends ClassDatabase{
             $this->createTableGeminacao();
             $this->createTableViveiro();
             $this->createTableInsumos();
-        
+            $validate=new ClassValidate();
+        if($validate->validateUsuario("admin")===true){
+            $this->createTableUserDB();
+        }
                
     }
 }

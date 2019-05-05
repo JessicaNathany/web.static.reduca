@@ -55,7 +55,7 @@ class ClassDatabase extends ClassConexao{
             $nome = "Administrador do Sistema";
             $usuario = "admin";
             $email = "sgvmroot00@gmail.com";
-            $tipo = "super-admin"; 
+            $tipo = "admin"; 
             $arrVar=[
                 "nome"=>$nome,
                 "usuario"=>$usuario,
@@ -190,14 +190,13 @@ class ClassDatabase extends ClassConexao{
             $stmt="CREATE TABLE IF NOT EXISTS tb_clientes("
                     . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
                     . "razaosocial varchar(30),"
-                    . "cnpj varchar(30),"
-                    . "rg varchar (30),"
-                    . "contato mediumint(30) unsigned,"
+                    . "documento char(30),"
+                    . "contato char(30),"
                     . "email varchar(30),"
                     . "endereco varchar(30),"
                     . "cidade varchar(30),"
                     . "estado varchar(30),"
-                    . "cep mediumint(30),"
+                    . "cep char(30),"
                     . "descricao varchar(255)"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
             $con->exec($stmt);
@@ -220,12 +219,13 @@ class ClassDatabase extends ClassConexao{
             $stmt="CREATE TABLE IF NOT EXISTS tb_sementes("
                     . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
                     . "especie varchar(30),"
-                    . "dt datetime,"
+                    . "dt date,"
                     . "endereco varchar(30),"
                     . "cidade varchar(30),"
                     . "estado varchar(30),"
-                    . "cep mediumint(30),"
-                    . "descricao varchar(255)"
+                    . "cep char(30),"
+                    . "descricao varchar(255),"
+                    . "local varchar(30)"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
             $con->exec($stmt);
             echo "tb_sementes=> criada a tabela com sucesso!<br>";
@@ -247,7 +247,7 @@ class ClassDatabase extends ClassConexao{
             $stmt="CREATE TABLE IF NOT EXISTS tb_viveiro("
                     . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
                     . "nome varchar(30),"
-                    . "dt datetime,"
+                    . "dt date,"
                     . "manutencao varchar(30),"
                     . "endereco varchar(30),"
                     . "cidade varchar(30),"
@@ -275,7 +275,7 @@ class ClassDatabase extends ClassConexao{
             $stmt="CREATE TABLE IF NOT EXISTS tb_geminacao("
                     . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
                     . "especie varchar(30),"
-                    . "dt datetime,"
+                    . "dt date,"
                     . "qtde int(30),"
                     . "descricao varchar(255)"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
@@ -299,7 +299,7 @@ class ClassDatabase extends ClassConexao{
             $stmt="CREATE TABLE IF NOT EXISTS tb_repicagem("
                     . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
                     . "especies varchar (30),"
-                    . "dt datetime,"
+                    . "dt date,"
                     . "qtde int(30),"
                     . "descricao varchar(255)"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";

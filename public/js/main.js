@@ -1,3 +1,22 @@
+/* global resposta */
+
+function btn_excluir(id){
+    var resposta = confirm("Deseja excluir o registro?");
+    
+    if(resposta === true){
+        window.location.href ="?pagina=1&&id="+id;        
+        
+    }
+    
+}
+/**
+ * 
+ * @returns {String}
+ */
+function getRoot(){
+    var root="http://"+document.location.hostname+"/sgvm/";
+    return root;
+}
 /**
  * 
  * @returns {undefined}
@@ -14,14 +33,7 @@ function hideForm(){
         document.getElementById("cadastrarfunc").style.display="none";
         document.getElementById("tabelafunc").style.display="block";
    }
-/**
- * 
- * @returns {String}
- */
-function getRoot(){
-    var root="http://"+document.location.hostname+"/MVC_php/";
-    return root;
-}
+
 
 
 /**

@@ -47,13 +47,15 @@ class ControllerInsumos extends ClassRender implements InterfaceView{
          $validate->validateFields($_POST);
             if($validate->getErro() === ""){
                 $data->insertInsumo($arrVar);
-            }else{
-                
-        }
+            }
         }    
-        
-        
     }
-    
-
+    # evento do botão excluir
+    private function btn_excluir_event(){
+        if(isset($_REQUEST["id"])){
+            $id=$_REQUEST["id"];
+            $insumo = new ClassInsumos();
+            $insumo->deleteDataInsumo($id);
+        }
+    }
 }

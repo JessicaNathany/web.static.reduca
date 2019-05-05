@@ -10,9 +10,11 @@ use App\Model\ClassLogin;
 use ZxcvbnPhp\Zxcvbn;
 use Src\Classes\ClassPassword;
 use Src\Classes\ClassSessions;
+use App\Model\ClassCrud;
+use PDO;
 
 
-class ClassValidate {
+class ClassValidate extends ClassCrud{
     /**
      * 
      */
@@ -53,7 +55,7 @@ class ClassValidate {
     function getErro() {
         $msg = "";
         if($this->erro == 1){
-            $msg = "Preencha todos os dados!";
+            $msg = "Preencha todos os Campos!";
            
         }
         if($this->erro == 2){
@@ -62,6 +64,7 @@ class ClassValidate {
         }
         if($this->erro == 3){
              $msg = "Email ja cadastrado no sistema!";
+              
             
         }
         if($this->erro == 4){
@@ -121,9 +124,10 @@ class ClassValidate {
         else{
             //Preencha todos os dados!
             $this->setErro(1);
+            echo "<script>alert('{$this->getErro(1)}');window.location.href='".DIRPAGE."/{$_GET['url']}?pagina=1'</script>";
+            }
             return false;
-            echo "<script>alert('{$this->getErro(1)}');window.location.href='".DIRPAGE."{$_GET['url']}'</script>";
-        }
+            
     }
     /**
      * 
@@ -136,7 +140,7 @@ class ClassValidate {
             //Email invalido!
             $this->setErro(2);
             return false;
-            echo "<script>alert('{$this->getErro(2)}');window.location.href='".DIRPAGE."{$_GET['url']}'</script>";
+            echo "<script>alert('{$this->getErro(2)}');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
         }
     }
     /**
@@ -150,8 +154,9 @@ class ClassValidate {
             if($select > 0){
                 //"Email ja cadastrado no sistema!"
                 $this->setErro(3);
+                echo "<script>alert('{$email} Já existe!');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
                 return false;
-                echo "<script>alert('{$email} Já existe!');window.location.href='".DIRPAGE."{$_GET['url']}'</script>";
+                
             }else{
                 return true;
             }
@@ -176,7 +181,7 @@ class ClassValidate {
         }else{
             //"Senha diferente de confirmacao de senha!"
             $this->setErro(5);
-            echo "<script>alert('Senha diferente!');window.location.href='".DIRPAGE."{$_GET['url']}'</script>";
+            echo "<script>alert('Senha diferente!');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
         }
     }
     /**
@@ -195,7 +200,7 @@ class ClassValidate {
            }else{
                //"A Senha deve conter 8 caracteres!"
                $this->setErro(6);
-               echo "<script>alert('A Senha deve conter mais de 8 caracteres');window.location.href='".DIRPAGE."{$_GET['url']}'</script>";
+               echo "<script>alert('A Senha deve conter mais de 8 caracteres');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
            }
        }else{
            /* login */
@@ -211,9 +216,14 @@ class ClassValidate {
             return true;
         }else{
             //"Usuário ou Senha Inválidos!"
-            $this->setErro(7);
-            echo "<script>alert('Usuário ou senha invalido');window.location.href='".DIRPAGE."{$_GET['url']}'</script>";
-            
+            $this->setErro(7);           
+           
+           $cont=$this->login->contBloq();
+           if($cont >= 5){
+               $this->verifyBloq($usuario);
+           }else{
+               echo "<script>alert('Usuário ou senha invalido');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
+           }
         }
     }
     /**
@@ -243,8 +253,9 @@ class ClassValidate {
             if($select > 0){
                 //"Usuario ja cadastrado no sistema!"
                 $this->setErro(9);
+                echo "<script>alert('{$user} Já existe!');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
                 return false;
-                echo "<script>alert('{$user} Já existe!');window.location.href='".DIRPAGE."{$_GET['url']}'</script>";
+                
             }else{
                 return true;
             }
@@ -294,7 +305,7 @@ class ClassValidate {
             //"Você realizou mais de 5 tentativas!"
             $this->setErro(11);
             $this->tentativas=true;
-            echo "<script>alert('Usuário Bloqueado');window.location.href='".DIRPAGE."{$_GET['url']}'</script>";
+            echo "<script>alert('Usuário Bloqueado');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
             return false;
         }else{
             $this->tentativas=false;
@@ -306,15 +317,56 @@ class ClassValidate {
      * 
      */
     public function validateFinalLogin($usuario){
-        if(!empty($this->getErro())){
-            $this->login->insertAttempt();
-            return false;
+        $verify_bloq=$this->login->getDataUser($usuario);
+        if($verify_bloq["data"]["status"]!=="bloq"){            
+            if(!empty($this->getErro())){
+                $this->login->insertAttempt();
+                return false;
+            }else{
+                $this->login->deleteAttempt();
+                $this->session->setSessions($usuario);
+                return true;
+            }
         }else{
-            $this->login->deleteAttempt();
-            $this->session->setSessions($usuario);
-            return true;
+            echo "<script>alert('Usuário Bloqueado! Contate o Admin.');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
         }
     }
-    
+    /**
+     * 
+     */
+    public function verifyBloq($usuario){
+        $contA=$this->login->contBloq();
+        
+        if($contA >=5){
+           $verify_exist=$this->login->getDataUser($usuario);
+           if($verify_exist["rows"]>0){
+               if($verify_exist["data"]["status"]!=="bloq"){
+                    $sql = "update tb_users set status = :status where usuario= :usuario";
+                    $pdo=$this->conexaoDB();
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute(array(
+                        ':usuario' => $usuario,
+                        ':status' => "bloq"                  
+                    ));
+                    if($stmt->rowCount()>0){
+                        echo "<script>alert('Usuário Bloqueado!');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
+                    }
+               }else{
+                   echo "<script>alert('Usuário Bloqueado!');window.location.href='".DIRPAGE."/{$_GET['url']}'</script>";
+               }
+               
+           }
+        }else{            
+            $sql = "update tb_users set status = :status where usuario= :usuario";
+            $pdo=$this->conexaoDB();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(array(
+                ':usuario' => $usuario,
+                 ':status' => "null"                  
+                ));                                    
+        }
+    }
     
 } 

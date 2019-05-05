@@ -10,8 +10,9 @@ namespace App\Controller;
 
 use Src\Classes\ClassHelperUser as help;
 use App\Model\ClassEspecies;
-
 use App\Model\ClassCliente as cliente;
+use App\Model\ClassLogin;
+use App\Model\ClassGeminacao;
 
 
 class ControllerTeste {
@@ -19,18 +20,11 @@ class ControllerTeste {
      * metodo construtor da classe de controler do Usuario.
      */
     public function __construct() {
+        $geminacao=new ClassGeminacao();
+        $oi=$geminacao->getDataGeminacao("araca vermelho");
+        var_dump($oi);
 
-        $especie = new ClassEspecies();
-        $oi=$especie->getDataEspecie("wanclei");
         
-        print_r($oi["data"]["habito"]);
-
-        $cnpj = "76323649000105";
-        $cliente = new cliente();
-        $data = $cliente->getDataCliente($cnpj);
-        echo $data["data"]["razaosocial"];
-        echo $data["data"]["cnpj"];
-        echo $data["data"]["contato"];
         
     }   
 }

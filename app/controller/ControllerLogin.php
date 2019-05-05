@@ -11,6 +11,7 @@ use Src\Classes\ClassRender;
 use Src\Classes\ClassValidate;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassHelperUser;
+use App\Model\ClassLogin;
 
 
 
@@ -52,8 +53,7 @@ class ControllerLogin extends ClassRender implements InterfaceView{
         /**
          * 
          */
-        if(!empty($_POST)){ 
-            
+        if(!empty($_POST)){             
             $usuario = $post::getUsuario();
             $senha = $post::getSenha();         
             $arrVar = [
@@ -66,17 +66,10 @@ class ControllerLogin extends ClassRender implements InterfaceView{
             $verify = $validate->validateSenha($usuario, $senha);            
             $validate->validateAttemptLogin();           
             $validate->validateFinalLogin($usuario);
-            
-            echo '<div class="" style="color:red; font-weight:bold;">'.$validate->getErro().'</div>';
-            
+                        
             if($_SESSION == true && $verify ==true){
                echo "<script>window.location.href='".DIRPAGE.'/home'."';</script>"; 
-            }
-                
-            
-            
-            
-            
+            }                      
         }else{            
            //echo "<script language='javascript' type='text/javascript'>alert('Erro ao fazer login!');window.location.href='".$DIRREQ."';</script>";              
             
