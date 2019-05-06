@@ -26,10 +26,11 @@ class ClassCliente extends ClassCrud {
     static $documento;
     static $contato;
     static $email;
-    static $endereco;
-    static $cidade;
-    static $estado;
     static $cep;
+    static $endereco;
+    static $bairro;
+    static $cidade;
+    static $uf;    
     static $descricao;
     private $trait;
     private $dateNow;
@@ -54,16 +55,17 @@ class ClassCliente extends ClassCrud {
         } else {
             //faz o cadastro
             $this->insertDB(
-                    "tb_clientes", "?,?,?,?,?,?,?,?,?,?", array(
+                    "tb_clientes", "?,?,?,?,?,?,?,?,?,?,?", array(
                 0,
                 $arrVar['razaosocial'],
                 $arrVar['documento'],
                 $arrVar['contato'],
                 $arrVar['email'],
-                $arrVar['endereco'],
-                $arrVar['cidade'],
-                $arrVar['estado'],
                 $arrVar['cep'],
+                $arrVar['endereco'],
+                $arrVar['bairro'],
+                $arrVar['cidade'],
+                $arrVar['uf'],                
                 $arrVar['descricao']
                     )
             );
@@ -106,6 +108,12 @@ class ClassCliente extends ClassCrud {
             return ucfirst(self::$endereco);
         }
     }
+    static function getBairro() {
+        if (isset($_POST['bairro'])) {
+            self::$bairro = filter_input(INPUT_POST, 'bairro', FILTER_DEFAULT);
+            return ucfirst(self::$bairro);
+        }
+    }
 
     static function getCidade() {
         if (isset($_POST['cidade'])) {
@@ -114,10 +122,10 @@ class ClassCliente extends ClassCrud {
         }
     }
 
-    static function getEstado() {
-        if (isset($_POST['estados'])) {
-            self::$estado = filter_input(INPUT_POST, 'estados', FILTER_DEFAULT);
-            return ucwords(self::$estado);
+    static function getUF() {
+        if (isset($_POST['uf'])) {
+            self::$uf = filter_input(INPUT_POST, 'uf', FILTER_DEFAULT);
+            return ucwords(self::$uf);
         }
     }
 

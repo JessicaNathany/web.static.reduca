@@ -12,6 +12,7 @@ use Src\Classes\ClassValidate as validate;
 use App\Model\ClassGeminacao as geminacao;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassSessions;
+use Src\Classes\ClassExport;
 
 class ControllerGeminacao extends ClassRender implements InterfaceView{
     
@@ -25,6 +26,7 @@ class ControllerGeminacao extends ClassRender implements InterfaceView{
         $this->setDir("geminacao");
         $this->renderLayout();
         $this->btn_excluir_event();
+        $this->btn_export_event();
         $this->Main();
         $session= new ClassSessions();
         $session->verifyInsideSession("padrao");
@@ -57,8 +59,14 @@ class ControllerGeminacao extends ClassRender implements InterfaceView{
             $geminacao = new geminacao();
             $geminacao->deleteDataGeminacao($id);
         }
-        else{
-            $_REQUEST["id"]=0;
+    }
+    /**
+     * Função do evento do botão excluir
+     */
+    private function btn_export_event(){
+        if(isset($_REQUEST["pagina"])&& $_REQUEST["pagina"]==0){
+             $export=new ClassExport();
+             $export->gerarExcelGeminacao("Tabela Geminacao");
         }
     }
 

@@ -1,5 +1,5 @@
-<!--VIEW @Repicagem -->
 <?php
+#<!--VIEW @Repicagem -->
 include DIRREQ . '/src/helpers/data.php';
 include DIRREQ . '/src/helpers/paginationRepicagem.php';
 ?>
@@ -43,7 +43,7 @@ include DIRREQ . '/src/helpers/paginationRepicagem.php';
                             <?= $data['id'] ?>
                         </div>
                         <div class="cell" data-title="Especies">
-                            <?= $data['especies'] ?>
+                            <?= $data['especie'] ?>
                         </div>
                         <div class="cell" data-title="Data">
                             <?= $data['dt'] ?>
@@ -95,7 +95,7 @@ include DIRREQ . '/src/helpers/paginationRepicagem.php';
             }
             ?>
         </div>
-        <a href="" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
+        <a href="<?=DIRPAGE.'/repicagem?pagina=0'?>" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
         <button class='btn btn-success btn-lg' type='button' onclick="showForm()" name="novo"><span class="glyphicon glyphicon-plus"></span></button>    
     </div>
 
@@ -107,9 +107,9 @@ include DIRREQ . '/src/helpers/paginationRepicagem.php';
         <h1 style='font-weight:bold;'>Repicagem</h1>
         <hr>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="especies">Nome Popular da especie:</label>
+            <label class="control-label col-sm-2" for="especie">Nome Popular da especie:</label>
             <div class="col-sm-5">
-                <input type="text" name="especies" id="especies" class="form-control">
+                <input type="text" name="especie" id="especies" class="form-control">
             </div>
         </div>
 

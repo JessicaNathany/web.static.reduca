@@ -14,6 +14,7 @@ use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassSessions;
 use App\Model\ClassEspecies as especies;
 use Src\Classes\ClassValidate as validate;
+use Src\Classes\ClassExport;
 
 class ControllerEspecies extends ClassRender implements InterfaceView {
 
@@ -27,6 +28,7 @@ class ControllerEspecies extends ClassRender implements InterfaceView {
         $this->setDir("especies");
         $this->Main();
         $this->btn_excluir_event();
+        $this->btn_export_event();
         $this->renderLayout();
         $session = new ClassSessions();
         $session->verifyInsideSession("padrao");
@@ -56,7 +58,7 @@ class ControllerEspecies extends ClassRender implements InterfaceView {
                 ];
                 $validate->validateFields($_POST);
                 if ($validate->getErro() == "") {
-                    $especies->insertEspecie($arrVar, $especies::getNomePopular());
+                    $especies->insertEspecie($arrVar);
                 }
             }
         }
@@ -69,6 +71,15 @@ class ControllerEspecies extends ClassRender implements InterfaceView {
             $id = $_REQUEST["id"];
             $especie = new especies();
             $especie->deleteDataEspecie($id);
+        }
+    }
+    /**
+     * Função do evento do botão excluir
+     */
+    private function btn_export_event(){
+        if(isset($_REQUEST["pagina"])&& $_REQUEST["pagina"]==0){
+             $export=new ClassExport();
+             $export->gerarExcelEspecie("Tabela Especies");
         }
     }
 

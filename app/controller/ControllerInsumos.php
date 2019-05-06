@@ -12,6 +12,7 @@ use Src\Classes\ClassValidate;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassSessions;
 use App\Model\ClassInsumos;
+use Src\Classes\ClassExport;
 
 class ControllerInsumos extends ClassRender implements InterfaceView{
     
@@ -24,6 +25,8 @@ class ControllerInsumos extends ClassRender implements InterfaceView{
         $this->setKeywords("");
         $this->setDir("insumos");
         $this->Main();
+        $this->btn_excluir_event();
+        $this->btn_export_event();
         $this->renderLayout();
         $session= new ClassSessions();
         $session->verifyInsideSession("padrao");
@@ -56,6 +59,15 @@ class ControllerInsumos extends ClassRender implements InterfaceView{
             $id=$_REQUEST["id"];
             $insumo = new ClassInsumos();
             $insumo->deleteDataInsumo($id);
+        }
+    }
+    /**
+     * Função do evento do botão excluir
+     */
+    private function btn_export_event(){
+        if(isset($_REQUEST["pagina"])&& $_REQUEST["pagina"]==0){
+             $export=new ClassExport();
+             $export->gerarExcelInsumos("Tabela Insumos");
         }
     }
 }

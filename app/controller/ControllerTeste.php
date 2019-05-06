@@ -13,6 +13,9 @@ use App\Model\ClassEspecies;
 use App\Model\ClassCliente as cliente;
 use App\Model\ClassLogin;
 use App\Model\ClassGeminacao;
+use App\Model\ClassViveiros;
+use App\Model\Json;
+use App\Model\ClassExport;
 
 
 class ControllerTeste {
@@ -20,10 +23,8 @@ class ControllerTeste {
      * metodo construtor da classe de controler do Usuario.
      */
     public function __construct() {
-        $geminacao=new ClassGeminacao();
-        $oi=$geminacao->getDataGeminacao("araca vermelho");
-        var_dump($oi);
-
+        $ex=new ClassExport();
+        $ex->exportJson("tb_viveiro");
         
         
     }   

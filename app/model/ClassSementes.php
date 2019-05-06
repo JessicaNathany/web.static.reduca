@@ -23,13 +23,14 @@ class ClassSementes extends ClassCrud {
      *
      * @var type 
      */
-    static $especies;
     static $local;
+    static $especie;
     static $data;
-    static $endereco;
-    static $cidade;
-    static $estado;
     static $cep;
+    static $endereco;
+    static $bairro;
+    static $cidade;
+    static $uf;
     static $descricao;
     private $trait;
     private $dateNow;
@@ -61,16 +62,17 @@ class ClassSementes extends ClassCrud {
                     } else {
                         //insere na tabela repicagem
                         $this->insertDB(
-                                "tb_sementes", "?,?,?,?,?,?,?,?,?", array(
+                                "tb_sementes", "?,?,?,?,?,?,?,?,?,?", array(
                             0,
+                            $arrVar['local'],
                             $arrVar['especies'],
                             $arrVar['data'],
-                            $arrVar['endereco'],
-                            $arrVar['cidade'],
-                            $arrVar['estado'],
                             $arrVar['cep'],
-                            $arrVar['descricao'],
-                            $arrVar['local']
+                            $arrVar['endereco'],
+                            $arrVar['bairro'],
+                            $arrVar['cidade'],
+                            $arrVar['uf'],
+                            $arrVar['descricao']
                                 )
                         );
                         echo "<script>alert('Cadastrado com sucesso!');window.location.href='" . DIRPAGE . "/coleta_sementes?pagina=1'</script>";
@@ -78,16 +80,17 @@ class ClassSementes extends ClassCrud {
                 } else {
                     //insere na tabela repicagem
                     $this->insertDB(
-                            "tb_sementes", "?,?,?,?,?,?,?,?,?", array(
+                            "tb_sementes", "?,?,?,?,?,?,?,?,?,?", array(
                         0,
+                        $arrVar['local'],
                         $arrVar['especies'],
                         $arrVar['data'],
-                        $arrVar['endereco'],
-                        $arrVar['cidade'],
-                        $arrVar['estado'],
                         $arrVar['cep'],
-                        $arrVar['descricao'],
-                        $arrVar['local']
+                        $arrVar['endereco'],
+                        $arrVar['bairro'],
+                        $arrVar['cidade'],
+                        $arrVar['uf'],
+                        $arrVar['descricao']
                             )
                     );
                     echo "<script>alert('Cadastrado com sucesso!');window.location.href='" . DIRPAGE . "/coleta_sementes?pagina=1'</script>";
@@ -95,16 +98,17 @@ class ClassSementes extends ClassCrud {
             } else {
                 //insere na tabela repicagem.
                 $this->insertDB(
-                        "tb_sementes", "?,?,?,?,?,?,?,?,?", array(
+                        "tb_sementes", "?,?,?,?,?,?,?,?,?,?", array(
                     0,
+                    $arrVar['local'],
                     $arrVar['especies'],
                     $arrVar['data'],
-                    $arrVar['endereco'],
-                    $arrVar['cidade'],
-                    $arrVar['estado'],
                     $arrVar['cep'],
-                    $arrVar['descricao'],
-                    $arrVar['local']
+                    $arrVar['endereco'],
+                    $arrVar['bairro'],
+                    $arrVar['cidade'],
+                    $arrVar['uf'],
+                    $arrVar['descricao']
                         )
                 );
                 echo "<script>alert('Cadastrado com sucesso!');window.location.href='" . DIRPAGE . "/coleta_sementes?pagina=1'</script>";
@@ -141,6 +145,12 @@ class ClassSementes extends ClassCrud {
             return ucfirst(self::$endereco);
         }
     }
+    static function getBairro() {
+        if (isset($_POST['bairro'])) {
+            self::$bairro = filter_input(INPUT_POST, 'bairro', FILTER_DEFAULT);
+            return ucwords(self::$bairro);
+        }
+    }
 
     static function getCidade() {
         if (isset($_POST['cidade'])) {
@@ -149,10 +159,10 @@ class ClassSementes extends ClassCrud {
         }
     }
 
-    static function getEstado() {
-        if (isset($_POST['estado'])) {
-            self::$estado = filter_input(INPUT_POST, 'estado', FILTER_DEFAULT);
-            return ucwords(self::$estado);
+    static function getUF() {
+        if (isset($_POST['uf'])) {
+            self::$uf = filter_input(INPUT_POST, 'uf', FILTER_DEFAULT);
+            return ucwords(self::$uf);
         }
     }
 

@@ -1,5 +1,5 @@
-<!--VIEW @Insumos -->
 <?php
+#<!--VIEW @Insumos -->
 include DIRREQ . '/src/helpers/data.php';
 include DIRREQ . '/src/helpers/paginationInsumos.php';
 ?>      
@@ -56,7 +56,7 @@ include DIRREQ . '/src/helpers/paginationInsumos.php';
                         </div>
                         <div class="cell" data-title="Ações">
                             <button class='btn btn-sm btn-warning' type='button'>Editar <span class='glyphicon glyphicon-pencil'></span></button>
-                            <button class='btn btn-sm btn-danger ' type='submit' id='btn_excluir' name="btn_excluir" onclick="btn_excluir()">Excluir <span class='glyphicon glyphicon-trash'></span></button>
+                            <button class='btn btn-sm btn-danger ' type='submit' id='btn_excluir' name="btn_excluir" onclick="btn_excluir(<?= $data["id"] ?>)">Excluir <span class='glyphicon glyphicon-trash'></span></button>
                             <button class='btn btn-sm btn-info' type='button' data-toggle='modal' data-target='#info<?= $data["id"] ?>'><span class='glyphicon glyphicon-info-sign'></span></button>
                         </div>
                     </div>
@@ -89,13 +89,13 @@ include DIRREQ . '/src/helpers/paginationInsumos.php';
 
             <?php if ($pc < $tp) { ?>
                 <a href="?pagina=<?= $proximo ?>"><button class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-forward'></button></a>
-            <?php
+                <?php
             } else {
                 
             }
             ?>
         </div>
-        <a href="#" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
+        <a href="<?= DIRPAGE . '/insumos?pagina=0' ?>" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
         <button class='btn btn-success btn-lg' type='button' onclick="showForm()" name="novo"><span class="glyphicon glyphicon-plus"></span></button>    
     </div>
 
@@ -149,7 +149,7 @@ include DIRREQ . '/src/helpers/paginationInsumos.php';
             <label class="control-label col-sm-2"></label>
             <div class="col-sm-3">
                 <input type="submit" name="btn_enviar" id="nome" value="Enviar" class="btn btn-success" >
-                <input type="submit" name="btn_voltar" id="nome" value="Voltar" class="btn btn-primary" onclick="hideForm()">
+                <input type="submit" name="btn_voltar" id="nome" value="Voltar" class="btn btn-primary" onclick="reload();">
             </div>
         </div>
     </form>

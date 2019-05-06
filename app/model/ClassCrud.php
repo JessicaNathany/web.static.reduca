@@ -61,4 +61,21 @@ class ClassCrud extends ClassConexao{
         $this->prepareExecute("update {$table} set {$values} where {$where}", $exec);
         return $this->crud;
     }
+    /**
+     * pega todos os campos da tabela viveiro
+     */
+    public function getAllData($table) {
+        $stmt = "SELECT * FROM {$table}";
+        $data = $this->conexaoDB()->prepare($stmt);
+        $data->execute();
+        $result=$data->fetchAll(\PDO::FETCH_ASSOC);
+        $fetch=array();
+        
+        foreach($result as $key => $value){
+            foreach ($value as $k => $v){
+                $fetch[$key][$k]= utf8_encode($v);
+            }
+        }
+        return $fetch;
+    }
 }

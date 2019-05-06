@@ -12,6 +12,7 @@ use Src\Classes\ClassValidate;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassSessions;
 use App\Model\ClassSementes;
+use Src\Classes\ClassExport;
 
 class ControllerColeta_sementes extends ClassRender implements InterfaceView{
     
@@ -24,6 +25,7 @@ class ControllerColeta_sementes extends ClassRender implements InterfaceView{
         $this->setKeywords("");
         $this->setDir("coleta_sementes");
         $this->btn_excluir_event();
+        $this->btn_export_event();
         $this->main();
         $this->renderLayout();
         $session= new ClassSessions();
@@ -39,14 +41,15 @@ class ControllerColeta_sementes extends ClassRender implements InterfaceView{
         
         if(!empty($_POST)){
             $arrVar=[
+                "local"=>$sementes::getLocal(),
                 "especies"=>$sementes::getEspecie(),
                 "data"=>$sementes::getData(),
-                "endereco"=>$sementes::getEndereco(),
-                "cidade"=>$sementes::getCidade(),
-                "estado"=>$sementes::getEstado(),
                 "cep"=>$sementes::getCep(),
-                "descricao"=>$sementes::getDescricao(),
-                "local"=>$sementes::getLocal()
+                "endereco"=>$sementes::getEndereco(),
+                "bairro"=>$sementes::getBairro(),
+                "cidade"=>$sementes::getCidade(),
+                "uf"=>$sementes::getUF(),                
+                "descricao"=>$sementes::getDescricao()              
             ];
             $validate->validateFields($_POST);
                 if($validate->getErro()===""){
@@ -61,6 +64,15 @@ class ControllerColeta_sementes extends ClassRender implements InterfaceView{
             $id=$_REQUEST["id"];
             $semente = new ClassSementes();
             $semente->deleteDataSementes($id);
+        }
+    }
+    /**
+     * Função do evento do botão excluir
+     */
+    private function btn_export_event(){
+        if(isset($_REQUEST["pagina"])&& $_REQUEST["pagina"]==0){
+             $export=new ClassExport();
+             $export->gerarExcelSementes("Tabela Sementes");
         }
     }
 

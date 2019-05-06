@@ -28,6 +28,8 @@ class ClassDatabase extends ClassConexao{
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt="CREATE DATABASE IF NOT EXISTS {$this->nameDB}";
             $con->exec($stmt);
+            $stmt="ALTER DATABASE $this->nameDB CHARSET = UTF8 COLLATE = utf8_general_ci;";
+            $con->exec($stmt);
             echo "database=> criada com sucesso!<br>";
         } catch (PDOException $e) {
             echo $stmt . "<br>" .$e->getMessage();
@@ -95,7 +97,7 @@ class ClassDatabase extends ClassConexao{
             $con->exec($stmt);
             
             if($con == true){
-                $this->insertAdministrador();
+                //$this->insertAdministrador();
             }
             echo "tb_users=> criado com sucesso!<br>";
         } catch (PDOException $e) {
@@ -193,10 +195,11 @@ class ClassDatabase extends ClassConexao{
                     . "documento char(30),"
                     . "contato char(30),"
                     . "email varchar(30),"
-                    . "endereco varchar(30),"
-                    . "cidade varchar(30),"
-                    . "estado varchar(30),"
                     . "cep char(30),"
+                    . "endereco varchar(30),"
+                    . "bairro varchar(30),"
+                    . "cidade varchar(30),"
+                    . "uf varchar(2),"
                     . "descricao varchar(255)"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
             $con->exec($stmt);
@@ -218,14 +221,15 @@ class ClassDatabase extends ClassConexao{
             $stmt="";
             $stmt="CREATE TABLE IF NOT EXISTS tb_sementes("
                     . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
+                    . "local varchar(30),"
                     . "especie varchar(30),"
                     . "dt date,"
-                    . "endereco varchar(30),"
-                    . "cidade varchar(30),"
-                    . "estado varchar(30),"
                     . "cep char(30),"
-                    . "descricao varchar(255),"
-                    . "local varchar(30)"
+                    . "endereco varchar(30),"
+                    . "bairro varchar(30),"
+                    . "cidade varchar(30),"
+                    . "uf varchar(2),"                 
+                    . "descricao varchar(255)"                   
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
             $con->exec($stmt);
             echo "tb_sementes=> criada a tabela com sucesso!<br>";
@@ -246,13 +250,14 @@ class ClassDatabase extends ClassConexao{
             $stmt="";
             $stmt="CREATE TABLE IF NOT EXISTS tb_viveiro("
                     . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
+                    . "local varchar(30),"
                     . "nome varchar(30),"
                     . "dt date,"
-                    . "manutencao varchar(30),"
+                    . "manutencao date,"
+                    . "cep char(20),"
                     . "endereco varchar(30),"
-                    . "cidade varchar(30),"
-                    . "estado varchar(30),"
-                    . "cep mediumint(30),"
+                    . "cidade varchar(15),"
+                    . "estado varchar(2),"
                     . "descricao varchar(255)"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
             $con->exec($stmt);
@@ -330,6 +335,30 @@ class ClassDatabase extends ClassConexao{
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
             $con->exec($stmt);
             echo "tb_insumos=> criada a tabela com sucesso!<br>";
+        } catch (PDOException $e) {
+            echo $stmt . "<br>" .$e->getMessage(); 
+        }
+    }
+    /**
+     * 
+     * 
+     */
+    public function createTableDescartes(){
+        try{
+            $con=$this->conexaoDB();
+            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt="use ".$this->nameDB;
+            $con->exec($stmt);
+            $stmt="";
+            $stmt="CREATE TABLE IF NOT EXISTS tb_descartes("
+                    . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
+                    . "especie varchar(30),"
+                    . "dt date,"
+                    . "qtde int(30),"
+                    . "motivo varchar(30)"
+                    . ")AUTO_INCREMENT=1 ENGINE=INNODB";
+            $con->exec($stmt);
+            echo "tb_descartes=> criada a tabela com sucesso!<br>";
         } catch (PDOException $e) {
             echo $stmt . "<br>" .$e->getMessage(); 
         }

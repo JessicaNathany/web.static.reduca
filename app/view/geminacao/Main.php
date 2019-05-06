@@ -1,5 +1,5 @@
-<!--VIEW @Geminação -->
 <?php
+#<!--VIEW @Geminação -->
 include DIRREQ . '/src/helpers/data.php';
 include DIRREQ . '/src/helpers/paginationGeminacao.php';
 ?>      
@@ -91,7 +91,7 @@ include DIRREQ . '/src/helpers/paginationGeminacao.php';
             }
             ?>
         </div>
-        <a href="#" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
+        <a href="<?=DIRPAGE.'/geminacao?pagina=0'?>" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
         <button class='btn btn-success btn-lg' type='button' onclick="showForm()" name="novo"><span class="glyphicon glyphicon-plus"></span></button>    
     </div>
 
@@ -134,7 +134,7 @@ include DIRREQ . '/src/helpers/paginationGeminacao.php';
             <label class="control-label col-sm-2" for=""></label>
             <div class="col-sm-3">
                 <input type="submit" name="btn_enviar" id="btn_enviar" value="Enviar" class="btn btn-success">
-                <input type="submit" name="btn_voltar" id="btn_voltar" value="Voltar" class="btn btn-primary" onclick="hideForm()">
+                <input type="submit" name="btn_voltar" id="btn_voltar" value="Voltar" class="btn btn-primary" onclick="reload();">
             </div>
         </div>
     </form>

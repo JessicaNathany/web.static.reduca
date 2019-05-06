@@ -12,6 +12,7 @@ use Src\Classes\ClassValidate as validate;
 use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassSessions;
 use App\Model\ClassCliente as clientes;
+use Src\Classes\ClassExport;
 
 
 class ControllerClientes extends ClassRender implements InterfaceView{
@@ -27,6 +28,7 @@ class ControllerClientes extends ClassRender implements InterfaceView{
             $this->setDir("clientes");
             $this->renderLayout();
             $this->btn_excluir_event();
+            $this->btn_export_event();
             $this->Main();
             $session= new ClassSessions();
             $session->verifyInsideSession("padrao");
@@ -43,11 +45,12 @@ class ControllerClientes extends ClassRender implements InterfaceView{
                 "razaosocial"=> $cliente::getRazaoSocial(),
                 "documento"=>$cliente::getDocumento(),               
                 "contato"=>$cliente::getContato(),
-                "email"=>$cliente::getEmail(),              
-                "endereco"=>$cliente::getEndereco(),
-                "cidade"=>$cliente::getCidade(),
-                "estado"=>$cliente::getEstado(),
+                "email"=>$cliente::getEmail(),
                 "cep"=>$cliente::getCep(),
+                "endereco"=>$cliente::getEndereco(),
+                "bairro"=>$cliente::getBairro(),
+                "cidade"=>$cliente::getCidade(),
+                "uf"=>$cliente::getUF(),                
                 "descricao"=>$cliente::getDescricao()
             ];
 
@@ -65,6 +68,15 @@ class ControllerClientes extends ClassRender implements InterfaceView{
             $id=$_REQUEST["id"];
             $cliente = new clientes();
             $cliente->deleteDataCliente($id);
+        }
+    }
+    /**
+     * Função do evento do botão excluir
+     */
+    private function btn_export_event(){
+        if(isset($_REQUEST["pagina"])&& $_REQUEST["pagina"]==0){
+             $export=new ClassExport();
+             $export->gerarExcelCliente("Tabela Clientes");
         }
     }
 

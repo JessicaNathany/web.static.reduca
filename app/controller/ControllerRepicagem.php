@@ -12,6 +12,7 @@ use Src\Interfaces\InterfaceView;
 use Src\Classes\ClassSessions;
 use App\Model\ClassRepicagem;
 use Src\Classes\ClassValidate;
+use Src\Classes\ClassExport;
 
 class ControllerRepicagem extends ClassRender implements InterfaceView{
     
@@ -24,6 +25,7 @@ class ControllerRepicagem extends ClassRender implements InterfaceView{
         $this->setKeywords("");
         $this->setDir("repicagem");
         $this->btn_excluir_event();
+        $this->btn_export_event();
         $this->Main();
         $this->renderLayout();
         $session= new ClassSessions();
@@ -38,11 +40,12 @@ class ControllerRepicagem extends ClassRender implements InterfaceView{
         $validate=new ClassValidate();
         if(!empty($_POST)){
             $arrVar=[
-            "especies"=>$repicagem::getEspecie(),
+            "especie"=>$repicagem::getEspecie(),
             "data"=>$repicagem::getData(),
             "qtde"=>$repicagem::getQtde(),
-            "descricao"=>$repicagem::getDescricao(),
-            "material"=>$repicagem::getMaterial()
+            "material"=>$repicagem::getMaterial(),
+            "descricao"=>$repicagem::getDescricao()
+            
         ];
         $validate->validateFields($_POST);
         if($validate->getErro()===""){
@@ -56,6 +59,15 @@ class ControllerRepicagem extends ClassRender implements InterfaceView{
             $id=$_REQUEST["id"];
             $repicagem = new ClassRepicagem();
             $repicagem->deleteDataRepicagem($id);
+        }
+    }
+    /**
+     * Função do evento do botão excluir
+     */
+    private function btn_export_event(){
+        if(isset($_REQUEST["pagina"])&& $_REQUEST["pagina"]==0){
+             $export=new ClassExport();
+             $export->gerarExcelRepicagem("Tabela Repicagem");
         }
     }
 

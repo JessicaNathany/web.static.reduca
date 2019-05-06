@@ -1,5 +1,5 @@
-<!--VIEW @Sementes -->
 <?php
+#<!--VIEW @Sementes -->
 include DIRREQ . '/src/helpers/data.php';
 include DIRREQ . '/src/helpers/paginationSementes.php';
 ?>      
@@ -28,7 +28,7 @@ include DIRREQ . '/src/helpers/paginationSementes.php';
                     Data
                 </div>
                 <div class="cell">
-                    Endereço
+                    Bairro
                 </div>
                 <div class="cell">
                     Ações
@@ -51,8 +51,8 @@ include DIRREQ . '/src/helpers/paginationSementes.php';
                         <div class="cell" data-title="Data">
                             <?= $data['dt'] ?>
                         </div>
-                        <div class="cell" data-title="Endereço">
-                            <?= $data['endereco'] ?>
+                        <div class="cell" data-title="Bairro">
+                            <?= $data['bairro'] ?>
                         </div>
                         <div class="cell" data-title="Ações">
                             <button class='btn btn-sm btn-warning' type='submit'>Editar<span class='glyphicon glyphicon-pencil'></span></button>
@@ -95,7 +95,7 @@ include DIRREQ . '/src/helpers/paginationSementes.php';
             }
             ?>
         </div>
-        <a href="" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
+        <a href="<?=DIRPAGE.'/coleta_sementes?pagina=0'?>" class="btn btn-info btn-lg" name="excel"><span class="glyphicon glyphicon-save"></span></a>
         <button class='btn btn-success btn-lg' type='button' onclick="showForm()" name="novo"><span class="glyphicon glyphicon-plus"></span></button>    
     </div>
 
@@ -125,11 +125,24 @@ include DIRREQ . '/src/helpers/paginationSementes.php';
                 <input type="date" name="data" id="data" class="form-control">
             </div>
         </div>
+        
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="cep">Cep:</label>
+            <div class="col-sm-5">
+                <input type="text" name="cep" id="cep" class="form-control" onblur="pesquisacep(this.value);">
+            </div>
+        </div>
 
         <div class="form-group">
             <label class="control-label col-sm-2" for="endereco">Endereço:</label>
             <div class="col-sm-5">
                 <input type="text" name="endereco" id="endereco" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="bairro">Bairro:</label>
+            <div class="col-sm-5">
+                <input type="text" name="bairro" id="endereco" class="form-control">
             </div>
         </div>
 
@@ -139,50 +152,13 @@ include DIRREQ . '/src/helpers/paginationSementes.php';
                 <input type="text" name="cidade" id="cidade" class="form-control">
             </div>
         </div>
-
         <div class="form-group">
-            <label class="control-label col-sm-2" for="estados">Estados:</label>
-            <div class="col-sm-3">
-                <select id="inputEstado" class="form-control" name="estados" required>
-                    <option  selected>Escolha...</option>
-                    <option value="Ac">Acre</option>
-                    <option value="Al">Alagoas</option>
-                    <option value="Ap">Amapá</option>
-                    <option value="Am" >Amazonas</option>
-                    <option value="Ba">Bahia</option>
-                    <option value="Ce">Ceará</option>
-                    <option value="Df">Distrito Federal</option>
-                    <option value="Es">Espírito Santo</option>
-                    <option value="Go">Goiás</option>
-                    <option value="Ma">Maranhão</option>
-                    <option value="Mt">Mato Grosso</option>
-                    <option value="Ms">Mato Grosso do Sul</option>
-                    <option value="Mg">Minas Gerais</option>
-                    <option value="Pa">Pará</option>
-                    <option value="Pb">Paraíba</option>
-                    <option value="Pr">Paraná</option>
-                    <option value="Pe">Pernambuco</option>
-                    <option value="Pi">Piauí</option>
-                    <option value="Rj">Rio de Janeiro</option>
-                    <option value="Rn">Rio Grande do Norte</option>
-                    <option value="Rs">Rio Grande do Sul</option>
-                    <option value="Ro">Rondônia</option>
-                    <option value="Rr">Roraima</option>
-                    <option value="Sc">Santa Catarina</option>
-                    <option value="Sp">São Paulo</option>
-                    <option value="Se">Sergipe</option>
-                    <option value="To">Tocantins</option>
-                </select>
+            <label class="control-label col-sm-2" for="uf">UF:</label>
+            <div class="col-sm-5">
+                <input type="text" name="uf" id="uf" class="form-control">
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cep">Cep:</label>
-            <div class="col-sm-5">
-                <input type="text" name="cep" id="cep" class="form-control">
-            </div>
-        </div>               
-
+                       
         <div class="form-group">
             <label class="control-label col-sm-2" for="descricao">Descrição:</label>
             <div class="col-sm-5">
@@ -194,7 +170,7 @@ include DIRREQ . '/src/helpers/paginationSementes.php';
             <label class="control-label col-sm-2"></label>
             <div class="col-sm-3">
                 <input type="submit" name="btn_enviar" id="btn_enviar" value="Enviar" class="btn btn-success" >
-                <input type="submit" name="btn_voltar" id="btn_voltar" value="Voltar" class="btn btn-primary" onclick="hideForm()">
+                <input type="submit" name="btn_voltar" id="btn_voltar" value="Voltar" class="btn btn-primary" onclick="reload()">
             </div>
         </div>
     </form>

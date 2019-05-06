@@ -23,9 +23,7 @@
                         <li><a href="<?= DIRPAGE.'/especies?pagina=1' ?>">Espécies e Variedades</a></li>
                       <li><a href="<?= DIRPAGE.'/viveiros?pagina=1' ?>">Viveiros</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="<?= DIRPAGE.'/clientes?pagina=1' ?>">Clientes</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="<?= DIRPAGE.'/locais_coleta?pagina=1' ?>">Locais de Coleta</a></li>
+                      <li><a href="<?= DIRPAGE.'/clientes?pagina=1' ?>">Clientes</a></li>                      
                     </ul>
                   </li>
                   <!-- -->

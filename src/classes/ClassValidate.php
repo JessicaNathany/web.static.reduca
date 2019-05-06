@@ -124,7 +124,8 @@ class ClassValidate extends ClassCrud{
         else{
             //Preencha todos os dados!
             $this->setErro(1);
-            echo "<script>alert('{$this->getErro(1)}');window.location.href='".DIRPAGE."/{$_GET['url']}?pagina=1'</script>";
+           /** echo "<script>alert('{$this->getErro(1)}');window.location.href='".DIRPAGE."/{$_GET['url']}?pagina=1'</script>";
+            die();*/
             }
             return false;
             

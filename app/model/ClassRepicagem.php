@@ -40,9 +40,9 @@ class ClassRepicagem extends ClassCrud {
 
     public function insertRepicagem($arrVar) {
         //busca a especie na tabela @especies e retorna um array de objetos.
-        $verify_exist_especie = $this->getDataEspecie($arrVar["especies"]);
+        $verify_exist_especie = $this->getDataEspecie($arrVar["especie"]);
         //busca a especie na tabela @repicagem e retorna um array de objetos.
-        $verify_exist_repicagem = $this->getDataRepicagem($arrVar["especies"]);
+        $verify_exist_repicagem = $this->getDataRepicagem($arrVar["especie"]);
         //busca a data na tabela repicagem e retorna um array de objetos.
         $verify_exist_data = $this->getDataDateRepicagem($arrVar["data"]);
         //pega a qtde que ja existe e soma.
@@ -54,12 +54,12 @@ class ClassRepicagem extends ClassCrud {
                 //Já existe na tabela repicagem, entao verifique se é a mesma data.
                 if ($verify_exist_data["data"]["dt"] === $arrVar["data"]) {
                     //se a data for igual então faca um update na quantidade na tabela repicagem.
-                    $sql = "update tb_repicagem set qtde = :qtde where especies= :especie and dt= :data";
+                    $sql = "update tb_repicagem set qtde = :qtde where especie= :especie and dt= :data";
                     $pdo = $this->conexaoDB();
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute(array(
-                        ':especie' => $arrVar["especies"],
+                        ':especie' => $arrVar["especie"],
                         ':data' => $arrVar["data"],
                         ':qtde' => $qtde
                     ));
@@ -73,11 +73,11 @@ class ClassRepicagem extends ClassCrud {
                     $this->insertDB(
                             "tb_repicagem", "?,?,?,?,?,?", array(
                         0,
-                        $arrVar['especies'],
+                        $arrVar['especie'],
                         $arrVar['data'],
                         $arrVar['qtde'],
-                        $arrVar['descricao'],
-                        $arrVar['material']
+                        $arrVar['material'],
+                        $arrVar['descricao']                        
                             )
                     );
                     echo "<script>alert('Ação bem sucedida');window.location.href='" . DIRPAGE . "/repicagem?pagina=1'</script>";
@@ -87,15 +87,15 @@ class ClassRepicagem extends ClassCrud {
                 $this->insertDB(
                         "tb_repicagem", "?,?,?,?,?,?", array(
                     0,
-                    $arrVar['especies'],
+                    $arrVar['especie'],
                     $arrVar['data'],
                     $arrVar['qtde'],
-                    $arrVar['descricao'],
-                    $arrVar['material']
+                    $arrVar['material'],
+                    $arrVar['descricao']                    
                         )
                 );
                 //Imprima o resultado
-                echo "<script>alert('{$arrVar["especies"]} Cadastrado com sucesso!');window.location.href='" . DIRPAGE . "/repicagem?pagina=1'</script>";
+                echo "<script>alert('{$arrVar["especie"]} Cadastrado com sucesso!');window.location.href='" . DIRPAGE . "/repicagem?pagina=1'</script>";
             }
         } else {
             //não existe na tabela especie entao faz o cadastro
@@ -104,8 +104,8 @@ class ClassRepicagem extends ClassCrud {
     }
 
     static function getEspecie() {
-        if (isset($_POST['especies'])) {
-            self::$especies = filter_input(INPUT_POST, 'especies', FILTER_DEFAULT);
+        if (isset($_POST['especie'])) {
+            self::$especies = filter_input(INPUT_POST, 'especie', FILTER_DEFAULT);
             return ucwords(self::$especies);
         }
     }
@@ -143,7 +143,7 @@ class ClassRepicagem extends ClassCrud {
      */
     public function getDataRepicagem($especie) {
         $select = $this->selectDB(
-                "*", "tb_repicagem", "where especies=?", array(
+                "*", "tb_repicagem", "where especie=?", array(
             $especie
                 )
         );

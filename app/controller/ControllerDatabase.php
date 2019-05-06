@@ -27,10 +27,9 @@ class ControllerDatabase extends ClassDatabase{
             $this->createTableGeminacao();
             $this->createTableViveiro();
             $this->createTableInsumos();
-            $validate=new ClassValidate();
-        if($validate->validateUsuario("admin")===true){
-            $this->createTableUserDB();
-        }
+            $this->createTableDescartes();
+            //$this->createTableUserDB();
+        
                
     }
 }
