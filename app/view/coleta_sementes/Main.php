@@ -113,9 +113,9 @@ include DIRREQ . '/src/helpers/paginationSementes.php';
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="especies">Nome popular da especie:</label>
+            <label class="control-label col-sm-2" for="especie">Nome popular da especie:</label>
             <div class="col-sm-5">
-                <input type="text" name="especies" id="especies" class="form-control">
+                <input type="text" name="especie" id="especie" class="form-control">
             </div>
         </div>
 
@@ -142,7 +142,7 @@ include DIRREQ . '/src/helpers/paginationSementes.php';
         <div class="form-group">
             <label class="control-label col-sm-2" for="bairro">Bairro:</label>
             <div class="col-sm-5">
-                <input type="text" name="bairro" id="endereco" class="form-control">
+                <input type="text" name="bairro" id="bairro" class="form-control">
             </div>
         </div>
 

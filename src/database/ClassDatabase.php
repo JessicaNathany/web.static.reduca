@@ -21,11 +21,11 @@ class ClassDatabase extends ClassConexao{
     /**
      * Cria uma base de dados
      * 
-     */    
+     *   
     public function createDB(){
         try{
             $con=$this->conexaoDB();
-            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $con=$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
             $stmt="CREATE DATABASE IF NOT EXISTS {$this->nameDB}";
             $con->exec($stmt);
             $stmt="ALTER DATABASE $this->nameDB CHARSET = UTF8 COLLATE = utf8_general_ci;";
@@ -61,11 +61,10 @@ class ClassDatabase extends ClassConexao{
             $arrVar=[
                 "nome"=>$nome,
                 "usuario"=>$usuario,
-                "email"=>$email,
-                "senha"=>$senha,
                 "hashSenha"=>$hash,
+                "email"=>$email,                
                 "tipo"=>$tipo,
-                "data"=>$date
+                "data"=>$date,
             ];       
            $validate->validateFinal($arrVar);
            echo '<div class="" style="color:red; font-weight:bold;">'.$validate->getErro().'</div>';
@@ -97,7 +96,7 @@ class ClassDatabase extends ClassConexao{
             $con->exec($stmt);
             
             if($con == true){
-                //$this->insertAdministrador();
+                $this->insertAdministrador();
             }
             echo "tb_users=> criado com sucesso!<br>";
         } catch (PDOException $e) {
@@ -257,7 +256,7 @@ class ClassDatabase extends ClassConexao{
                     . "cep char(20),"
                     . "endereco varchar(30),"
                     . "cidade varchar(15),"
-                    . "estado varchar(2),"
+                    . "uf varchar(2),"
                     . "descricao varchar(255)"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
             $con->exec($stmt);
@@ -303,9 +302,10 @@ class ClassDatabase extends ClassConexao{
             $stmt="";
             $stmt="CREATE TABLE IF NOT EXISTS tb_repicagem("
                     . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
-                    . "especies varchar (30),"
+                    . "especie varchar (30),"
                     . "dt date,"
                     . "qtde int(30),"
+                    . "material varchar(45),"
                     . "descricao varchar(255)"
                     . ")AUTO_INCREMENT=1 ENGINE=INNODB";
             $con->exec($stmt);

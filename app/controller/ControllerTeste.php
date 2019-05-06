@@ -14,18 +14,20 @@ use App\Model\ClassCliente as cliente;
 use App\Model\ClassLogin;
 use App\Model\ClassGeminacao;
 use App\Model\ClassViveiros;
+use App\Model\ClassSementes;
 use App\Model\Json;
 use App\Model\ClassExport;
+use Src\database\ClassDatabase;
 
 
-class ControllerTeste {
+class ControllerTeste extends ClassDatabase{
     /**
      * metodo construtor da classe de controler do Usuario.
      */
     public function __construct() {
-        $ex=new ClassExport();
-        $ex->exportJson("tb_viveiro");
+        $teste=new ClassSementes();
+        $oi=$teste::getEspecie("oi");
         
-        
+        var_dump($oi);
     }   
 }

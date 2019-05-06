@@ -123,9 +123,10 @@ class ClassUser extends ClassCrud {
                 $arrVar['usuario'],
                 $arrVar['hashSenha'],
                 $arrVar['email'],
-                $arrVar['tipo'],
+                $arrVar['tipo'],                
                 $date,
-                "null"
+                "ativo"        
+                
                     )
             );
             echo "<script>alert('{$arrVar["usuario"]} Cadastrado com sucesso!');window.location.href='" . DIRPAGE . "/users'</script>";

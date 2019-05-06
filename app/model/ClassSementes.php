@@ -44,9 +44,9 @@ class ClassSementes extends ClassCrud {
 
     public function insertSementes($arrVar) {
         //busca a especie na tabela especie.
-        $verify_exist_especie = $this->getDataEspecie($arrVar["especies"]);
+        $verify_exist_especie = $this->getDataEspecie($arrVar["especie"]);
         //busca a especie na tabela na tabela coleta sementes.
-        $verify_exist_especie_semente = $this->getDataSementes($arrVar["especies"]);
+        $verify_exist_especie_semente = $this->getDataSementes($arrVar["especie"]);
         //busca o local na tabela coleta de sementes.
         $verify_exist_local = $this->getDataLocal($arrVar["local"]);
 
@@ -65,7 +65,7 @@ class ClassSementes extends ClassCrud {
                                 "tb_sementes", "?,?,?,?,?,?,?,?,?,?", array(
                             0,
                             $arrVar['local'],
-                            $arrVar['especies'],
+                            $arrVar['especie'],
                             $arrVar['data'],
                             $arrVar['cep'],
                             $arrVar['endereco'],
@@ -83,7 +83,7 @@ class ClassSementes extends ClassCrud {
                             "tb_sementes", "?,?,?,?,?,?,?,?,?,?", array(
                         0,
                         $arrVar['local'],
-                        $arrVar['especies'],
+                        $arrVar['especie'],
                         $arrVar['data'],
                         $arrVar['cep'],
                         $arrVar['endereco'],
@@ -101,7 +101,7 @@ class ClassSementes extends ClassCrud {
                         "tb_sementes", "?,?,?,?,?,?,?,?,?,?", array(
                     0,
                     $arrVar['local'],
-                    $arrVar['especies'],
+                    $arrVar['especie'],
                     $arrVar['data'],
                     $arrVar['cep'],
                     $arrVar['endereco'],
@@ -126,9 +126,9 @@ class ClassSementes extends ClassCrud {
     }
 
     static function getEspecie() {
-        if (isset($_POST['especies'])) {
-            self::$especies = filter_input(INPUT_POST, 'especies', FILTER_DEFAULT);
-            return ucwords(self::$especies);
+        if (isset($_POST['especie'])) {
+            self::$especie = filter_input(INPUT_POST, 'especie', FILTER_DEFAULT);
+            return ucwords(self::$especie);
         }
     }
 

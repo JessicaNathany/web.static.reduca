@@ -51,7 +51,7 @@ class ClassInsumos extends ClassCrud {
             if ($tipo["data"]["tipo"] !== $arrVar["tipo"]) {
                 //faz cadastro
                 $this->insertDB(
-                        "tb_geminacao", "?,?,?,?,?,?", array(
+                        "tb_insumos", "?,?,?,?,?,?", array(
                     0,
                     $arrVar['nome'],
                     $arrVar['categoria'],
@@ -77,6 +77,16 @@ class ClassInsumos extends ClassCrud {
             }
         } else {
             //faz o cadastro
+            $this->insertDB(
+                        "tb_insumos", "?,?,?,?,?,?", array(
+                    0,
+                    $arrVar['nome'],
+                    $arrVar['categoria'],
+                    $arrVar['tipo'],
+                    $arrVar['qtde'],
+                    $arrVar['descricao']
+                        )
+                );
             echo "<script>alert('Cadastrado com Sucesso!');window.location.href='" . DIRPAGE . "/insumos?pagina=1'</script>";
         }
     }
@@ -155,7 +165,7 @@ class ClassInsumos extends ClassCrud {
      */
     public function deleteDataInsumo($id) {
         $this->deleteDB(
-                "tb_insumo", "id=?", array(
+                "tb_insumos", "id=?", array(
             $id
                 )
         );

@@ -47,7 +47,7 @@ class ControllerInsumos extends ClassRender implements InterfaceView{
                 "qtde"=>$data::getQtde(),
                 "descricao"=>$data::getDescricao(),
             ];
-         $validate->validateFields($_POST);
+         //$validate->validateFields($_POST);
             if($validate->getErro() === ""){
                 $data->insertInsumo($arrVar);
             }

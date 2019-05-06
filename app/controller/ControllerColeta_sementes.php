@@ -42,7 +42,7 @@ class ControllerColeta_sementes extends ClassRender implements InterfaceView{
         if(!empty($_POST)){
             $arrVar=[
                 "local"=>$sementes::getLocal(),
-                "especies"=>$sementes::getEspecie(),
+                "especie"=>$sementes::getEspecie(),
                 "data"=>$sementes::getData(),
                 "cep"=>$sementes::getCep(),
                 "endereco"=>$sementes::getEndereco(),
@@ -51,7 +51,7 @@ class ControllerColeta_sementes extends ClassRender implements InterfaceView{
                 "uf"=>$sementes::getUF(),                
                 "descricao"=>$sementes::getDescricao()              
             ];
-            $validate->validateFields($_POST);
+            //$validate->validateFields($_POST);
                 if($validate->getErro()===""){
                     $sementes->insertSementes($arrVar);
                 }

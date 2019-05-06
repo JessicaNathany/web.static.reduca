@@ -17,7 +17,7 @@ class ControllerDatabase extends ClassDatabase{
      */
     public function __construct() {
               
-            $this->createDB();            
+            //$this->createDB();            
             $this->createTableAttemptDB();
             $this->createTableConfirmation();
             $this->createTableEspecies();
