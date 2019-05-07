@@ -40,7 +40,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lembretes <span class=""></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="<?= DIRPAGE.'/descartes?pagina=1' ?>">Perdas e Descartes</a></li>
-                      <li><a href="<?= DIRPAGE.'/inventario?pagina=1' ?>">Inventário de Mudas</a></li>
+                      <li><a href="<?= DIRPAGE.'/inventario?pagina=1' ?>">Inventário</a></li>
                       <li><a href="<?= DIRPAGE.'/lotes?pagina=1' ?>">Lotes</a></li>
                       <li role="separator" class="divider"></li>
                       <li><a href="<?= DIRPAGE.'/insumos?pagina=1' ?>">Insumos</a></li>

@@ -5,6 +5,7 @@ namespace App\Model;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+use PDO;
 
 class ClassCrud extends ClassConexao{
     

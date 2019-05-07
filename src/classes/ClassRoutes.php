@@ -62,6 +62,7 @@ class ClassRoutes{
             "controllerUsers"=>"ControllerUsers",
             "database"=>"ControllerDatabase",
             "teste"=>"ControllerTeste",
+            "Json"=>"ControllerJson",
             "Acesso_negado"=>"ControllerAcessDenied",
             "logout"=>"ControllerLogout",
             "viveiros"=>"ControllerViveiros"

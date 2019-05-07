@@ -15,6 +15,8 @@ header("Content-Type: text/html; charset=utf-8");
 require_once ("../config/config.php");
 require_once (DIRREQ.'/src/helpers/variables.php');
 require_once ("../src/vendor/autoload.php");
+include DIRREQ . '/src/helpers/helpersInventario.php';
+
 
 
 /**

@@ -139,6 +139,7 @@ $token= bin2hex(random_bytes(64));
  * 
  * 
  */
+
 $arrVar=[
     "nome"=>$nome,
     "usuario"=>$usuario,
@@ -146,4 +147,3 @@ $arrVar=[
     "senha"=>$senha,
     "tipo"=>$tipo,
 ];
-

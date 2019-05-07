@@ -92,5 +92,35 @@ class ClassInventario extends ClassCrud {
             echo $ex->getMessage();
         }
     }
+    /**
+     * 
+     * @return type
+     */
+    public function getInventario(){
+        $invent=new ClassInventario();
+        
+        //pega a qtde de especies cadastradas no sistema
+        $RowsEspecie=$invent->getRowsEspecie();
+        
+        //pega a qtde de mudas que germinaram.
+        $QtdeGem=$invent->getTotalGeminacaoData();
+        
+        //pega a qtde de mudas que repicaram.
+        $QtdeRep=$invent->getTotalRepicagemData();
+        
+        //pega a qtde de descartes
+        $QtdeDesc=$invent->getTotalDescarteData();
+        
+        $arrData=[
+            "especie"=>$RowsEspecie,
+            "geminacao"=>$QtdeGem,
+            "repicagem"=>$QtdeRep,
+            "descartes"=>$QtdeDesc                   
+        ];
+        //echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
+        return $arrData;
+        
+        
+    }
 
 }
