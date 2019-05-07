@@ -78,4 +78,35 @@ class ClassCrud extends ClassConexao{
         }
         return $fetch;
     }
+    /**
+     * pega todos os campos da tabela viveiro
+     */
+    public function getSomaColQtde($table) {
+        try{
+           $stmt = "SELECT SUM(qtde)FROM {$table}";
+            $con = $this->conexaoDB();
+            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $cont = $con->query($stmt)->fetchColumn();
+            return $cont;
+        } catch (\PDOExceptionException $ex) {
+            echo $ex->getMessage();
+        }
+        
+        
+    }
+    /**
+     * conta as rows de uma tabela
+     */
+    public function getRowsData($table){
+        try{
+           $stmt = "SELECT * FROM {$table}";
+            $data = $this->conexaoDB()->prepare($stmt);
+            $data->execute(); 
+            $count = $data->rowCount();
+            return $count;
+        } catch (\PDOException $ex) {
+            echo $ex->getMessage();
+        }
+        
+    }
 }
