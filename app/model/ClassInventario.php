@@ -69,11 +69,16 @@ class ClassInventario extends ClassCrud {
      */
     public function getMaxQtde($table){   
         try{
-           $stmt = "SELECT especie, dt, MAX(qtde) FROM {$table}";
+           $stmt = "SELECT especie, dt, qtde FROM {$table} WHERE qtde=(SELECT MAX(qtde) FROM {$table})";
             $con = $this->conexaoDB();
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $res = $con->query($stmt)->fetchAll();
-            return $res["0"];
+            $array=[
+                "especie"=>$res["0"]["0"],
+                "data"=>$res["0"]["1"],
+                "qtde"=>$res["0"]["2"],
+            ];
+            return $array;
         } catch (\PDOExceptionException $ex) {
             echo $ex->getMessage();
         }
@@ -83,11 +88,16 @@ class ClassInventario extends ClassCrud {
      */
     public function getMinQtde($table){   
         try{
-           $stmt = "SELECT especie, dt, Min(qtde) FROM {$table}";
+           $stmt = "SELECT especie, dt, qtde FROM {$table} WHERE qtde=(SELECT MIN(qtde) FROM {$table})";
             $con = $this->conexaoDB();
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $res = $con->query($stmt)->fetchAll();
-            return $res["0"];
+            $array=[
+                "especie"=>$res["0"]["0"],
+                "data"=>$res["0"]["1"],
+                "qtde"=>$res["0"]["2"],
+            ];
+            return $array;
         } catch (\PDOExceptionException $ex) {
             echo $ex->getMessage();
         }
@@ -97,20 +107,20 @@ class ClassInventario extends ClassCrud {
      * @return type
      */
     public function getInventario(){
-        $invent=new ClassInventario();
         
         //pega a qtde de especies cadastradas no sistema
-        $RowsEspecie=$invent->getRowsEspecie();
+        $RowsEspecie=$this->getRowsEspecie();
         
         //pega a qtde de mudas que germinaram.
-        $QtdeGem=$invent->getTotalGeminacaoData();
+        $QtdeGem=$this->getTotalGeminacaoData();
         
         //pega a qtde de mudas que repicaram.
-        $QtdeRep=$invent->getTotalRepicagemData();
+        $QtdeRep=$this->getTotalRepicagemData();
         
         //pega a qtde de descartes
-        $QtdeDesc=$invent->getTotalDescarteData();
-        
+        $QtdeDesc=$this->getTotalDescarteData();
+       
+          
         $arrData=[
             "especie"=>$RowsEspecie,
             "geminacao"=>$QtdeGem,
@@ -122,5 +132,6 @@ class ClassInventario extends ClassCrud {
         
         
     }
+    
 
 }

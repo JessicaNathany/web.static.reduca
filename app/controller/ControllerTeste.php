@@ -18,6 +18,7 @@ use App\Model\ClassSementes;
 use App\Model\Json;
 use App\Model\ClassExport;
 use Src\database\ClassDatabase;
+use App\Model\ClassInventario;
 
 
 class ControllerTeste extends ClassDatabase{
@@ -25,9 +26,8 @@ class ControllerTeste extends ClassDatabase{
      * metodo construtor da classe de controler do Usuario.
      */
     public function __construct() {
-        $teste=new ClassSementes();
-        $oi=$teste::getEspecie("oi");
-        
-        var_dump($oi);
+        $invent=new ClassInventario();
+        $res=$invent->getMaxQtde("tb_geminacao");
+        print_r($res);
     }   
 }

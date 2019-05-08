@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="<?= DIRCSS . 'bootstrap-3.3.7/dist/css/bootstrap.min.css' ?>">
         <link rel="stylesheet" href="<?= DIRCSS . 'bootstrap-3.3.7/dist/css/bootstrap-theme.min.css' ?>">        
         <link rel="stylesheet" href="<?= DIRCSS . 'main.css' ?>">
+        <link rel="stylesheet" href="<?= DIRCSS . 'Footer-white.css' ?>">
 
         <?= $this->addHead(); ?>
     </head>
@@ -42,9 +43,20 @@
 
         <!-- RodapÃ© -->
 
-        <div class="Footer">
-            <?= $this->addFooter(); ?> 
-        </div>
+        
+            <footer id="myFooter">
+        <div class="container">
+            <hr>
+            <ul>
+                <li><a href="#">Desenvolvimento</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Suporte</a></li>
+                <li><a href="#">Github</a></li>
+            </ul>
+        <p class="footer-copyright">© 2019 Copyright - Wanclei Felipe</p>
+        </div>  
+    </footer>
+        
 
         <!-- SCRIPTS -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

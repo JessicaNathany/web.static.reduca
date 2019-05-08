@@ -126,5 +126,6 @@ create table if not exists tb_descartes(
     qtde int (20),
     motivo varchar(255)
 )auto_increment=1 engine=InnoDB;
+--
 
 commit;

@@ -21,7 +21,7 @@ $data = new ClassInventario();
 </div> 
 <div class="col-sm-2">
   <div class="card">
-    <h3 class="title">Geminação</h3>
+    <h3 class="title">Germinações</h3>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar">       
@@ -35,7 +35,7 @@ $data = new ClassInventario();
 </div> 
 <div class="col-sm-2">
   <div class="card">
-    <h3 class="title">Repicagem</h3>
+    <h3 class="title">Repicagens</h3>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>      
@@ -47,7 +47,7 @@ $data = new ClassInventario();
 </div> 
 <div class="col-sm-2">
   <div class="card">
-    <h3 class="title" style="color:red;">Descartes</h3>
+    <h3 class="title" style="color:red;">Perdas</h3>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
@@ -65,7 +65,8 @@ $data = new ClassInventario();
       <div class="filledbar"></div>
     </div>
     <div class="circle">
-      
+      <?=$data->getMaxQtde("tb_geminacao")["especie"]?>
+        <h1><?=$data->getMaxQtde("tb_geminacao")["qtde"]?></h1>
     </div>
   </div>
 </div> 
@@ -77,8 +78,8 @@ $data = new ClassInventario();
       <div class="filledbar"></div>
     </div>
     <div class="circle">
-      
-    
+      <?=$data->getMinQtde("tb_geminacao")["especie"]?>
+        <h1><?=$data->getMinQtde("tb_geminacao")["qtde"]?></h1>    
     </div>
   </div>
 </div> 
@@ -90,7 +91,8 @@ $data = new ClassInventario();
       <div class="filledbar"></div>
     </div>
     <div class="circle">
-      
+      <?=$data->getMaxQtde("tb_repicagem")["especie"]?>
+        <h1><?=$data->getMaxQtde("tb_repicagem")["qtde"]?></h1> 
     
     </div>
   </div>
@@ -103,7 +105,8 @@ $data = new ClassInventario();
       <div class="filledbar"></div>
     </div>
     <div class="circle">
-      
+      <?=$data->getMinQtde("tb_repicagem")["especie"]?>
+        <h1><?=$data->getMinQtde("tb_repicagem")["qtde"]?></h1> 
     
     </div>
   </div>
@@ -116,8 +119,8 @@ $data = new ClassInventario();
       <div class="filledbar"></div>
     </div>
     <div class="circle">
-      
-    
+      <?=$data->getMaxQtde("tb_descartes")["especie"]?>
+        <h1><?=$data->getMaxQtde("tb_descartes")["qtde"]?></h1>    
     </div>
   </div>
 </div> 
@@ -129,8 +132,8 @@ $data = new ClassInventario();
       <div class="filledbar"></div>
     </div>
     <div class="circle">
-      
-    
+      <?=$data->getMinQtde("tb_descartes")["especie"]?>
+        <h1><?=$data->getMinQtde("tb_descartes")["qtde"]?></h1>    
     </div>
   </div>
 </div> 
@@ -160,5 +163,5 @@ $data = new ClassInventario();
     </div>
   </div>
 </div> 
+    
 </div>
-  

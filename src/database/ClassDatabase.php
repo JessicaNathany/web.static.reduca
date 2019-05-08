@@ -363,4 +363,27 @@ class ClassDatabase extends ClassConexao{
             echo $stmt . "<br>" .$e->getMessage(); 
         }
     }
+    /**
+     * 
+     * 
+     *
+    public function createTableLotes(){
+        try{
+            $con=$this->conexaoDB();
+            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt="use ".$this->nameDB;
+            $con->exec($stmt);
+            $stmt="";
+            $stmt="CREATE TABLE IF NOT EXISTS tb_lotes("
+                    . "id int (4) UNSIGNED ZEROFILL AUTO_INCREMENT PRIMARY KEY,"
+                    . "especie varchar(30),"
+                    . "dt date,"
+                    . "qtde int(30),"
+                    . ")AUTO_INCREMENT=1 ENGINE=INNODB";
+            $con->exec($stmt);
+            echo "tb_lotes=> criada a tabela com sucesso!<br>";
+        } catch (PDOException $e) {
+            echo $stmt . "<br>" .$e->getMessage(); 
+        }
+    }*/
 }

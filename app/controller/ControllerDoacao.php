@@ -23,7 +23,7 @@ class ControllerDoacao extends ClassRender implements InterfaceView{
         $this->setDir("doacao");
         $this->renderLayout();
         $session= new ClassSessions();
-            $session->verifyInsideSession("padrao");
+        $session->verifyInsideSession("padrao");
     }
 
     

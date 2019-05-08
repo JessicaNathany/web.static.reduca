@@ -41,7 +41,6 @@
                     <ul class="dropdown-menu">
                       <li><a href="<?= DIRPAGE.'/descartes?pagina=1' ?>">Perdas e Descartes</a></li>
                       <li><a href="<?= DIRPAGE.'/inventario?pagina=1' ?>">Inventário</a></li>
-                      <li><a href="<?= DIRPAGE.'/lotes?pagina=1' ?>">Lotes</a></li>
                       <li role="separator" class="divider"></li>
                       <li><a href="<?= DIRPAGE.'/insumos?pagina=1' ?>">Insumos</a></li>
                       
@@ -51,7 +50,7 @@
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Serviços <span class=""></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?= DIRPAGE.'/doacao?pagina=1' ?>">Doação</a></li>
+                        <li><a href="<?= DIRPAGE.'/doacao' ?>">Doação</a></li>
                       
                     </ul>
                   </li>
@@ -61,7 +60,6 @@
                     <ul class="dropdown-menu">
                       <li><a href="<?= DIRPAGE.'/estoque_mudas' ?>">Estoque de Mudas</a></li>
                       <li><a href="<?= DIRPAGE.'/estoque_sementes' ?>">Estoque de Sementes</a></li>
-                      <li><a href="<?= DIRPAGE.'/lotes_periodo' ?>">Lotes por Periodo</a></li>
                       <li role="separator" class="divider"></li>
                       <li><a href="<?= DIRPAGE.'/producao_anual' ?>">Produção Anual</a></li>
                       <li><a href="<?= DIRPAGE.'/producao_semanal' ?>">Produção Semanal</a></li>
