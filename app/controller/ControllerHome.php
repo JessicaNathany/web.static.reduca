@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-session_start();
+
 /**
  * @author John Doe <john.doe@example.com>
  * @license http://URL name
@@ -9,7 +9,7 @@ session_start();
 
 use Src\Classes\ClassRender;
 use Src\Interfaces\InterfaceView;
-use Src\Classes\ClassSessions;
+
 
 class ControllerHome extends ClassRender implements InterfaceView{
     
@@ -19,13 +19,12 @@ class ControllerHome extends ClassRender implements InterfaceView{
     public function __construct() {    
         
             
-            $this->setTitle("Pagina Inicial");
-            $this->setDescription("Esse é um teste para transferir o tcc");
-            $this->setKeywords("Dae teste, robustez para fazer deploy");
+            $this->setTitle("Home");
+            $this->setDescription("");
+            $this->setKeywords("");
             $this->setDir("home");
             $this->renderLayout();
-            $session= new ClassSessions();
-            $session->verifyInsideSession("padrao");
+            
         
         
     }
