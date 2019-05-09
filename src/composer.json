@@ -1,6 +1,6 @@
 {
-    "name": "web/dae",
-    "description": "MVC Dae",
+    "name": "web/reduca",
+    "description": "site estatico da reduca",
     "authors": [
         {
             "name": "Wanclei Felipe",
@@ -9,8 +9,7 @@
     ],
     "require": {
         "phpmailer/phpmailer": "^6.0",
-        "bjeavons/zxcvbn-php": "^0.4",
-        "illuminate/database": "^5.8"
+        "bjeavons/zxcvbn-php": "^0.4"        
     },
     "autoload":{
         "psr-4":{
