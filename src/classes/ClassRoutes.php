@@ -2,7 +2,7 @@
 namespace Src\Classes;
 
 /**
- * @author John Doe <john.doe@example.com>
+ * @author Wanclei Felipe <Wanclei.santos@fatec.sp.gov.br>
  * @license http://URL name
  * 
  */
@@ -38,6 +38,13 @@ class ClassRoutes{
         
         $this->Rota= [
             ""=>"ControllerHome",          
+            "home"=>"ControllerHome",
+            "comoAjudar"=>"ControllerComoAjudar",
+            "contatos"=>"ControllerContatos",
+            "fumcad"=>"ControllerFumcad",
+            "projetos"=>"ControllerProjetos",
+            "proac"=>"ControllerProac",
+            "sobre"=>"ControllerSobre",
             "home"=>"ControllerHome",
             "sitemap"=>"ControllerSitemap",           
             "Acesso_negado"=>"ControllerAcessDenied",

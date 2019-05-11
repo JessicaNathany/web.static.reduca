@@ -70,5 +70,14 @@ define('PASS',"");
  */
 define('PORT',"");
 
+/**
+ * SOCIAL
+ */
+define('FACEBOOK',"https://www.facebook.com/associacaoreduca/?eid=ARAaSbUwE1cAR0TlSWtht_efdUVX97ei_LVOUnMppYesdcMiWK8XpseZZwUh4VNS2EUBFKR8Wehd39Nw");
+define('INSTAGRAM',"");
+define('TWITTER',"");
+define('LINKEDIN',"");
+
+
 
 
