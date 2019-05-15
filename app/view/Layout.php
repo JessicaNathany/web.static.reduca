@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
-        <link rel="stylesheet" href="<?= DIRCSS . 'fonts/icomoon/style.css' ?>">
+        <link rel="stylesheet" href="<?= DIRPAGE . '/public/fonts/icomoon/style.css' ?>">
         <!--===============================[CSS]======================================-->
         <link rel="stylesheet" href="<?= DIRCSS . 'bootstrap.min.css' ?>">
         <link rel="stylesheet" href="<?= DIRCSS . 'magnific-popup.css' ?>">
@@ -16,7 +16,7 @@
 
         <link rel="stylesheet" href="<?= DIRCSS . 'bootstrap-datepicker.css' ?>">
 
-        <link rel="stylesheet" href="<?= DIRCSS . 'fonts/flaticon/font/flaticon.css' ?>">
+        <link rel="stylesheet" href="<?= DIRPAGE. '/public/fonts/flaticon/font/flaticon.css' ?>">
 
         <link rel="stylesheet" href="<?= DIRCSS . 'aos.css' ?>">
 
