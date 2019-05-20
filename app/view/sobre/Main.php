@@ -3,7 +3,7 @@
         <div class="row mb-5">
           
           <div class="col-md-5 ml-auto mb-5 order-md-2" data-aos="fade">
-            <img src="images/hero_1.jpg" alt="Image" class="img-fluid rounded">
+            <img src="<?=DIRIMG.'voluntarios_reduca.jpg'?>" alt="Image" class="img-fluid rounded">
           </div>
           <div class="col-md-6 order-md-1" data-aos="fade">
 
@@ -11,26 +11,24 @@
 
               <div class="col-12 mb-4">
                 <div class="text-left pb-1 border-primary mb-4">
-                  <h2 class="text-primary">Our Specialties</h2>
+                  <h2 class="text-primary">Qual titulo colocar?</h2>
                 </div>
               </div>
               <div class="col-md-12 mb-md-5 mb-0 col-lg-6">
                 <div class="unit-4">
-                  <div class="unit-4-icon mr-4 mb-3"><span class="text-secondary icon-phonelink"></span></div>
+                  <div class="unit-4-icon mr-4 mb-3"><span class=""></span></div>
                   <div>
-                    <h3>Web &amp; Mobile Specialties</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis consect.</p>
-                    <p class="mb-0"><a href="#">Learn More</a></p>
+                    <h3>A Reduca</h3>
+                    <p style="text-align: inherit">Somos uma Associação que atua em Franco da rocha e ... </p>                    
                   </div>
                 </div>
               </div>
+                
               <div class="col-md-12 mb-md-5 mb-0 col-lg-6">
                 <div class="unit-4">
-                  <div class="unit-4-icon mr-4 mb-3"><span class="text-secondary icon-extension"></span></div>
+                  <div class="unit-4-icon mr-4 mb-3"><span class=""></span></div>
                   <div>
-                    <h3>Intuitive Thinkers</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis.</p>
-                    <p class="mb-0"><a href="#">Learn More</a></p>
+                    <p style="text-align: inherit">continuação..</p>                 
                   </div>
                 </div>
               </div>
@@ -46,16 +44,16 @@
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center border-primary">
-            <h2 class="font-weight-light text-primary" data-aos="fade">Our Team</h2>
+            <h2 class="font-weight-light text-primary" data-aos="fade">Envolvidos</h2>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <div class="person">
-              <img src="images/person_2.jpg" alt="Image" class="img-fluid rounded-circle w-50 mb-5">
-              <h3>Christine Rooster</h3>
-              <p class="position text-muted">Co-Founder, President</p>
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p>
+              <img src="<?=DIRIMG.'profile-thay.jpg'?>" alt="Image" class="img-fluid rounded-circle w-50 mb-5">
+              <h3>Thayane Nascimento</h3>
+              <p class="position text-muted">Vice Presidente</p>
+              <p class="mb-4">Através de sua experiência de formação cidadã, técnica em administração, licenciatura em artes visuais, e propriedade com a missão e valores da Reduca, contribui desde a fundação,como produtora cultural, oficineira, produção de materiais gráficos de comunicação,coordenação, planejamento e monitoria das atividades.</p>
               <ul class="ul-social-circle">
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
@@ -66,10 +64,10 @@
           </div>
           <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
             <div class="person">
-              <img src="images/person_3.jpg" alt="Image" class="img-fluid rounded-circle w-50 mb-5">
-              <h3>Brandon Sharp</h3>
-              <p class="position text-muted">Co-Founder, COO</p>
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p>
+              <img src="<?=DIRIMG.'roze.jpg'?>" alt="Image" class="img-fluid rounded-circle w-50 mb-5">
+              <h3>Rozenaide Ribeiro</h3>
+              <p class="position text-muted">Presidente</p>
+              <p class="mb-4">Através de sua formação em ciências sociais com experiência em educação regular em escola pública,educadora corporativa e educadora social em outras entidades sem fins lucrativos. Preside a Reduca desde a fundação, auxilia na regulamentação de documentos, contribui com a visão de solidariedade e capacitação para cidadania, além de ser uma das principais mantenedoras da Reduca.</p>
               <ul class="ul-social-circle">
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
@@ -80,10 +78,10 @@
           </div>
           <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="300">
             <div class="person">
-              <img src="images/person_4.jpg" alt="Image" class="img-fluid rounded-circle w-50 mb-5">
-              <h3>Connor Hodson</h3>
-              <p class="position text-muted">Marketing</p>
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p>
+              <img src="<?=DIRIMG.'profile-rodrigo.jpg'?>" alt="Image" class="img-fluid rounded-circle w-50 mb-5">
+              <h3>Rodrigo Gomes</h3>
+              <p class="position text-muted">Diretor Fiscal</p>
+              <p class="mb-4">Formado em Processamento de Dados, tem mais de 15 anos de experiência na área de tecnologia da informação, contribui para a Reduca auxiliando em questões legais, fiscalização das atividades, instrutor de assuntos de tecnologia, formação de jovens para mercado de trabalho, programação de aplicativos e jogos para crianças, eletrônica e robótica.</p>
               <ul class="ul-social-circle">
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
@@ -102,7 +100,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 text-center">
-            <h2 class="text-black h1 site-section-heading text-center">Testimonials</h2>
+            <h2 class="text-black h1 site-section-heading text-center">Depoimentos</h2>
           </div>
         </div>
       </div>
@@ -111,12 +109,12 @@
             <div class="testimonial">
               
               <blockquote class="mb-5">
-                <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
+                <p>&ldquo;Gostaria de enfatizar que a crescente influência da mídia cumpre um papel essencial na formulação dos relacionamentos verticais entre as hierarquias.&rdquo;</p>
               </blockquote>
 
               <figure class="mb-4 d-flex align-items-center justify-content-center">
-                <div><img src="images/person_3.jpg" alt="Image" class="w-50 img-fluid mb-3"></div>
-                <p>John Smith</p>
+                <div><img src="<?=DIRIMG.'profile-rodrigo.jpg'?>" alt="Image" class="w-50 img-fluid mb-3"></div>
+                <p>Nome da pessoa</p>
               </figure>
             </div>
           </div>
@@ -124,11 +122,11 @@
             <div class="testimonial">
 
               <blockquote class="mb-5">
-                <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
+                <p>&ldquo;O incentivo ao avanço tecnológico, assim como a valorização de fatores subjetivos pode nos levar a considerar a reestruturação das formas de ação..&rdquo;</p>
               </blockquote>
               <figure class="mb-4 d-flex align-items-center justify-content-center">
-                <div><img src="images/person_2.jpg" alt="Image" class="w-50 img-fluid mb-3"></div>
-                <p>Christine Aguilar</p>
+                <div><img src="<?=DIRIMG.'profile-rodrigo.jpg'?>" alt="Image" class="w-50 img-fluid mb-3"></div>
+                <p>Nome da pessoa</p>
               </figure>
               
             </div>
@@ -138,11 +136,11 @@
             <div class="testimonial">
 
               <blockquote class="mb-5">
-                <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
+                <p>&ldquo;Por outro lado, o acompanhamento das preferências de consumo agrega valor ao estabelecimento de todos os recursos funcionais envolvidos..&rdquo;</p>
               </blockquote>
               <figure class="mb-4 d-flex align-items-center justify-content-center">
-                <div><img src="images/person_4.jpg" alt="Image" class="w-50 img-fluid mb-3"></div>
-                <p>Robert Spears</p>
+                <div><img src="<?=DIRIMG.'profile-rodrigo.jpg'?>" alt="Image" class="w-50 img-fluid mb-3"></div>
+                <p>Nome da pessoa</p>
               </figure>
 
               
@@ -153,11 +151,11 @@
             <div class="testimonial">
 
               <blockquote class="mb-5">
-                <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
+                <p>&ldquo;pisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
               </blockquote>
               <figure class="mb-4 d-flex align-items-center justify-content-center">
-                <div><img src="images/person_5.jpg" alt="Image" class="w-50 img-fluid mb-3"></div>
-                <p>Bruce Rogers</p>
+                <div><img src="<?=DIRIMG.'profile-rodrigo.jpg'?>" alt="Image" class="w-50 img-fluid mb-3"></div>
+                <p>Nome da pessoa</p>
               </figure>
 
             </div>

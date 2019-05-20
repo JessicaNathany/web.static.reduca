@@ -16,7 +16,7 @@
 
         <link rel="stylesheet" href="<?= DIRCSS . 'bootstrap-datepicker.css' ?>">
 
-        <link rel="stylesheet" href="<?= DIRPAGE. '/public/fonts/flaticon/font/flaticon.css' ?>">
+        <link rel="stylesheet" href="<?= DIRPAGE . '/public/fonts/flaticon/font/flaticon.css' ?>">
 
         <link rel="stylesheet" href="<?= DIRCSS . 'aos.css' ?>">
 
@@ -40,16 +40,16 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p class="mb-0">
-                                <span class="mr-3"><strong>Tel::</strong> <a href="tel://#">(11)1234-0000</a></span>
-                                <span><strong>Email:</strong> <a href="#">emaildareuca@reduca.com</a></span>
+                                <span class="mr-3"><strong>Tel:</strong> <a href="tel://#">+55 11 98681-3191</a></span>
+                                <span><strong>Email:</strong> <a href="#">assoc.reduca@gmail.com</a></span>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <ul class="social-media">
-                                <li><a href="<?=FACEBOOK?>" class="p-2"><span class="icon-facebook"></span></a></li>
-                                <li><a href="<?=TWITTER?>" class="p-2"><span class="icon-twitter"></span></a></li>
-                                <li><a href="<?=INSTAGRAM?>" class="p-2"><span class="icon-instagram"></span></a></li>
-                                <li><a href="<?=LINKEDIN?>" class="p-2"><span class="icon-linkedin"></span></a></li>
+                                <li><a href="<?= FACEBOOK ?>" class="p-2"><span class="icon-facebook"></span></a></li>
+                                <li><a href="<?= TWITTER ?>" class="p-2"><span class="icon-twitter"></span></a></li>
+                                <li><a href="<?= INSTAGRAM ?>" class="p-2"><span class="icon-instagram"></span></a></li>
+                                <li><a href="<?= LINKEDIN ?>" class="p-2"><span class="icon-linkedin"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-11 col-xl-2">
-                        <h1 class="mb-0 site-logo"><a href="<?= DIRPAGE ?>" class="text-black h2 mb-0">REDUCA</a></h1>
+                        <a href="<?= DIRPAGE ?>" class="text-black h2 mb-0"><img style="width: 150px;" class="mb-0 site-logo" src="<?= DIRIMG . 'reduca.png' ?>"></a>
                     </div>
                     <div class="col-12 col-md-10 d-none d-xl-block">
                         <nav class="site-navigation position-relative text-right" role="navigation">
@@ -70,15 +70,15 @@
                                 <li class="active"><a href="<?= DIRPAGE ?>">Home</a></li>
                                 <li><a href=""></a></li>
                                 <li class="has-children">
-                                    <a href="">Projetos</a>
+                                    <a href="<?= DIRPAGE . '/projetos' ?>">Projetos</a>
                                     <ul class="dropdown">
-                                        <li><a href="<?= DIRPAGE.'/fumcad' ?>">FUMCAD</a></li>
-                                        <li><a href="<?= DIRPAGE.'/proac' ?>">PROAC</a></li>
+                                        <li><a href="<?= DIRPAGE . '/fumcad' ?>">FUMCAD</a></li>
+                                        <li><a href="<?= DIRPAGE . '/proac' ?>">PROAC</a></li>
                                     </ul>
-                                </li>
-                                <li><a href="<?= DIRPAGE.'/sobre' ?>">Sobre</a></li>
-                                <li><a href="<?= DIRPAGE.'/comoAjudar' ?>">Como Ajudar?</a></li>
-                                <li><a href="<?= DIRPAGE.'/contatos' ?>">Contatos</a></li>
+                                </li>                                
+                                <li><a href="<?= DIRPAGE . '/comoAjudar' ?>">Como Ajudar?</a></li>
+                                <li><a href="<?= DIRPAGE . '/sobre' ?>">Sobre</a></li>
+                                <li><a href="<?= DIRPAGE . '/contatos' ?>">Contatos</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -111,18 +111,18 @@
                             <div class="col-md-3 ml-auto">
                                 <h2 class="footer-heading mb-4">Caracteristicas</h2>
                                 <ul class="list-unstyled">
-                                    <li><a href="<?=DIRPAGE.'/sobre'?>">Sobre</a></li>
-                                    <li><a href="<?=DIRPAGE.'/projetos'?>">Projetos</a></li>
-                                    <li><a href="<?=DIRPAGE.'/comoAjudar'?>">Como Ajudar?</a></li>
-                                    <li><a href="<?=DIRPAGE.'/contatos'?>">Contatos</a></li>
+                                    <li><a href="<?= DIRPAGE . '/sobre' ?>">Sobre</a></li>
+                                    <li><a href="<?= DIRPAGE . '/projetos' ?>">Projetos</a></li>
+                                    <li><a href="<?= DIRPAGE . '/comoAjudar' ?>">Como Ajudar?</a></li>
+                                    <li><a href="<?= DIRPAGE . '/contatos' ?>">Contatos</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-3">
                                 <h2 class="footer-heading mb-4">Siga-nos</h2>
-                                <a href="<?=FACEBOOK?>" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                                <a href="<?=TWITTER?>" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                                <a href="<?=INSTAGRAM?>" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                                <a href="<?=LINKEDIN?>" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                                <a href="<?= FACEBOOK ?>" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                                <a href="<?= TWITTER ?>" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                                <a href="<?= INSTAGRAM ?>" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                                <a href="<?= LINKEDIN ?>" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -168,6 +168,17 @@
         <script src="<?= DIRJS . 'aos.js' ?>"></script>
 
         <script src="<?= DIRJS . 'typed.js' ?>"></script>
+        <script>
+                                    var typed = new Typed('.typed-words', {
+                                        strings: ["Educação", " Para", " Liberdade"],
+                                        typeSpeed: 80,
+                                        backSpeed: 80,
+                                        backDelay: 4000,
+                                        startDelay: 1000,
+                                        loop: true,
+                                        showCursor: true
+                                    });
+        </script>
         <script src="<?= DIRJS . 'main.js' ?>"></script>
     </body>
 </html>
