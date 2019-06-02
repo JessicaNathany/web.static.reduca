@@ -34,13 +34,13 @@
                     <div class="col-lg-3 ml-auto">
                         <div class="mb-5">
                             <h3 class="d-flex align-items-center"><span class="icon icon-phonelink mr-2"></span><span>Apresentação</span></h3>
-                            <p>Escreva um pequeno resumo sobre a reduca</p>
+                            <p>A Reduca é um espaço de acesso público, para a realização de atividades educacionais...</p>
                             <p><a href="sobre">Leia mais</a></p>
                         </div>
 
                         <div>
                             <h3 class="d-flex align-items-center"><span class="icon icon-extension mr-2"></span><span>Trajetória</span></h3>
-                            <p>Escreva um pequeno resumo sobre a trajetoria.</p>
+                            <p>Desde de abertura de 2015 atendemos 168 crianças e adolescentes, 1310 participações em eventos...</p>
                             <p><a href="#">Leia mais</a></p>
                         </div>
 
@@ -48,13 +48,13 @@
                     <div class="col-lg-3">
                         <div class="mb-5">
                             <h3 class="d-flex align-items-center"><span class="icon icon-format_paint mr-2"></span><span>Direção</span></h3>
-                            <p>Escreva quem sao os diretores, quem apoia a reduca.</p>
-                            <p><a href="#">Leia mais</a></p>
+                            <p>A Diretoria atual da Reduca está composta por 9 membros da sociedade civil, atuantes também como voluntários...</p>
+                            <p><a href="direcao">Leia mais</a></p>
                         </div>
 
                         <div>
                             <h3 class="d-flex align-items-center"><span class="icon icon-question_answer mr-2"></span><span>Projetos 2019</span></h3>
-                            <p>Escreva um pequeno resumo sobre os projetos.</p>
+                            <p>Nossos projetos para 2019 são...</p>
                             <p><a href="#">Leias mais</a></p>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-lg-4">
-                <a href="#" class="media-1">
+                <!--<a href="#" class="media-1">-->
                     <img src="<?= DIRIMG . '/reduca_hero.jpg' ?>" alt="Image" class="img-fluid">
                     <div class="media-1-content">
                         <h2>Fumcad</h2>

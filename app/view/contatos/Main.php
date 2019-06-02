@@ -2,9 +2,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7 mb-5">
-
-
-
                 <form action="#" class="p-5 bg-white">
 
                     <h2 class="h4 text-black mb-5">Formulário de Contato</h2> 
